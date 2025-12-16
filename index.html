@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- SEO PRINCIPAL -->
   <title>Floricultura BellaFlor Artur Nogueira | Buquês, Arranjos e Flores</title>
-  <meta name="description" content="Floricultura BellaFlor em Artur Nogueira. Buquês, arranjos florais, flores para presente, datas especiais e entrega rápida.">
-  <meta name="keywords" content="floricultura artur nogueira, buquê de flores, flores para presente, arranjos florais">
+  <meta name="description" content="Floricultura BellaFlor em Artur Nogueira. Buquês, arranjos florais, flores para presente e entrega rápida na cidade.">
+  <meta name="keywords" content="floricultura artur nogueira, buquê de flores, arranjos florais, flores para presente">
   <meta name="author" content="Floricultura BellaFlor">
 
+  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -16,12 +18,20 @@
 
 <!-- ================= HEADER ================= -->
 <header class="header">
+
+  <!-- Barra superior -->
   <div class="header-top">
-    <p>📍 Artur Nogueira • 🚚 Entregas rápidas • 💬 WhatsApp</p>
+    <p>
+      📍 Artur Nogueira • 🚚 Entrega rápida • 💬 Atendimento via WhatsApp
+    </p>
   </div>
 
+  <!-- Cabeçalho principal -->
   <div class="header-main">
-    <h1 class="logo">🌸 BellaFlor</h1>
+    <div class="logo-area">
+      <h1 class="logo">🌸 BellaFlor</h1>
+      <span class="logo-sub">Floricultura em Artur Nogueira</span>
+    </div>
 
     <nav class="menu">
       <a href="index.html">Início</a>
@@ -31,116 +41,290 @@
       <a href="#contato">Contato</a>
     </nav>
   </div>
+
 </header>
 
-<!-- ================= BANNER ================= -->
-<section class="banner">
-  <img src="img/banner.jpg" alt="Floricultura BellaFlor Artur Nogueira">
-  <div class="banner-text">
-    <h2>Flores para todos os momentos</h2>
-    <p>Buquês, arranjos e presentes florais para emocionar</p>
-    <a href="#produtos" class="btn-primario">Comprar Agora</a>
-  </div>
-</section>
+<!-- ================= HERO / BANNER ================= -->
+<section class="hero">
 
+  <!-- Imagem principal -->
+  <div class="hero-image">
+    <img src="img/banner.jpg" alt="Floricultura BellaFlor Artur Nogueira">
+  </div>
+
+  <!-- Texto do banner -->
+  <div class="hero-content">
+    <h2>Flores que transformam momentos em memórias</h2>
+    <p>
+      Buquês, arranjos e flores especiais para surpreender
+      em qualquer ocasião.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#produtos" class="btn-primary">Comprar Agora</a>
+      <a href="produtos.html" class="btn-secondary">Ver Catálogo</a>
+    </div>
+  </div>
+
+</section>
 <!-- ================= CATEGORIAS ================= -->
 <section id="categorias" class="categorias">
-  <h2>Categorias</h2>
+
+  <h2 class="section-title">Compre por Categoria</h2>
 
   <div class="categorias-grid">
-    <div class="categoria">🌹 Buquês</div>
-    <div class="categoria">🌷 Arranjos</div>
-    <div class="categoria">💐 Datas Especiais</div>
-    <div class="categoria">🌼 Flores do Dia</div>
-    <div class="categoria">🎁 Presentes</div>
-    <div class="categoria">🕊️ Coroas e Condolências</div>
+
+    <a href="produtos.html" class="categoria-card">
+      <span class="categoria-icon">🌹</span>
+      <h3>Buquês</h3>
+      <p>Clássicos, românticos e modernos</p>
+    </a>
+
+    <a href="produtos.html" class="categoria-card">
+      <span class="categoria-icon">💐</span>
+      <h3>Arranjos</h3>
+      <p>Elegância para qualquer ambiente</p>
+    </a>
+
+    <a href="produtos.html" class="categoria-card">
+      <span class="categoria-icon">🎂</span>
+      <h3>Aniversários</h3>
+      <p>Surpreenda em datas especiais</p>
+    </a>
+
+    <a href="produtos.html" class="categoria-card">
+      <span class="categoria-icon">❤️</span>
+      <h3>Românticos</h3>
+      <p>Demonstre amor e carinho</p>
+    </a>
+
+    <a href="produtos.html" class="categoria-card">
+      <span class="categoria-icon">🕊️</span>
+      <h3>Condolências</h3>
+      <p>Coroas e homenagens</p>
+    </a>
+
+    <a href="produtos.html" class="categoria-card">
+      <span class="categoria-icon">🎁</span>
+      <h3>Presentes</h3>
+      <p>Cestas e combinações especiais</p>
+    </a>
+
   </div>
+
 </section>
 
-<!-- ================= PRODUTOS ================= -->
+<!-- ================= VITRINE DE PRODUTOS ================= -->
 <section id="produtos" class="produtos">
-  <h2>Produtos em Destaque</h2>
+
+  <div class="produtos-header">
+    <h2 class="section-title">Produtos em Destaque</h2>
+    <p class="section-subtitle">
+      Escolha o presente perfeito para cada ocasião
+    </p>
+  </div>
 
   <div class="produtos-grid">
 
-    <article class="produto">
+    <!-- PRODUTO 1 -->
+    <article class="produto-card">
       <img src="img/produto1.jpg" alt="Buquê Romântico">
-      <h3>Buquê Romântico</h3>
-      <p>Flores selecionadas com acabamento especial.</p>
-      <strong>R$ 189,90</strong>
-      <a href="https://wa.me/55SEUNUMERO" class="btn-produto">Comprar</a>
+      <div class="produto-info">
+        <h3>Buquê Romântico</h3>
+        <p>Flores selecionadas com acabamento premium.</p>
+        <strong class="preco">R$ 189,90</strong>
+        <a href="https://wa.me/55SEUNUMERO" class="btn-comprar">Comprar</a>
+      </div>
     </article>
 
-    <article class="produto">
+    <!-- PRODUTO 2 -->
+    <article class="produto-card">
       <img src="img/produto2.jpg" alt="Arranjo Elegante">
-      <h3>Arranjo Elegante</h3>
-      <p>Ideal para surpreender em qualquer ocasião.</p>
-      <strong>R$ 229,90</strong>
-      <a href="https://wa.me/55SEUNUMERO" class="btn-produto">Comprar</a>
+      <div class="produto-info">
+        <h3>Arranjo Elegante</h3>
+        <p>Sofisticação para presentear com classe.</p>
+        <strong class="preco">R$ 229,90</strong>
+        <a href="https://wa.me/55SEUNUMERO" class="btn-comprar">Comprar</a>
+      </div>
     </article>
 
-    <article class="produto">
+    <!-- PRODUTO 3 -->
+    <article class="produto-card">
       <img src="img/produto1.jpg" alt="Buquê Premium">
-      <h3>Buquê Premium</h3>
-      <p>Flores nobres e montagem sofisticada.</p>
-      <strong>R$ 299,90</strong>
-      <a href="https://wa.me/55SEUNUMERO" class="btn-produto">Comprar</a>
+      <div class="produto-info">
+        <h3>Buquê Premium</h3>
+        <p>Flores nobres e montagem sofisticada.</p>
+        <strong class="preco">R$ 299,90</strong>
+        <a href="https://wa.me/55SEUNUMERO" class="btn-comprar">Comprar</a>
+      </div>
     </article>
 
-    <article class="produto">
+    <!-- PRODUTO 4 -->
+    <article class="produto-card">
       <img src="img/produto2.jpg" alt="Arranjo Luxo">
-      <h3>Arranjo Luxo</h3>
-      <p>Perfeito para datas marcantes.</p>
-      <strong>R$ 349,90</strong>
-      <a href="https://wa.me/55SEUNUMERO" class="btn-produto">Comprar</a>
+      <div class="produto-info">
+        <h3>Arranjo Luxo</h3>
+        <p>Ideal para datas marcantes e especiais.</p>
+        <strong class="preco">R$ 349,90</strong>
+        <a href="https://wa.me/55SEUNUMERO" class="btn-comprar">Comprar</a>
+      </div>
     </article>
 
-    <article class="produto">
+    <!-- PRODUTO 5 -->
+    <article class="produto-card">
       <img src="img/produto1.jpg" alt="Flores do Dia">
-      <h3>Flores do Dia</h3>
-      <p>Seleção especial com preço acessível.</p>
-      <strong>R$ 129,90</strong>
-      <a href="https://wa.me/55SEUNUMERO" class="btn-produto">Comprar</a>
+      <div class="produto-info">
+        <h3>Flores do Dia</h3>
+        <p>Seleção especial com ótimo custo-benefício.</p>
+        <strong class="preco">R$ 129,90</strong>
+        <a href="https://wa.me/55SEUNUMERO" class="btn-comprar">Comprar</a>
+      </div>
     </article>
 
-    <article class="produto">
+    <!-- PRODUTO 6 -->
+    <article class="produto-card">
       <img src="img/produto2.jpg" alt="Buquê Especial">
-      <h3>Buquê Especial</h3>
-      <p>Combinação perfeita para presentear.</p>
-      <strong>R$ 209,90</strong>
-      <a href="https://wa.me/55SEUNUMERO" class="btn-produto">Comprar</a>
+      <div class="produto-info">
+        <h3>Buquê Especial</h3>
+        <p>Combinação perfeita para surpreender.</p>
+        <strong class="preco">R$ 209,90</strong>
+        <a href="https://wa.me/55SEUNUMERO" class="btn-comprar">Comprar</a>
+      </div>
+    </article>
+
+    <!-- PRODUTO 7 -->
+    <article class="produto-card">
+      <img src="img/produto1.jpg" alt="Buquê Clássico">
+      <div class="produto-info">
+        <h3>Buquê Clássico</h3>
+        <p>Elegância atemporal em flores naturais.</p>
+        <strong class="preco">R$ 179,90</strong>
+        <a href="https://wa.me/55SEUNUMERO" class="btn-comprar">Comprar</a>
+      </div>
+    </article>
+
+    <!-- PRODUTO 8 -->
+    <article class="produto-card">
+      <img src="img/produto2.jpg" alt="Arranjo Delicado">
+      <div class="produto-info">
+        <h3>Arranjo Delicado</h3>
+        <p>Leveza e charme para qualquer ambiente.</p>
+        <strong class="preco">R$ 199,90</strong>
+        <a href="https://wa.me/55SEUNUMERO" class="btn-comprar">Comprar</a>
+      </div>
     </article>
 
   </div>
 
-  <a href="produtos.html" class="btn-vermais">Ver todos os produtos</a>
+  <div class="produtos-footer">
+    <a href="produtos.html" class="btn-ver-mais">
+      Ver todos os produtos
+    </a>
+  </div>
+
+</section>
+<!-- ================= SOBRE A BELLAFLOR ================= -->
+<section id="sobre" class="sobre">
+
+  <div class="sobre-container">
+
+    <div class="sobre-texto">
+      <h2>Floricultura BellaFlor Artur Nogueira</h2>
+      <p>
+        A <strong>BellaFlor</strong> nasceu para transformar sentimentos em flores.
+        Atuamos em Artur Nogueira oferecendo buquês, arranjos e presentes florais
+        cuidadosamente preparados para cada ocasião especial.
+      </p>
+      <p>
+        Trabalhamos com flores frescas, atendimento humanizado e entrega rápida,
+        garantindo qualidade, beleza e emoção em cada pedido.
+      </p>
+    </div>
+
+    <div class="sobre-destaques">
+      <div class="destaque">🌷 Flores frescas todos os dias</div>
+      <div class="destaque">🚚 Entrega rápida em Artur Nogueira</div>
+      <div class="destaque">💬 Atendimento direto pelo WhatsApp</div>
+      <div class="destaque">❤️ Presente perfeito para qualquer ocasião</div>
+    </div>
+
+  </div>
+
 </section>
 
-<!-- ================= SOBRE ================= -->
-<section id="sobre" class="sobre">
-  <h2>Sobre a BellaFlor</h2>
+<!-- ================= CHAMADA FINAL ================= -->
+<section class="cta-final">
+
+  <h2>Surpreenda quem você ama hoje mesmo</h2>
   <p>
-    A <strong>Floricultura BellaFlor</strong> atua em Artur Nogueira oferecendo flores frescas,
-    arranjos exclusivos e atendimento personalizado. Cada detalhe é pensado para
-    transformar sentimentos em momentos inesquecíveis.
+    Faça seu pedido agora e deixe a BellaFlor cuidar de cada detalhe.
   </p>
+
+  <a href="https://wa.me/5519998028205" target="_blank" class="btn-whatsapp">
+    💬 Comprar pelo WhatsApp
+  </a>
+
 </section>
 
 <!-- ================= CONTATO ================= -->
 <section id="contato" class="contato">
-  <h2>Peça pelo WhatsApp</h2>
-  <p>Atendimento rápido e personalizado.</p>
 
-  <a href="https://wa.me/55SEUNUMERO" class="btn-whatsapp" target="_blank">
-    💬 Comprar pelo WhatsApp
+  <h2>Fale Conosco</h2>
+
+  <p>
+    Atendimento rápido e direto pelo WhatsApp.
+  </p>
+
+  <div class="contato-info">
+    <p>📍 Artur Nogueira - SP</p>
+    <p>📞 WhatsApp: (19) 99802-8205</p>
+  </div>
+
+  <a href="https://wa.me/5519998028205" target="_blank" class="btn-whatsapp">
+    💬 Chamar no WhatsApp
   </a>
+
 </section>
 
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
-  <p>© 2025 Floricultura BellaFlor - Artur Nogueira</p>
-  <p>Todos os direitos reservados</p>
+
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h3>BellaFlor</h3>
+      <p>
+        Floricultura em Artur Nogueira especializada em buquês,
+        arranjos florais e presentes.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Menu</h3>
+      <a href="index.html">Início</a>
+      <a href="#categorias">Categorias</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </div>
+
+    <div class="footer-col">
+      <h3>Atendimento</h3>
+      <p>📍 Artur Nogueira - SP</p>
+      <p>📞 (19) 99802-8205</p>
+      <p>💬 Atendimento via WhatsApp</p>
+    </div>
+
+  </div>
+
+  <div class="footer-copy">
+    <p>
+      © 2025 Floricultura BellaFlor Artur Nogueira — Todos os direitos reservados.
+    </p>
+  </div>
+
 </footer>
 
 </body>
 </html>
+
