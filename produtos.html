@@ -4,9 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Produtos | Floricultura BellaFlor Artur Nogueira</title>
-  <meta name="description" content="Catálogo completo de flores, buquês e arranjos da Floricultura BellaFlor em Artur Nogueira.">
+  <!-- SEO -->
+  <title>Produtos | Floricultura Bella Flor Artur Nogueira</title>
+  <meta name="description" content="Confira todos os produtos da Floricultura Bella Flor em Artur Nogueira. Buquês, arranjos florais, presentes e flores para todas as ocasiões.">
+  <meta name="keywords" content="buquês artur nogueira, arranjos florais, floricultura artur nogueira, flores para presente">
+  <meta name="author" content="Floricultura Bella Flor">
 
+  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -14,74 +18,139 @@
 
 <!-- ================= HEADER ================= -->
 <header class="header">
+
   <div class="header-top">
     <p>📍 Artur Nogueira • 🚚 Entrega rápida • 💬 WhatsApp</p>
   </div>
 
   <div class="header-main">
     <div class="logo-area">
-      <h1 class="logo">🌸 BellaFlor</h1>
+      <h1 class="logo">🌸 Bella Flor</h1>
       <span class="logo-sub">Floricultura em Artur Nogueira</span>
     </div>
 
     <nav class="menu">
       <a href="index.html">Início</a>
-      <a href="produtos.html">Produtos</a>
+      <a href="produtos.html" class="ativo">Produtos</a>
+      <a href="index.html#categorias">Categorias</a>
       <a href="index.html#contato">Contato</a>
     </nav>
   </div>
+
 </header>
 
-<!-- ================= TOPO PRODUTOS ================= -->
-<section class="topo-produtos">
+<!-- ================= BANNER PRODUTOS ================= -->
+<section class="banner-produtos">
   <h2>Nossos Produtos</h2>
   <p>
-    Buquês, arranjos e flores especiais para todos os momentos.
+    Buquês, arranjos e presentes preparados com carinho
+    para todas as ocasiões.
   </p>
 </section>
 
-<!-- ================= FILTROS ================= -->
-<section class="filtros">
-  <button class="filtro ativo">Todos</button>
-  <button class="filtro">Buquês</button>
-  <button class="filtro">Arranjos</button>
-  <button class="filtro">Românticos</button>
-  <button class="filtro">Aniversário</button>
-  <button class="filtro">Condolências</button>
+<!-- ================= CATEGORIAS ================= -->
+<section class="filtros-produtos">
+
+  <a href="#buques">🌹 Buquês</a>
+  <a href="#arranjos">💐 Arranjos</a>
+  <a href="#romanticos">❤️ Românticos</a>
+  <a href="#aniversario">🎂 Aniversários</a>
+  <a href="#presentes">🎁 Presentes</a>
+  <a href="#condolencias">🕊️ Condolências</a>
+
 </section>
 
-<!-- ================= GRADE DE PRODUTOS ================= -->
-<section class="produtos produtos-pagina">
+<!-- ================= LISTA DE PRODUTOS ================= -->
+<section class="lista-produtos">
+
+  <!-- ===== BUQUÊS ===== -->
+  <h3 id="buques" class="titulo-categoria">🌹 Buquês</h3>
 
   <div class="produtos-grid">
 
-    <!-- PRODUTO -->
     <article class="produto-card">
       <img src="img/produto1.jpg" alt="Buquê Romântico">
       <div class="produto-info">
-        <h3>Buquê Romântico</h3>
-        <p>Flores selecionadas com acabamento premium.</p>
-        <strong class="preco">R$ 189,90</strong>
-        <a href="https://wa.me/5519998028205" target="_blank" class="btn-comprar">
-          Comprar no WhatsApp
-        </a>
+        <h4>Buquê Romântico</h4>
+        <p>Clássico e elegante para surpreender.</p>
+        <strong>R$ 189,90</strong>
+        <a href="https://wa.me/5519998028205" target="_blank">Comprar</a>
       </div>
     </article>
 
-    <!-- PRODUTO -->
+    <article class="produto-card">
+      <img src="img/produto2.jpg" alt="Buquê Premium">
+      <div class="produto-info">
+        <h4>Buquê Premium</h4>
+        <p>Flores nobres e acabamento sofisticado.</p>
+        <strong>R$ 299,90</strong>
+        <a href="https://wa.me/5519998028205" target="_blank">Comprar</a>
+      </div>
+    </article>
+
+    <article class="produto-card">
+      <img src="img/produto1.jpg" alt="Buquê Clássico">
+      <div class="produto-info">
+        <h4>Buquê Clássico</h4>
+        <p>Elegância atemporal em flores naturais.</p>
+        <strong>R$ 179,90</strong>
+        <a href="https://wa.me/5519998028205" target="_blank">Comprar</a>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- ===== ARRANJOS ===== -->
+  <h3 id="arranjos" class="titulo-categoria">💐 Arranjos</h3>
+
+  <div class="produtos-grid">
+
     <article class="produto-card">
       <img src="img/produto2.jpg" alt="Arranjo Elegante">
       <div class="produto-info">
-        <h3>Arranjo Elegante</h3>
-        <p>Sofisticação para presentear.</p>
-        <strong class="preco">R$ 229,90</strong>
-        <a href="https://wa.me/5519998028205" target="_blank" class="btn-comprar">
-          Comprar no WhatsApp
-        </a>
+        <h4>Arranjo Elegante</h4>
+        <p>Sofisticação para qualquer ambiente.</p>
+        <strong>R$ 229,90</strong>
+        <a href="https://wa.me/5519998028205" target="_blank">Comprar</a>
       </div>
     </article>
 
-    <!-- DUPLIQUE ESSE BLOCO PARA MAIS PRODUTOS -->
+    <article class="produto-card">
+      <img src="img/produto1.jpg" alt="Arranjo Luxo">
+      <div class="produto-info">
+        <h4>Arranjo Luxo</h4>
+        <p>Ideal para datas especiais.</p>
+        <strong>R$ 349,90</strong>
+        <a href="https://wa.me/5519998028205" target="_blank">Comprar</a>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- ===== PRESENTES ===== -->
+  <h3 id="presentes" class="titulo-categoria">🎁 Presentes</h3>
+
+  <div class="produtos-grid">
+
+    <article class="produto-card">
+      <img src="img/produto2.jpg" alt="Cesta Presente">
+      <div class="produto-info">
+        <h4>Cesta Presente</h4>
+        <p>Flores e itens especiais combinados.</p>
+        <strong>R$ 259,90</strong>
+        <a href="https://wa.me/5519998028205" target="_blank">Comprar</a>
+      </div>
+    </article>
+
+    <article class="produto-card">
+      <img src="img/produto1.jpg" alt="Flores do Dia">
+      <div class="produto-info">
+        <h4>Flores do Dia</h4>
+        <p>Ótimo custo-benefício.</p>
+        <strong>R$ 129,90</strong>
+        <a href="https://wa.me/5519998028205" target="_blank">Comprar</a>
+      </div>
+    </article>
 
   </div>
 
@@ -89,19 +158,51 @@
 
 <!-- ================= CTA FINAL ================= -->
 <section class="cta-final">
+
   <h2>Não encontrou o que procura?</h2>
-  <p>Chame no WhatsApp que montamos um arranjo personalizado.</p>
+  <p>
+    Fale conosco no WhatsApp e montamos um arranjo
+    personalizado para você.
+  </p>
 
   <a href="https://wa.me/5519998028205" target="_blank" class="btn-whatsapp">
-    💬 Falar com a BellaFlor
+    💬 Falar com a Bella Flor
   </a>
+
 </section>
 
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
-  <div class="footer-copy">
-    © 2025 Floricultura BellaFlor Artur Nogueira
+
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h3>🌸 Bella Flor</h3>
+      <p>
+        Floricultura em Artur Nogueira com produtos feitos
+        com carinho e flores frescas.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Menu</h3>
+      <a href="index.html">Início</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="index.html#contato">Contato</a>
+    </div>
+
+    <div class="footer-col">
+      <h3>Contato</h3>
+      <p>📍 Artur Nogueira - SP</p>
+      <p>📞 (19) 99802-8205</p>
+    </div>
+
   </div>
+
+  <div class="footer-copy">
+    © 2025 Floricultura Bella Flor Artur Nogueira
+  </div>
+
 </footer>
 
 </body>
