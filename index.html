@@ -3,814 +3,808 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BellaFlor Artur Nogueira | Floricultura Online</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome para Ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>BellaFlor | Sua Floricultura em Artur Nogueira</title>
+    <!-- Meta tags básicas de SEO -->
+    <meta name="description" content="BellaFlor - Flores e arranjos florais em Artur Nogueira. Catálogo completo, compra fácil via PIX, Cartão e WhatsApp.">
+    <meta name="keywords" content="Floricultura, Artur Nogueira, Flores, Buquês, Arranjos, Rosas, Girassóis, Orquídeas">
+
+    <!-- Tailwind CSS CDN para estilização rápida e responsiva -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        /* --- VARIÁVEIS & RESET --- */
+        /* Paleta de cores e fontes personalizadas */
         :root {
-            --primary-color: #D48ba5; /* Rosa Antigo */
-            --primary-dark: #b56b84;
-            --secondary-color: #9ab09a; /* Verde Sálvia */
-            --accent-color: #5D4037; /* Marrom Terra */
-            --bg-color: #fdfbfb;
-            --card-bg: #ffffff;
-            --text-main: #333333;
-            --text-light: #666666;
-            --success: #27ae60;
-            --whatsapp: #25D366;
-            --shadow: 0 4px 15px rgba(0,0,0,0.05);
-            --radius: 12px;
-            --transition: all 0.3s ease;
+            --color-primary: #D34C7C; /* Rosa Floral Profundo */
+            --color-secondary: #4CAF50; /* Verde Fresco */
+            --color-text: #333333;
+            --color-background: #FAF8F8; /* Branco Suave */
+            --color-hover: #E91E63;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        /* Configuração de Fonte Inter (Tailwind Default) */
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text);
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            color: var(--accent-color);
+        /* Estilos customizados para botões e cards */
+        .btn-whatsapp {
+            background-color: var(--color-secondary);
+            transition: background-color 0.3s, transform 0.2s;
         }
-
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        ul { list-style: none; }
-        img { max-width: 100%; display: block; }
-        button { cursor: pointer; border: none; outline: none; font-family: inherit; }
-
-        /* --- HEADER --- */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .navbar {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo span { color: var(--secondary-color); }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            font-size: 0.95rem;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover { color: var(--primary-color); }
-        .nav-links a:hover::after { width: 100%; }
-
-        .cart-icon {
-            position: relative;
-            font-size: 1.2rem;
-            color: var(--accent-color);
-            cursor: pointer;
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: var(--primary-color);
-            color: white;
-            font-size: 0.7rem;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-        }
-
-        /* Mobile Menu */
-        .hamburger { display: none; font-size: 1.5rem; color: var(--accent-color); }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1490750967868-58cb75069ed6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            margin-top: 60px;
-            padding: 0 1rem;
-        }
-
-        .hero-content {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 3rem;
-            border-radius: var(--radius);
-            max-width: 700px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: var(--transition);
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-            box-shadow: 0 4px 15px rgba(212, 139, 165, 0.4);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
+        .btn-whatsapp:hover {
+            background-color: #388E3C;
             transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        /* --- FILTERS --- */
-        .filters {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 3rem 0;
-            flex-wrap: wrap;
-            padding: 0 1rem;
+        .btn-buy {
+            background-color: var(--color-primary);
+            transition: background-color 0.3s, transform 0.2s;
         }
-
-        .filter-btn {
-            padding: 0.5rem 1.5rem;
-            border: 1px solid var(--primary-color);
-            background: transparent;
-            color: var(--primary-color);
-            border-radius: 20px;
-            transition: var(--transition);
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        /* --- PRODUCTS GRID --- */
-        .products-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem 5rem;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 1rem;
-            font-size: 2.5rem;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-light);
-            margin-bottom: 3rem;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
+        .btn-buy:hover {
+            background-color: var(--color-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .product-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            display: flex;
-            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .product-img-wrapper {
-            height: 250px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .product-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover .product-img-wrapper img {
-            transform: scale(1.1);
-        }
-
-        .product-tag {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: rgba(255,255,255,0.9);
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--accent-color);
-            text-transform: uppercase;
-        }
-
-        .product-info {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-name {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .product-desc {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-
-        .product-price {
-            font-size: 1.3rem;
-            color: var(--primary-dark);
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .product-actions {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .btn-cart {
-            flex: 1;
-            padding: 0.7rem;
-            background: transparent;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            border-radius: 8px;
-            font-weight: 600;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .btn-cart:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .btn-whatsapp {
-            padding: 0.7rem;
-            background: var(--whatsapp);
-            color: white;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-        }
-
-        .btn-whatsapp:hover {
-            background: #128C7E;
-        }
-
-        /* --- CONTACT & FOOTER --- */
-        .info-strip {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 3rem 1.5rem;
-            text-align: center;
-        }
-
-        .info-grid {
-            max-width: 1200px;
-            margin: 0 auto;
+        /* Responsividade do Grid de Produtos */
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
         }
 
-        .info-item i { font-size: 2rem; margin-bottom: 1rem; }
-        .info-item h4 { color: white; margin-bottom: 0.5rem; }
-
-        footer {
-            background: #222;
-            color: #fff;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+        /* Estilo para ícones SVG */
+        .icon-svg {
             display: inline-block;
+            width: 1.25em;
+            height: 1.25em;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
-        /* --- MODALS --- */
+        /* Estilos do Modal */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0, 0, 0, 0.7);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 2000;
+            z-index: 1000;
             opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
         }
-
-        .modal-overlay.open { opacity: 1; pointer-events: all; }
-
-        .modal-container {
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
             background: white;
-            width: 90%;
-            max-width: 500px;
-            border-radius: var(--radius);
-            padding: 2rem;
-            position: relative;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-            max-height: 90vh;
-            overflow-y: auto;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 90%;
+            width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease-out;
+        }
+        .modal-overlay.open .modal-content {
+            transform: scale(1);
         }
 
-        .modal-overlay.open .modal-container { transform: translateY(0); }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #999;
-        }
-
-        .modal-title { font-size: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
-        
-        .checkout-summary {
-            background: #f9f9f9;
-            padding: 1rem;
+        /* Estilos do Alerta Customizado */
+        #custom-alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1100;
+            padding: 15px 25px;
             border-radius: 8px;
-            margin-bottom: 1.5rem;
-            display: flex;
-            gap: 1rem;
-            align-items: center;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s, transform 0.3s;
         }
-        
-        .checkout-img { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; }
-        
-        .form-group { margin-bottom: 1rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
-        .form-control { width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 6px; font-family: inherit; }
-        
-        .payment-options { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; margin-bottom: 1.5rem; }
-        .payment-opt {
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            padding: 0.8rem;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
+        #custom-alert.show {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        .payment-opt:hover, .payment-opt.selected {
-            border-color: var(--primary-color);
-            background: #fff0f5;
-            color: var(--primary-color);
-        }
-
-        .payment-opt i { font-size: 1.2rem; display: block; margin-bottom: 0.3rem; }
-
-        .modal-success { text-align: center; }
-        .success-icon { font-size: 4rem; color: var(--success); margin-bottom: 1rem; }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-            }
-            .nav-links.active { display: flex; }
-            .hamburger { display: block; }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        #custom-alert.success { background-color: #4CAF50; }
+        #custom-alert.error { background-color: #F44336; }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <nav class="navbar">
-            <a href="#" class="logo">
-                <i class="fa-solid fa-seedling"></i>
-                BellaFlor <span>Artur Nogueira</span>
-            </a>
-            
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#produtos">Produtos</a></li>
-                <li><a href="#sobre">Sobre Nós</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
+    <!-- Alerta Customizado (Substitui alert()) -->
+    <div id="custom-alert" class="hidden" role="alert"></div>
 
-            <div style="display: flex; align-items: center; gap: 15px;">
-                <div class="cart-icon" onclick="alert('Seu carrinho está vazio! Adicione produtos.')">
-                    <i class="fa-solid fa-shopping-bag"></i>
-                    <span class="cart-count">0</span>
+    <!-- HEADER (Navegação Fixa) -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold" style="color: var(--color-primary);">
+                🌸 Bella<span style="color: var(--color-secondary);">Flor</span>
+            </a>
+            <nav class="hidden md:flex space-x-6 text-lg font-medium">
+                <a href="#hero" class="hover:text-gray-600 transition duration-150" style="color: var(--color-primary);">Início</a>
+                <a href="#catalogo" class="hover:text-gray-600 transition duration-150" style="color: var(--color-primary);">Catálogo</a>
+                <a href="#contato" class="hover:text-gray-600 transition duration-150" style="color: var(--color-primary);">Contato</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <!-- Campo de Busca -->
+                <div class="relative hidden sm:block">
+                    <input type="text" id="search-input" placeholder="Buscar flores..." class="py-2 pl-10 pr-4 border border-gray-300 rounded-full focus:ring-1" style="border-color: var(--color-primary); focus-ring: var(--color-primary);">
+                    <svg class="icon-svg absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 </div>
-                <div class="hamburger" id="hamburger">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
+                <!-- Botão do Carrinho -->
+                <button id="open-cart-btn" class="relative p-2 rounded-full hover:bg-gray-100 transition duration-150" aria-label="Carrinho de Compras" style="color: var(--color-primary);">
+                    <svg class="icon-svg w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                    <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">0</span>
+                </button>
+                <!-- Menu Mobile (Hamburguer) -->
+                <button id="menu-toggle-btn" class="md:hidden p-2 rounded-full hover:bg-gray-100 transition duration-150" aria-label="Menu" style="color: var(--color-primary);">
+                    <svg class="icon-svg w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
             </div>
-        </nav>
+        </div>
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white px-4 pb-4">
+            <a href="#hero" class="block py-2 text-lg hover:bg-gray-50 rounded" style="color: var(--color-primary);">Início</a>
+            <a href="#catalogo" class="block py-2 text-lg hover:bg-gray-50 rounded" style="color: var(--color-primary);">Catálogo</a>
+            <a href="#contato" class="block py-2 text-lg hover:bg-gray-50 rounded" style="color: var(--color-primary);">Contato</a>
+            <input type="text" id="search-input-mobile" placeholder="Buscar flores..." class="w-full mt-2 py-2 pl-4 pr-4 border border-gray-300 rounded-full focus:ring-1" style="border-color: var(--color-primary); focus-ring: var(--color-primary);">
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1>Flores que Encantam em Artur Nogueira</h1>
-            <p>Arranjos exclusivos, buquês frescos e presentes inesquecíveis entregues com carinho.</p>
-            <a href="#produtos" class="btn btn-primary">Ver Catálogo</a>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section id="produtos" class="products-section">
-        <h2 class="section-title">Nossa Coleção</h2>
-        <p class="section-subtitle">Escolha o presente perfeito para cada ocasião</p>
-        
-        <div class="filters">
-            <button class="filter-btn active" data-filter="all">Todos</button>
-            <button class="filter-btn" data-filter="buque">Buquês</button>
-            <button class="filter-btn" data-filter="arranjo">Arranjos</button>
-            <button class="filter-btn" data-filter="orquidea">Orquídeas</button>
-            <button class="filter-btn" data-filter="cesta">Cestas</button>
-        </div>
-
-        <div class="products-grid" id="productsGrid">
-            <!-- Produtos serão inseridos via JS -->
-        </div>
-    </section>
-
-    <!-- Info Strip -->
-    <section id="sobre" class="info-strip">
-        <div class="info-grid">
-            <div class="info-item">
-                <i class="fa-solid fa-truck-fast"></i>
-                <h4>Entrega Rápida</h4>
-                <p>Em toda Artur Nogueira e região</p>
+    <main>
+        <!-- HERO/BANNER -->
+        <section id="hero" class="relative bg-gray-50 pt-20 pb-24" style="background-image: linear-gradient(135deg, #F9E7F1 0%, #E0F2F1 100%);">
+            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
+                    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4" style="color: var(--color-primary);">
+                        Flores Frescas. Emoções Inesquecíveis.
+                    </h1>
+                    <p class="text-xl text-gray-700 mb-8">
+                        Entrega rápida em Artur Nogueira. Encontre o arranjo perfeito para cada ocasião.
+                    </p>
+                    <a href="#catalogo" class="btn-buy inline-block px-8 py-4 text-white font-semibold text-lg rounded-full shadow-lg hover:shadow-xl transition duration-300">
+                        Ver Catálogo Agora
+                    </a>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <!-- Imagem Placeholder para o Hero -->
+                    <img src="https://placehold.co/500x350/F48FB1/FFFFFF?text=BellaFlor+em+Artur+Nogueira" alt="[Imagem de Buquê de Flores vibrante]" class="rounded-2xl shadow-2xl object-cover w-full max-w-md">
+                </div>
             </div>
-            <div class="info-item">
-                <i class="fa-solid fa-gift"></i>
-                <h4>Embalagem Premium</h4>
-                <p>Cada detalhe feito com amor</p>
-            </div>
-            <div class="info-item">
-                <i class="fa-solid fa-credit-card"></i>
-                <h4>Pagamento Seguro</h4>
-                <p>Pix, Cartão e Dinheiro</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer id="contato">
-        <div class="footer-logo">BellaFlor Artur Nogueira</div>
-        <p>Rua 7 de Setembro, Centro, Artur Nogueira - SP</p>
-        <p>Telefone / WhatsApp: (19) 99802-8205</p>
-        <div style="margin-top: 1rem; font-size: 1.5rem;">
-            <i class="fa-brands fa-instagram" style="margin: 0 10px; cursor: pointer;"></i>
-            <i class="fa-brands fa-facebook" style="margin: 0 10px; cursor: pointer;"></i>
+        <!-- CATÁLOGO DE PRODUTOS -->
+        <section id="catalogo" class="py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12" style="color: var(--color-text);">Nosso Catálogo Floral</h2>
+
+                <div id="products-grid" class="product-grid">
+                    <!-- Produtos serão injetados aqui pelo JavaScript -->
+                    <div class="col-span-full text-center py-10" id="loading-message">Carregando o catálogo de flores...</div>
+                </div>
+                
+                <div id="no-results-message" class="col-span-full text-center py-10 text-xl text-gray-500 hidden">Nenhum produto encontrado. Tente outra busca.</div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (Contatos e Informações) -->
+    <footer id="contato" class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 border-b border-gray-700 pb-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4" style="color: var(--color-primary);">BellaFlor</h3>
+                    <p class="text-gray-400">Sua floricultura de confiança em Artur Nogueira. Levando a beleza da natureza até você.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#hero" class="text-gray-400 hover:text-white transition duration-150">Início</a></li>
+                        <li><a href="#catalogo" class="text-gray-400 hover:text-white transition duration-150">Catálogo</a></li>
+                        <li><a href="#contato" class="text-gray-400 hover:text-white transition duration-150">Localização</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Contato</h4>
+                    <p class="text-gray-400">
+                        <svg class="icon-svg inline w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2zM12 16.92v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2zM22 3.92v3a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2zM12 3.92v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2z"></path></svg>
+                        (19) 99802-8205 (WhatsApp)
+                    </p>
+                    <p class="text-gray-400 mt-2">
+                        <svg class="icon-svg inline w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        Seg-Sex: 9h - 18h
+                    </p>
+                    <p class="text-gray-400 mt-2">
+                        Sábado: 9h - 13h
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold mb-4">Localização</h4>
+                    <p class="text-gray-400">Artur Nogueira, São Paulo</p>
+                    <p class="text-gray-400 mt-2">Atendemos toda a região com o frescor das flores.</p>
+                </div>
+            </div>
+            <div class="text-center text-gray-500 text-sm">
+                &copy; 2024 BellaFlor. Todos os direitos reservados.
+            </div>
         </div>
-        <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.7;">&copy; 2024 BellaFlor. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Modal de Checkout -->
-    <div class="modal-overlay" id="checkoutModal">
-        <div class="modal-container">
-            <span class="close-modal" onclick="closeModal('checkoutModal')">&times;</span>
-            <h3 class="modal-title">Finalizar Compra</h3>
+    <!-- MODAL DE PAGAMENTO (escondido) -->
+    <div id="payment-modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <div class="flex justify-between items-center border-b pb-3 mb-4">
+                <h3 class="text-2xl font-bold" style="color: var(--color-primary);">Finalizar Compra</h3>
+                <button id="close-payment-modal-btn" class="text-gray-500 hover:text-gray-800">
+                    <svg class="icon-svg w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
             
-            <div id="modalProductDetails" class="checkout-summary">
-                <!-- Detalhes do produto dinâmicos -->
+            <div id="modal-product-info">
+                <p class="text-lg font-semibold">Produto: <span id="modal-product-name" class="font-normal"></span></p>
+                <p class="text-2xl font-bold mb-6" style="color: var(--color-secondary);">Preço: <span id="modal-product-price"></span></p>
             </div>
 
-            <form id="checkoutForm" onsubmit="processPayment(event)">
-                <div class="form-group">
-                    <label>Seu Nome</label>
-                    <input type="text" class="form-control" required placeholder="Digite seu nome completo">
-                </div>
-                <div class="form-group">
-                    <label>Endereço de Entrega</label>
-                    <input type="text" class="form-control" required placeholder="Rua, número e bairro">
-                </div>
-
-                <label style="display:block; margin-bottom:0.5rem; font-weight:500;">Forma de Pagamento</label>
-                <div class="payment-options">
-                    <div class="payment-opt selected" onclick="selectPayment(this, 'Pix')">
-                        <i class="fa-brands fa-pix"></i> Pix
-                    </div>
-                    <div class="payment-opt" onclick="selectPayment(this, 'Cartão')">
-                        <i class="fa-regular fa-credit-card"></i> Cartão
-                    </div>
-                    <div class="payment-opt" onclick="selectPayment(this, 'Dinheiro')">
-                        <i class="fa-solid fa-money-bill-wave"></i> Dinheiro
-                    </div>
-                </div>
-                <input type="hidden" id="selectedPayment" value="Pix">
-
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Confirmar Pedido</button>
-            </form>
+            <h4 class="text-xl font-semibold mb-4">Selecione o Método de Pagamento:</h4>
+            
+            <div class="space-y-4">
+                <button id="pay-pix" class="w-full text-center py-3 rounded-lg text-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 transition duration-150">
+                    PIX <span class="text-sm font-normal">(Recomendado)</span>
+                </button>
+                <button id="pay-card" class="w-full text-center py-3 rounded-lg text-lg font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition duration-150">
+                    Cartão de Crédito
+                </button>
+                <button id="pay-boleto" class="w-full text-center py-3 rounded-lg text-lg font-semibold text-gray-700 bg-yellow-400 hover:bg-yellow-500 transition duration-150">
+                    Boleto Bancário
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- MODAL DO CARRINHO (escondido) -->
+    <div id="cart-modal-overlay" class="modal-overlay">
+        <div class="modal-content max-w-lg">
+            <div class="flex justify-between items-center border-b pb-3 mb-4">
+                <h3 class="text-2xl font-bold" style="color: var(--color-primary);">Seu Carrinho (Firestore)</h3>
+                <button id="close-cart-modal-btn" class="text-gray-500 hover:text-gray-800">
+                    <svg class="icon-svg w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            
+            <div id="cart-items-list" class="space-y-4 max-h-80 overflow-y-auto pr-2">
+                <!-- Itens do carrinho serão injetados aqui -->
+                <p id="empty-cart-message" class="text-center text-gray-500">Seu carrinho está vazio.</p>
+            </div>
+            
+            <div class="mt-6 pt-4 border-t">
+                <p class="text-xl font-bold flex justify-between">Total: <span id="cart-total" style="color: var(--color-primary);">R$ 0,00</span></p>
+                <button id="checkout-all-btn" class="w-full btn-buy mt-4 px-4 py-3 text-white font-semibold rounded-lg disabled:opacity-50" disabled>
+                    Finalizar Todos os Itens
+                </button>
+            </div>
+            
+            <div class="mt-4 text-xs text-gray-400 text-center">
+                ID do Usuário: <span id="current-user-id">Aguardando autenticação...</span>
+            </div>
         </div>
     </div>
 
-    <!-- Modal de Sucesso -->
-    <div class="modal-overlay" id="successModal">
-        <div class="modal-container modal-success">
-            <span class="close-modal" onclick="closeModal('successModal')">&times;</span>
-            <i class="fa-solid fa-circle-check success-icon"></i>
-            <h3>Pedido Realizado!</h3>
-            <p style="margin-bottom: 1.5rem; color: #666;">Obrigado por comprar na BellaFlor. Entraremos em contato em breve para confirmar a entrega.</p>
-            <button class="btn btn-primary" onclick="closeModal('successModal')">Voltar à Loja</button>
-        </div>
-    </div>
 
-    <script>
-        // --- DADOS DOS PRODUTOS ---
-        // Gerando 30 produtos simulados com imagens de alta qualidade
-        const flowers = [
-            { id: 1, name: "Buquê Rosas Vermelhas", price: 149.90, category: "buque", img: "https://images.unsplash.com/photo-1591886960571-74d43a9d4166?auto=format&fit=crop&w=600&q=80", desc: "Clássico buquê com 12 rosas colombianas vermelhas." },
-            { id: 2, name: "Orquídea Phalaenopsis", price: 129.90, category: "orquidea", img: "https://images.unsplash.com/photo-1566952726577-1c6d860d5c21?auto=format&fit=crop&w=600&q=80", desc: "Orquídea branca de duas hastes em vaso decorativo." },
-            { id: 3, name: "Cesta Café da Manhã", price: 219.90, category: "cesta", img: "https://images.unsplash.com/photo-1588164053912-4c2847a97210?auto=format&fit=crop&w=600&q=80", desc: "Completa com flores, pães, sucos e frutas frescas." },
-            { id: 4, name: "Arranjo Mix Primavera", price: 89.90, category: "arranjo", img: "https://images.unsplash.com/photo-1563241527-94fbc1930026?auto=format&fit=crop&w=600&q=80", desc: "Mix colorido de gérberas, astromélias e folhagens." },
-            { id: 5, name: "Buquê Girassóis", price: 99.90, category: "buque", img: "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=600&q=80", desc: "A energia vibrante de 6 girassóis selecionados." },
-            { id: 6, name: "Box de Rosas & Chocolate", price: 189.90, category: "cesta", img: "https://images.unsplash.com/photo-1549416878-b971e909eeec?auto=format&fit=crop&w=600&q=80", desc: "Caixa cartonada com rosas e bombons Ferrero Rocher." },
-            { id: 7, name: "Lírios Brancos", price: 119.90, category: "arranjo", img: "https://images.unsplash.com/photo-1587574293340-e0011c4e8ecf?auto=format&fit=crop&w=600&q=80", desc: "Elegância pura em um maço de lírios perfumados." },
-            { id: 8, name: "Vaso de Begônias", price: 45.00, category: "arranjo", img: "https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=600&q=80", desc: "Pequeno vaso florido, ideal para lembrancinhas." },
-            { id: 9, name: "Buquê Amor Perfeito", price: 169.90, category: "buque", img: "https://images.unsplash.com/photo-1533616688419-07a585039ecf?auto=format&fit=crop&w=600&q=80", desc: "Rosas rosas e brancas envoltas em papel kraft." },
-            { id: 10, name: "Orquídea Azul Rara", price: 199.90, category: "orquidea", img: "https://images.unsplash.com/photo-1629815830206-38292c23f139?auto=format&fit=crop&w=600&q=80", desc: "Exótica orquídea azul tinturada (Blue Mystique)." },
-            { id: 11, name: "Terrário Suculentas", price: 79.90, category: "arranjo", img: "https://images.unsplash.com/photo-1517191434949-5e90cd67d2b6?auto=format&fit=crop&w=600&q=80", desc: "Mini jardim em vidro geométrico." },
-            { id: 12, name: "Cesta Happy Hour", price: 159.90, category: "cesta", img: "https://images.unsplash.com/photo-1615598288544-0a95f9d141e6?auto=format&fit=crop&w=600&q=80", desc: "Cervejas artesanais, petiscos e mini suculenta." },
-            { id: 13, name: "Tulipas Holandesas", price: 139.90, category: "buque", img: "https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=600&q=80", desc: "Maço com 10 tulipas frescas da estação." },
-            { id: 14, name: "Coração de Rosas", price: 299.90, category: "arranjo", img: "https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?auto=format&fit=crop&w=600&q=80", desc: "Arranjo em formato de coração com 30 rosas." },
-            { id: 15, name: "Buquê do Campo", price: 79.90, category: "buque", img: "https://images.unsplash.com/photo-1463936575829-25148e1db1b8?auto=format&fit=crop&w=600&q=80", desc: "Flores silvestres e trigo seco." },
-            { id: 16, name: "Orquídea Chuva de Ouro", price: 89.90, category: "orquidea", img: "https://images.unsplash.com/photo-1596726618361-59173f4e1781?auto=format&fit=crop&w=600&q=80", desc: "Oncidium amarelo vibrante em cachepô rústico." },
-            { id: 17, name: "Cesta Maternidade", price: 249.90, category: "cesta", img: "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&q=80", desc: "Urso de pelúcia, flores suaves e chocolates." },
-            { id: 18, name: "Vaso de Lavanda", price: 59.90, category: "arranjo", img: "https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=600&q=80", desc: "Aroma relaxante para ambientes internos." },
-            { id: 19, name: "Buquê Elegance", price: 189.90, category: "buque", img: "https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=600&q=80", desc: "Mix nobre de lisianthus e rosas." },
-            { id: 20, name: "Bonsai Ficus", price: 149.90, category: "arranjo", img: "https://images.unsplash.com/photo-1599598425947-5202e70e9b9c?auto=format&fit=crop&w=600&q=80", desc: "Arte milenar para decorar escritórios." },
-            { id: 21, name: "Cesta Romântica", price: 279.90, category: "cesta", img: "https://images.unsplash.com/photo-1582239401497-200cb29cb26c?auto=format&fit=crop&w=600&q=80", desc: "Vinho, taças, queijos e rosas vermelhas." },
-            { id: 22, name: "Astromélias Coloridas", price: 69.90, category: "buque", img: "https://images.unsplash.com/photo-1592500851897-4048455799be?auto=format&fit=crop&w=600&q=80", desc: "Durabilidade e cor para alegrar a casa." },
-            { id: 23, name: "Orquídea Cymbidium", price: 159.90, category: "orquidea", img: "https://images.unsplash.com/photo-1599299446654-20a2185d568c?auto=format&fit=crop&w=600&q=80", desc: "Haste pendente com flores grandes e duráveis." },
-            { id: 24, name: "Mini Rosas em Vaso", price: 39.90, category: "arranjo", img: "https://images.unsplash.com/photo-1534885320675-b08aa131cc5e?auto=format&fit=crop&w=600&q=80", desc: "Delicadeza em tamanho compacto." },
-            { id: 25, name: "Buquê Noiva Civil", price: 199.90, category: "buque", img: "https://images.unsplash.com/photo-1550920405-38c208462d7c?auto=format&fit=crop&w=600&q=80", desc: "Tons pastéis e acabamento em cetim." },
-            { id: 26, name: "Cesta Frutas Tropicais", price: 139.90, category: "cesta", img: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=600&q=80", desc: "Seleção da estação com arranjo floral simples." },
-            { id: 27, name: "Arranjo Zen Bambu", price: 55.00, category: "arranjo", img: "https://images.unsplash.com/photo-1621262331773-5da52402120e?auto=format&fit=crop&w=600&q=80", desc: "Bambu da sorte para boas energias." },
-            { id: 28, name: "Orquídea Vanda", price: 299.90, category: "orquidea", img: "https://images.unsplash.com/photo-1588622157143-f11186cb2a78?auto=format&fit=crop&w=600&q=80", desc: "Raízes aéreas e flores exuberantes em vaso de vidro." },
-            { id: 29, name: "Buquê Desconstruído", price: 179.90, category: "buque", img: "https://images.unsplash.com/photo-1562690868-60bbe7293e94?auto=format&fit=crop&w=600&q=80", desc: "Design moderno assimétrico com folhagens secas." },
-            { id: 30, name: "Kit Presente Spa", price: 189.90, category: "cesta", img: "https://images.unsplash.com/photo-1551656096-75f82245b771?auto=format&fit=crop&w=600&q=80", desc: "Flores, sabonetes artesanais e velas aromáticas." }
+    <!-- FIREBASE SETUP via CDN (MUST BE type="module") -->
+    <script type="module">
+        // Importa módulos necessários do Firebase via CDN
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, addDoc, setDoc, deleteDoc, onSnapshot, collection, query, updateDoc, increment } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Variáveis globais fornecidas pelo ambiente Canvas
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        let db = null;
+        let auth = null;
+        let userId = null;
+        let isAuthReady = false;
+        let cartItems = [];
+        let unsubscribeCart = null; // Para desinscrever o listener do Firestore
+
+        setLogLevel('debug'); // Ativa o log de debug do Firebase
+
+        // --- DEFINIÇÃO DOS 30 PRODUTOS DA BELLAFOR ---
+        const products = [
+            { id: 1, name: "Buquê de Rosas Vermelhas", desc: "Clássico da paixão. 12 rosas colombianas.", price: 149.90, img: "https://placehold.co/400x300/F48FB1/FFFFFF?text=Rosas+Vermelhas" },
+            { id: 2, name: "Arranjo de Girassóis", desc: "Alegria e energia. 5 girassóis com folhagem.", price: 99.50, img: "https://placehold.co/400x300/FFC107/FFFFFF?text=Girassóis" },
+            { id: 3, name: "Orquídea Phalaenopsis Branca", desc: "Elegância pura. Orquídea em vaso de cerâmica.", price: 199.90, img: "https://placehold.co/400x300/FFFFFF/333333?text=Orquídea+Branca" },
+            { id: 4, name: "Cesta de Café da Manhã Floral", desc: "Presente completo com flores e delícias.", price: 179.00, img: "https://placehold.co/400x300/8BC34A/FFFFFF?text=Cesta+Floral" },
+            { id: 5, name: "Rosa Encantada (A Bela e a Fera)", desc: "Rosa preservada em cúpula de vidro.", price: 250.00, img: "https://placehold.co/400x300/D34C7C/FFFFFF?text=Rosa+Encantada" },
+            { id: 6, name: "Lírios Perfumados (Buquê)", desc: "Mix de lírios brancos e rosas. Aroma incrível.", price: 110.00, img: "https://placehold.co/400x300/F06292/FFFFFF?text=Buquê+de+Lírios" },
+            { id: 7, name: "Planta Suculenta Decorativa", desc: "Mini-jardim em pote de cimento.", price: 45.00, img: "https://placehold.co/400x300/795548/FFFFFF?text=Suculentas" },
+            { id: 8, name: "Buquê Colorido da Gratidão", desc: "Mix vibrante de flores do campo.", price: 85.90, img: "https://placehold.co/400x300/FF9800/FFFFFF?text=Buquê+Gratidão" },
+            { id: 9, name: "Arranjo Fúcsia em Caixa", desc: "Rosas e astromélias em tons de fúcsia.", price: 135.00, img: "https://placehold.co/400x300/E91E63/FFFFFF?text=Arranjo+Fúcsia" },
+            { id: 10, name: "Kalanchoe em Vaso", desc: "Flor da fortuna. Várias cores disponíveis.", price: 35.00, img: "https://placehold.co/400x300/FF5722/FFFFFF?text=Kalanchoe" },
+            { id: 11, name: "Buquê de 6 Rosas Champanhe", desc: "Elegância e sofisticação para celebrar.", price: 95.00, img: "https://placehold.co/400x300/FFE082/333333?text=Rosas+Champanhe" },
+            { id: 12, name: "Coroa de Flores Naturais", desc: "Para ocasiões solenes. Entrega em 2h.", price: 299.00, img: "https://placehold.co/400x300/607D8B/FFFFFF?text=Coroa+de+Flores" },
+            { id: 13, name: "Vaso de Violetas Africanas", desc: "Pequena e delicada. Perfeita para decorar.", price: 25.00, img: "https://placehold.co/400x300/9C27B0/FFFFFF?text=Violetas" },
+            { id: 14, name: "Arranjo Tropical com Gengibre", desc: "Exotismo e cores fortes. Para ambientes modernos.", price: 155.00, img: "https://placehold.co/400x300/00BCD4/FFFFFF?text=Arranjo+Tropical" },
+            { id: 15, name: "Buquê de Alstroemérias Coloridas", desc: "Astromélias em tons de arco-íris.", price: 79.90, img: "https://placehold.co/400x300/FF4081/FFFFFF?text=Astromélias" },
+            { id: 16, name: "Mini Cactos Sortidos", desc: "Kit com 3 mini cactos em vasinhos decorados.", price: 60.00, img: "https://placehold.co/400x300/4CAF50/FFFFFF?text=Mini+Cactos" },
+            { id: 17, name: "Orquídea Chuva de Ouro (Oncidium)", desc: "Cascata de pequenas flores amarelas.", price: 180.00, img: "https://placehold.co/400x300/FFEB3B/333333?text=Chuva+de+Ouro" },
+            { id: 18, name: "Buquê de Tulipas Roxas", desc: "Símbolo de realeza. 10 tulipas frescas.", price: 165.00, img: "https://placehold.co/400x300/673AB7/FFFFFF?text=Tulipas+Roxas" },
+            { id: 19, name: "Arranjo para Mesa de Jantar", desc: "Flores baixas e cheias de requinte.", price: 120.00, img: "https://placehold.co/400x300/9E9E9E/FFFFFF?text=Mesa+de+Jantar" },
+            { id: 20, name: "Hortênsia Azul em Vaso", desc: "Flor cheia e vibrante. Vaso decorativo.", price: 140.00, img: "https://placehold.co/400x300/2196F3/FFFFFF?text=Hortênsia+Azul" },
+            { id: 21, name: "Buquê de Rosas Brancas", desc: "Paz e pureza. Ideal para casamentos e pedidos.", price: 130.00, img: "https://placehold.co/400x300/CFD8DC/333333?text=Rosas+Brancas" },
+            { id: 22, name: "Mix de Flores do Campo", desc: "Charme rústico em buquê com 7 variedades.", price: 75.00, img: "https://placehold.co/400x300/CDDC39/333333?text=Flores+do+Campo" },
+            { id: 23, name: "Planta Pata de Elefante", desc: "Decoração moderna e durável em vaso alto.", price: 210.00, img: "https://placehold.co/400x300/A5D6A7/333333?text=Pata+de+Elefante" },
+            { id: 24, name: "Buquê de Margaridas Coloridas", desc: "Simplicidade e inocência. Ideal para crianças.", price: 65.00, img: "https://placehold.co/400x300/FFCDD2/333333?text=Margaridas" },
+            { id: 25, name: "Arranjo para Maternidade (Urso)", desc: "Flores e ursinho de pelúcia.", price: 160.00, img: "https://placehold.co/400x300/F8BBD0/FFFFFF?text=Maternidade" },
+            { id: 26, name: "Antúrio Vermelho em Vaso", desc: "Durabilidade e coração vermelho intenso.", price: 89.00, img: "https://placehold.co/400x300/F44336/FFFFFF?text=Antúrio+Vermelho" },
+            { id: 27, name: "Buquê Amarelo de Amizade", desc: "Flores amarelas diversas. Alegria garantida.", price: 105.00, img: "https://placehold.co/400x300/FFEB3B/333333?text=Buquê+Amarelo" },
+            { id: 28, name: "Mini Rosa em Pote de Vidro", desc: "Lembrancinha charmosa. Várias cores.", price: 30.00, img: "https://placehold.co/400x300/FCE4EC/333333?text=Mini+Rosa" },
+            { id: 29, name: "Bonsai de Carmona", desc: "Pequena árvore decorativa para interiores.", price: 190.00, img: "https://placehold.co/400x300/8D6E63/FFFFFF?text=Bonsai" },
+            { id: 30, name: "Arranjo de Gérberas Rosa", desc: "Gérberas vibrantes em tons de rosa e pink.", price: 115.00, img: "https://placehold.co/400x300/FF80AB/FFFFFF?text=Gérberas+Rosa" },
         ];
 
-        // --- RENDERIZAÇÃO ---
-        const productsGrid = document.getElementById('productsGrid');
-        const filterBtns = document.querySelectorAll('.filter-btn');
 
-        function renderProducts(filter = 'all') {
-            productsGrid.innerHTML = '';
+        // --- FUNÇÕES UTILITÁRIAS ---
+
+        /**
+         * Exibe um alerta customizado no canto superior direito.
+         * @param {string} message - Mensagem a ser exibida.
+         * @param {'success'|'error'} type - Tipo do alerta para cor (verde/vermelho).
+         */
+        function showCustomAlert(message, type = 'success') {
+            const alertBox = document.getElementById('custom-alert');
+            alertBox.textContent = message;
+            alertBox.className = `show ${type}`; // Adiciona classes de exibição e tipo
+            alertBox.style.display = 'block';
+
+            setTimeout(() => {
+                alertBox.className = 'hidden'; // Remove classes para ocultar
+                alertBox.style.display = 'none';
+            }, 3000); // 3 segundos
+        }
+
+        /**
+         * Formata um número para o padrão de moeda BRL.
+         * @param {number} value
+         * @returns {string}
+         */
+        function formatCurrency(value) {
+            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+
+        // --- FIREBASE / AUTH / FIRESTORE SETUP ---
+        
+        /**
+         * Inicializa o Firebase e realiza a autenticação.
+         */
+        async function initializeFirebase() {
+            try {
+                if (Object.keys(firebaseConfig).length === 0) {
+                    console.error("Firebase Configuração não encontrada.");
+                    showCustomAlert("Erro: Configuração do Firebase ausente.", 'error');
+                    isAuthReady = true;
+                    return;
+                }
+
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+
+                // Autenticação
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                } else {
+                    await signInAnonymously(auth);
+                }
+                
+                // Listener de Estado de Autenticação
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        document.getElementById('current-user-id').textContent = userId;
+                        console.log("Usuário autenticado:", userId);
+                        isAuthReady = true;
+                        if (db) {
+                            setupFirestoreListeners(userId);
+                        }
+                    } else {
+                        userId = null;
+                        document.getElementById('current-user-id').textContent = 'Anônimo (Não persistente)';
+                        isAuthReady = true;
+                        console.log("Usuário deslogado/anônimo.");
+                    }
+                });
+
+            } catch (error) {
+                console.error("Erro ao inicializar Firebase ou autenticar:", error);
+                showCustomAlert("Erro de conexão com o servidor. Tente recarregar.", 'error');
+                isAuthReady = true;
+            }
+        }
+
+        /**
+         * Configura o listener do Firestore para o carrinho de compras.
+         * @param {string} currentUserId
+         */
+        function setupFirestoreListeners(currentUserId) {
+            if (!db || !currentUserId) return;
+
+            // Desinscreve o listener anterior, se houver
+            if (unsubscribeCart) {
+                unsubscribeCart();
+            }
+
+            // Path: /artifacts/{appId}/users/{userId}/cart_items
+            const cartCollectionPath = `artifacts/${appId}/users/${currentUserId}/cart_items`;
+            const cartQuery = collection(db, cartCollectionPath);
+
+            unsubscribeCart = onSnapshot(cartQuery, (snapshot) => {
+                cartItems = [];
+                snapshot.forEach(doc => {
+                    cartItems.push({ id: doc.id, ...doc.data() });
+                });
+                renderCart();
+                console.log("Carrinho atualizado:", cartItems);
+            }, (error) => {
+                console.error("Erro ao carregar carrinho via onSnapshot:", error);
+                showCustomAlert("Erro ao sincronizar carrinho.", 'error');
+            });
+        }
+
+
+        // --- LÓGICA DO CARRINHO (FIRESTORE) ---
+
+        /**
+         * Adiciona ou atualiza um produto no carrinho do Firestore.
+         * @param {object} product - Produto a ser adicionado.
+         */
+        async function addToCart(product) {
+            if (!isAuthReady || !userId || !db) {
+                showCustomAlert("Aguarde a conexão com o servidor.", 'error');
+                return;
+            }
+
+            const cartCollectionPath = `artifacts/${appId}/users/${userId}/cart_items`;
+            const existingItem = cartItems.find(item => item.productId === product.id);
+
+            try {
+                if (existingItem) {
+                    // Atualiza a quantidade do item existente
+                    const itemDocRef = doc(db, cartCollectionPath, existingItem.id);
+                    await updateDoc(itemDocRef, {
+                        quantity: increment(1)
+                    });
+                } else {
+                    // Adiciona um novo item
+                    await addDoc(collection(db, cartCollectionPath), {
+                        productId: product.id,
+                        name: product.name,
+                        price: product.price,
+                        quantity: 1,
+                        addedAt: new Date().toISOString()
+                    });
+                }
+                showCustomAlert(`"${product.name}" adicionado ao carrinho!`, 'success');
+            } catch (error) {
+                console.error("Erro ao adicionar ao carrinho:", error);
+                showCustomAlert("Falha ao adicionar produto ao carrinho. Tente novamente.", 'error');
+            }
+        }
+
+        /**
+         * Remove um produto do carrinho.
+         * @param {string} docId - ID do documento no Firestore.
+         */
+        async function removeFromCart(docId) {
+            if (!isAuthReady || !userId || !db) return;
+
+            const cartCollectionPath = `artifacts/${appId}/users/${userId}/cart_items`;
+            const itemDocRef = doc(db, cartCollectionPath, docId);
             
-            const filtered = filter === 'all' 
-                ? flowers 
-                : flowers.filter(p => p.category === filter);
+            try {
+                await deleteDoc(itemDocRef);
+                showCustomAlert("Item removido do carrinho.", 'success');
+            } catch (error) {
+                console.error("Erro ao remover do carrinho:", error);
+                showCustomAlert("Falha ao remover item. Tente novamente.", 'error');
+            }
+        }
 
-            filtered.forEach(product => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <div class="product-img-wrapper">
-                        <img src="${product.img}" alt="${product.name}" loading="lazy">
-                        <span class="product-tag">${product.category}</span>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">${product.name}</h3>
-                        <p class="product-desc">${product.desc}</p>
-                        <div class="product-price">R$ ${product.price.toFixed(2).replace('.', ',')}</div>
-                        <div class="product-actions">
-                            <button class="btn-cart" onclick="openCheckout(${product.id})">
-                                <i class="fa-solid fa-bag-shopping"></i> Comprar
+        /**
+         * Renderiza o conteúdo do carrinho no modal.
+         */
+        function renderCart() {
+            const listContainer = document.getElementById('cart-items-list');
+            const cartTotalElement = document.getElementById('cart-total');
+            const emptyMessage = document.getElementById('empty-cart-message');
+            const checkoutBtn = document.getElementById('checkout-all-btn');
+            
+            listContainer.innerHTML = '';
+            let total = 0;
+
+            if (cartItems.length === 0) {
+                emptyMessage.style.display = 'block';
+                checkoutBtn.disabled = true;
+            } else {
+                emptyMessage.style.display = 'none';
+                checkoutBtn.disabled = false;
+                
+                cartItems.forEach(item => {
+                    const productData = products.find(p => p.id === item.productId);
+                    const itemPrice = (productData ? productData.price : item.price) * item.quantity;
+                    total += itemPrice;
+
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-lg';
+                    itemElement.innerHTML = `
+                        <div>
+                            <p class="font-semibold">${item.name} (${item.quantity}x)</p>
+                            <p class="text-sm text-gray-600">${formatCurrency(itemPrice)}</p>
+                        </div>
+                        <button data-doc-id="${item.id}" class="remove-from-cart-btn text-red-500 hover:text-red-700 transition duration-150">
+                            <svg class="icon-svg w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                        </button>
+                    `;
+                    listContainer.appendChild(itemElement);
+                });
+            }
+
+            cartTotalElement.textContent = formatCurrency(total);
+            document.getElementById('cart-count').textContent = cartItems.length;
+
+            // Adiciona listeners aos botões de remoção
+            listContainer.querySelectorAll('.remove-from-cart-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const docId = e.currentTarget.getAttribute('data-doc-id');
+                    removeFromCart(docId);
+                });
+            });
+        }
+
+
+        // --- LÓGICA DE RENDERIZAÇÃO E UI ---
+
+        /**
+         * Renderiza a lista de produtos na página.
+         * @param {Array} productList - Lista de produtos filtrada ou completa.
+         */
+        function renderProducts(productList) {
+            const grid = document.getElementById('products-grid');
+            const loading = document.getElementById('loading-message');
+            const noResults = document.getElementById('no-results-message');
+            
+            loading.style.display = 'none';
+            grid.innerHTML = '';
+
+            if (productList.length === 0) {
+                noResults.style.display = 'block';
+                return;
+            }
+            noResults.style.display = 'none';
+
+
+            productList.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:border-gray-200';
+                
+                const priceFormatted = formatCurrency(product.price);
+                const descTruncated = product.desc.length > 50 ? product.desc.substring(0, 47) + '...' : product.desc;
+
+                productCard.innerHTML = `
+                    <img src="${product.img}" alt="[Imagem de ${product.name}]" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2 h-14" style="color: var(--color-text);">${product.name}</h3>
+                        <p class="text-sm text-gray-500 mb-3 h-10">${descTruncated}</p>
+                        <p class="text-3xl font-extrabold mb-4" style="color: var(--color-primary);">${priceFormatted}</p>
+                        
+                        <div class="flex flex-col space-y-2">
+                            <!-- Botão WhatsApp -->
+                            <a href="https://wa.me/5519998028205?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20${encodeURIComponent(product.name)}%20-%20${encodeURIComponent(priceFormatted)}" 
+                                target="_blank" 
+                                class="btn-whatsapp flex items-center justify-center px-4 py-2 text-white font-semibold rounded-lg shadow-md text-sm">
+                                <svg class="icon-svg w-5 h-5 mr-2 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 15c-1.4 1.7-2.9 2.5-4.5 2.5s-3.1-.8-4.5-2.5c-1.4 1.7-2.9 2.5-4.5 2.5S3.9 16.7 2.5 15a10 10 0 1 1 18.5 0z" fill="none"></path><path d="M12.25 10.75A.75.75 0 0 0 13 10c0-.4-.35-.75-.75-.75zm-1.5 0A.75.75 0 0 0 11 10c0-.4-.35-.75-.75-.75zm0 3.5A.75.75 0 0 0 11 14.25c0 .4-.35.75-.75.75zm1.5 0A.75.75 0 0 0 13 14.25c0 .4-.35.75-.75.75z"></path><path d="M12 2C6.48 2 2 6.48 2 12c0 1.5.35 2.9.96 4.17l-.76 2.76 2.76-.76C7.1 21.65 8.5 22 10 22h4c1.5 0 2.9-.35 4.17-.96l2.76.76-.76-2.76C21.65 19.9 22 18.5 22 17c0-5.52-4.48-10-10-10zM12 20c-1.37 0-2.7-.35-3.89-1l-.54-.2-1.93.53.53-1.93-.2-.54C4.35 14.7 4 13.37 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z" fill="none"></path></svg>
+                                Falar no WhatsApp
+                            </a>
+                            
+                            <!-- Botão Comprar (Abre Modal de Pagamento) -->
+                            <button data-product-id="${product.id}" 
+                                class="btn-buy open-payment-modal flex items-center justify-center px-4 py-2 text-white font-semibold rounded-lg shadow-md text-sm">
+                                <svg class="icon-svg w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                                Comprar / Ver Opções
                             </button>
-                            <button class="btn-whatsapp" onclick="openWhatsApp('${product.name}', ${product.price})" title="Comprar pelo WhatsApp">
-                                <i class="fa-brands fa-whatsapp"></i>
+                            
+                            <!-- Botão Adicionar ao Carrinho -->
+                            <button data-product-id="${product.id}" 
+                                class="add-to-cart-btn flex items-center justify-center px-4 py-2 text-gray-700 font-semibold rounded-lg border border-gray-300 hover:bg-gray-100 transition duration-150 text-sm">
+                                <svg class="icon-svg w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                                Adicionar ao Carrinho
                             </button>
                         </div>
                     </div>
                 `;
-                productsGrid.appendChild(card);
+                grid.appendChild(productCard);
             });
         }
 
-        // --- FILTROS ---
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                renderProducts(btn.dataset.filter);
-            });
-        });
-
-        // --- WHATSAPP LOGIC ---
-        function openWhatsApp(name, price) {
-            const phone = "5519998028205";
-            const text = `Olá BellaFlor! Gostaria de encomendar o produto: *${name}* (R$ ${price.toFixed(2).replace('.', ',')}). Ainda está disponível?`;
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-            window.open(url, '_blank');
-        }
-
-        // --- MODAL & CHECKOUT LOGIC ---
-        let currentProduct = null;
-
-        function openCheckout(id) {
-            currentProduct = flowers.find(p => p.id === id);
+        /**
+         * Abre o modal de pagamento com as informações do produto.
+         * @param {object} product - Produto selecionado.
+         */
+        function showPaymentModal(product) {
+            document.getElementById('modal-product-name').textContent = product.name;
+            document.getElementById('modal-product-price').textContent = formatCurrency(product.price);
             
-            // Preencher modal
-            const details = document.getElementById('modalProductDetails');
-            details.innerHTML = `
-                <img src="${currentProduct.img}" class="checkout-img" alt="${currentProduct.name}">
-                <div>
-                    <h4 style="margin-bottom:0.2rem">${currentProduct.name}</h4>
-                    <span style="color:var(--primary-dark); font-weight:700">R$ ${currentProduct.price.toFixed(2).replace('.', ',')}</span>
-                </div>
-            `;
-
-            document.getElementById('checkoutModal').classList.add('open');
-            document.body.style.overflow = 'hidden'; // Prevenir scroll no fundo
+            const modalOverlay = document.getElementById('payment-modal-overlay');
+            modalOverlay.classList.add('open');
+            modalOverlay.setAttribute('data-product-id', product.id);
         }
 
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('open');
-            document.body.style.overflow = 'auto';
+        /**
+         * Fecha o modal de pagamento.
+         */
+        function closePaymentModal() {
+            document.getElementById('payment-modal-overlay').classList.remove('open');
+            document.getElementById('payment-modal-overlay').removeAttribute('data-product-id');
         }
-
-        function selectPayment(element, type) {
-            document.querySelectorAll('.payment-opt').forEach(el => el.classList.remove('selected'));
-            element.classList.add('selected');
-            document.getElementById('selectedPayment').value = type;
-        }
-
-        function processPayment(e) {
-            e.preventDefault();
-            // Simulação de processamento (loading poderia ser adicionado aqui)
-            
-            // Fechar modal de checkout
-            closeModal('checkoutModal');
-            
-            // Mostrar modal de sucesso
-            setTimeout(() => {
-                document.getElementById('successModal').classList.add('open');
-                
-                // Atualizar contador do carrinho (simulação)
-                const cartCount = document.querySelector('.cart-count');
-                cartCount.innerText = parseInt(cartCount.innerText) + 1;
-            }, 300);
-
-            // Resetar form
-            e.target.reset();
-        }
-
-        // Fechar modal clicando fora
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal-overlay')) {
-                event.target.classList.remove('open');
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // --- MENU MOBILE ---
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
         
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = hamburger.querySelector('i');
-            if(navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
+        /**
+         * Abre o modal do carrinho.
+         */
+        function openCartModal() {
+            document.getElementById('cart-modal-overlay').classList.add('open');
+        }
+        
+        /**
+         * Fecha o modal do carrinho.
+         */
+        function closeCartModal() {
+            document.getElementById('cart-modal-overlay').classList.remove('open');
+        }
 
-        // Inicializar
-        renderProducts();
+
+        /**
+         * Simula o processo de pagamento e redirecionamento.
+         * @param {string} method - Método de pagamento ('pix', 'card', 'boleto').
+         * @param {object} product - Produto a ser pago.
+         */
+        function processPayment(method, product) {
+            closePaymentModal();
+            const simulatedUrl = `https://simulacao-pagamento.com/${method}?prod=${product.id}&val=${product.price}`;
+            
+            // Simulação de redirecionamento para gateway de pagamento
+            console.log(`Simulando redirecionamento para ${method}: ${simulatedUrl}`);
+
+            showCustomAlert(`✅ Sucesso! Simulação de pagamento via ${method.toUpperCase()} iniciada para ${product.name}. Redirecionando...`, 'success');
+
+            // No mundo real, você usaria window.location.href = simulatedUrl aqui.
+            // Para o escopo da tarefa, apenas a mensagem de sucesso é suficiente.
+        }
+
+        /**
+         * Configura todos os event listeners da página.
+         */
+        function setupListeners() {
+            // 1. Catálogo (Botões Comprar e Carrinho)
+            document.getElementById('products-grid').addEventListener('click', (e) => {
+                const productId = parseInt(e.target.closest('[data-product-id]')?.getAttribute('data-product-id'));
+                if (!productId) return;
+
+                const product = products.find(p => p.id === productId);
+                if (!product) return;
+
+                if (e.target.closest('.open-payment-modal')) {
+                    showPaymentModal(product);
+                } else if (e.target.closest('.add-to-cart-btn')) {
+                    addToCart(product);
+                }
+            });
+
+            // 2. Modais (Fechamento)
+            document.getElementById('close-payment-modal-btn').addEventListener('click', closePaymentModal);
+            document.getElementById('payment-modal-overlay').addEventListener('click', (e) => {
+                if (e.target === e.currentTarget) closePaymentModal();
+            });
+
+            document.getElementById('close-cart-modal-btn').addEventListener('click', closeCartModal);
+            document.getElementById('cart-modal-overlay').addEventListener('click', (e) => {
+                if (e.target === e.currentTarget) closeCartModal();
+            });
+
+            // 3. Modal (Opções de Pagamento)
+            document.getElementById('payment-modal-overlay').addEventListener('click', (e) => {
+                const modalOverlay = document.getElementById('payment-modal-overlay');
+                const productId = parseInt(modalOverlay.getAttribute('data-product-id'));
+                const product = products.find(p => p.id === productId);
+                if (!product) return;
+
+                if (e.target.id === 'pay-pix') {
+                    processPayment('pix', product);
+                } else if (e.target.id === 'pay-card') {
+                    processPayment('card', product);
+                } else if (e.target.id === 'pay-boleto') {
+                    processPayment('boleto', product);
+                }
+            });
+            
+            // 4. Carrinho (Abertura e Checkout)
+            document.getElementById('open-cart-btn').addEventListener('click', openCartModal);
+            document.getElementById('checkout-all-btn').addEventListener('click', () => {
+                if (cartItems.length > 0) {
+                    closeCartModal();
+                    // Simula checkout de todos os itens do carrinho (idealmente processaria a compra via PIX/Card)
+                    showCustomAlert(`Simulação de Checkout de ${cartItems.length} itens do carrinho.`, 'success');
+                    // Aqui seria a lógica para limpar o carrinho no Firestore, mas vamos apenas simular.
+                    console.log("Simulação: Checkout de todos os itens do carrinho. O carrinho permance para demonstração.");
+                } else {
+                    showCustomAlert("Carrinho vazio!", 'error');
+                }
+            });
+
+            // 5. Busca/Filtro
+            const searchInputDesktop = document.getElementById('search-input');
+            const searchInputMobile = document.getElementById('search-input-mobile');
+            
+            const handleSearch = (event) => {
+                const query = event.target.value.toLowerCase();
+                const filteredProducts = products.filter(p => 
+                    p.name.toLowerCase().includes(query) || 
+                    p.desc.toLowerCase().includes(query)
+                );
+                renderProducts(filteredProducts);
+            };
+
+            searchInputDesktop.addEventListener('keyup', handleSearch);
+            searchInputMobile.addEventListener('keyup', handleSearch);
+            
+            // 6. Menu Mobile
+            document.getElementById('menu-toggle-btn').addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.toggle('hidden');
+            });
+        }
+
+
+        // --- INICIALIZAÇÃO GERAL ---
+
+        window.onload = function() {
+            // 1. Renderiza o catálogo inicial
+            renderProducts(products);
+            
+            // 2. Configura os listeners de interação
+            setupListeners();
+            
+            // 3. Inicializa Firebase (Autenticação e Listener do Carrinho)
+            initializeFirebase();
+        };
 
     </script>
+
 </body>
 </html>
