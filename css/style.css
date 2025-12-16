@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f6f6f6;
+}
+
+.topo {
+  background: #2e7d32;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+.topo a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero {
+  padding: 40px;
+  text-align: center;
+  background: #e8f5e9;
+}
+
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.produto {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
