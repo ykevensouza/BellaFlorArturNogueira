@@ -3,430 +3,814 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BellaFlor Artur Nogueira | Floricultura Premium e Entrega Rápida</title>
-    <meta name="description" content="Flores frescas e arranjos premium em Artur Nogueira. Transforme momentos em memórias. Peça agora pelo WhatsApp (19) 99802-8205. Entrega rápida e personalizada.">
-    <meta name="keywords" content="floricultura Artur Nogueira, flores Artur Nogueira, buquê de flores, arranjos florais, coroas para luto, floricultura premium, entrega de flores">
+    <title>BellaFlor Artur Nogueira | Floricultura Online</title>
     
-    <link rel="canonical" href="https://ykevensouza.github.io/BellaFlorArturNogueira/">
-    <meta name="robots" content="index, follow">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- VARIÁVEIS & RESET --- */
+        :root {
+            --primary-color: #D48ba5; /* Rosa Antigo */
+            --primary-dark: #b56b84;
+            --secondary-color: #9ab09a; /* Verde Sálvia */
+            --accent-color: #5D4037; /* Marrom Terra */
+            --bg-color: #fdfbfb;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --success: #27ae60;
+            --whatsapp: #25D366;
+            --shadow: 0 4px 15px rgba(0,0,0,0.05);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-color);
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        button { cursor: pointer; border: none; outline: none; font-family: inherit; }
+
+        /* --- HEADER --- */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span { color: var(--secondary-color); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--primary-color); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--primary-color);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        /* Mobile Menu */
+        .hamburger { display: none; font-size: 1.5rem; color: var(--accent-color); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1490750967868-58cb75069ed6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 60px;
+            padding: 0 1rem;
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3rem;
+            border-radius: var(--radius);
+            max-width: 700px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(212, 139, 165, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* --- FILTERS --- */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            padding: 0 1rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* --- PRODUCTS GRID --- */
+        .products-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .product-img-wrapper {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255,255,255,0.9);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            text-transform: uppercase;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-cart {
+            flex: 1;
+            padding: 0.7rem;
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-cart:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-whatsapp {
+            padding: 0.7rem;
+            background: var(--whatsapp);
+            color: white;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+        }
+
+        /* --- CONTACT & FOOTER --- */
+        .info-strip {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .info-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-item i { font-size: 2rem; margin-bottom: 1rem; }
+        .info-item h4 { color: white; margin-bottom: 0.5rem; }
+
+        footer {
+            background: #222;
+            color: #fff;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        /* --- MODALS --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+        .modal-container {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: var(--radius);
+            padding: 2rem;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.open .modal-container { transform: translateY(0); }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .modal-title { font-size: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
+        
+        .checkout-summary {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .checkout-img { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; }
+        
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+        .form-control { width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 6px; font-family: inherit; }
+        
+        .payment-options { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .payment-opt {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 0.8rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .payment-opt:hover, .payment-opt.selected {
+            border-color: var(--primary-color);
+            background: #fff0f5;
+            color: var(--primary-color);
+        }
+
+        .payment-opt i { font-size: 1.2rem; display: block; margin-bottom: 0.3rem; }
+
+        .modal-success { text-align: center; }
+        .success-icon { font-size: 4rem; color: var(--success); margin-bottom: 1rem; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
 
-    <header id="header">
-        <div class="container">
-            <a href="#hero" class="logo">Bella**Flor**</a>
-            
-            <nav id="nav-menu" aria-label="Navegação Principal">
-                <ul class="nav-list">
-                    <li><a href="#produtos">Produtos</a></li>
-                    <li><a href="#beneficios">Diferenciais</a></li>
-                    <li><a href="#galeria">Galeria</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-            </nav>
-            
-            <a href="https://wa.me/5519998028205?text=Ol%C3%A1%2C+BellaFlor!+Gostaria+de+fazer+um+pedido+ou+tirar+uma+d%C3%BAvida." target="_blank" class="cta-header mobile-hide" aria-label="Pedir pelo WhatsApp">
-                💬 Peça pelo WhatsApp
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-seedling"></i>
+                BellaFlor <span>Artur Nogueira</span>
             </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
 
-            <button class="hamburger" aria-label="Abrir Menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-        </div>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div class="cart-icon" onclick="alert('Seu carrinho está vazio! Adicione produtos.')">
+                    <i class="fa-solid fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <a href="https://wa.me/5519998028205?text=Ol%C3%A1%2C+BellaFlor!+Gostaria+de+fazer+um+pedido+ou+tirar+uma+d%C3%BAvida." target="_blank" class="whatsapp-sticky" aria-label="Falar com a BellaFlor no WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    
-    <main id="main-content">
-        <section id="hero" class="section-full-height">
-            <div class="hero-content">
-                <h1 class="headline" data-scroll-reveal="fade-up">Flores que transformam momentos em **memórias**</h1>
-                <p class="subheadline" data-scroll-reveal="fade-up" data-delay="100">Arranjos e buquês premium com a elegância e frescor que seu carinho merece. Entrega rápida em Artur Nogueira.</p>
-                <div class="hero-ctas" data-scroll-reveal="fade-up" data-delay="200">
-                    <a href="https://wa.me/5519998028205?text=Ol%C3%A1%2C+BellaFlor!+Gostaria+de+fazer+um+pedido+agora." target="_blank" class="cta-primary">
-                        Pedir Agora pelo WhatsApp
-                    </a>
-                    <a href="#produtos" class="cta-secondary">
-                        <i class="fas fa-arrow-down"></i> Ver Catálogo
-                    </a>
-                </div>
-                <div class="badge-confianca" data-scroll-reveal="fade-up" data-delay="300">
-                    <i class="fas fa-truck-fast"></i> Entrega rápida e segura em Artur Nogueira
-                </div>
-            </div>
-            <div class="hero-image-overlay" role="img" aria-label="Imagem de um buquê de rosas vermelhas e brancas em fundo desfocado."></div>
-        </section>
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Flores que Encantam em Artur Nogueira</h1>
+            <p>Arranjos exclusivos, buquês frescos e presentes inesquecíveis entregues com carinho.</p>
+            <a href="#produtos" class="btn btn-primary">Ver Catálogo</a>
+        </div>
+    </section>
 
-        <section id="produtos" class="section-padding" aria-labelledby="heading-produtos">
-            <div class="container">
-                <h2 id="heading-produtos" class="section-title text-center" data-scroll-reveal="fade-in">🔥 Nossos Destaques **Premium**</h2>
-                <p class="section-subtitle text-center" data-scroll-reveal="fade-in" data-delay="100">Selecione a categoria e encontre o arranjo perfeito para a sua ocasião.</p>
-
-                <div class="product-filters" data-scroll-reveal="fade-in" data-delay="200">
-                    <button class="filter-btn active" data-filter="all">Todos</button>
-                    <button class="filter-btn" data-filter="buques">Buquês</button>
-                    <button class="filter-btn" data-filter="arranjos">Arranjos</button>
-                    <button class="filter-btn" data-filter="coroas">Coroas</button>
-                </div>
-
-                <div class="product-grid">
-                    <article class="product-card buques" data-scroll-reveal="fade-up" data-category="buques">
-                        <img src="[URL_IMAGEM_BUQUE]" alt="Buquê de Rosas Clássicas" loading="lazy">
-                        <div class="card-content">
-                            <h3>Buquê de Rosas Clássicas</h3>
-                            <p>Elegância atemporal para celebrar o amor e a paixão. Rosas frescas, selecionadas a dedo.</p>
-                            <span class="product-price">A partir de R$ 120,00</span>
-                            <a href="https://wa.me/5519998028205?text=Ol%C3%A1%2C+BellaFlor!+Tenho+interesse+no+Buqu%C3%AA+de+Rosas+Cl%C3%A1ssicas.+Gostaria+de+saber+mais+e+pedir!" target="_blank" class="btn-comprar">Comprar pelo WhatsApp <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </article>
-                    
-                    <article class="product-card arranjos" data-scroll-reveal="fade-up" data-delay="100" data-category="arranjos">
-                        <img src="[URL_IMAGEM_ARRANJO]" alt="Arranjo de Suculentas Modernas" loading="lazy">
-                        <div class="card-content">
-                            <h3>Arranjo de Suculentas Modernas</h3>
-                            <p>Presente charmoso e duradouro, ideal para decorar qualquer ambiente com toque verde.</p>
-                            <span class="product-price">A partir de R$ 85,00</span>
-                            <a href="https://wa.me/5519998028205?text=Ol%C3%A1%2C+BellaFlor!+Tenho+interesse+no+Arranjo+de+Suculentas.+Gostaria+de+saber+mais+e+pedir!" target="_blank" class="btn-comprar">Comprar pelo WhatsApp <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="product-card coroas" data-scroll-reveal="fade-up" data-delay="200" data-category="coroas">
-                        <img src="[URL_IMAGEM_COROA]" alt="Coroa Fúnebre Elegante" loading="lazy">
-                        <div class="card-content">
-                            <h3>Coroa Fúnebre Elegante</h3>
-                            <p>Homenagem de respeito e carinho, com flores brancas e um acabamento digno.</p>
-                            <span class="product-price">Sob consulta</span>
-                            <a href="https://wa.me/5519998028205?text=Ol%C3%A1%2C+BellaFlor!+Preciso+de+informa%C3%A7%C3%B5es+urgentes+sobre+Coroa+F%C3%BAnebre.+Por+favor%2C+me+ajude." target="_blank" class="btn-comprar cta-urgencia">Comprar pelo WhatsApp <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="product-card arranjos" data-scroll-reveal="fade-up" data-delay="300" data-category="arranjos">
-                        <img src="[URL_IMAGEM_ORQUIDEA]" alt="Arranjo de Orquídeas Phalaenopsis" loading="lazy">
-                        <div class="card-content">
-                            <h3>Orquídea Phalaenopsis Premium</h3>
-                            <p>O presente da sofisticação: beleza duradoura e requinte inigualável.</p>
-                            <span class="product-price">A partir de R$ 250,00</span>
-                            <a href="https://wa.me/5519998028205?text=Ol%C3%A1%2C+BellaFlor!+Tenho+interesse+na+Orqu%C3%ADdea+Phalaenopsis.+Gostaria+de+saber+mais+e+pedir!" target="_blank" class="btn-comprar">Comprar pelo WhatsApp <i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    </article>
-                    
-                </div>
-                <div class="text-center" data-scroll-reveal="fade-in" data-delay="400">
-                    <a href="https://wa.me/5519998028205?text=Ol%C3%A1%2C+BellaFlor!+Gostaria+de+ver+o+cat%C3%A1logo+completo+de+produtos." target="_blank" class="cta-secondary cta-ver-mais">
-                        Ver Catálogo Completo <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="beneficios" class="section-padding bg-light-gray" aria-labelledby="heading-beneficios">
-            <div class="container">
-                <h2 id="heading-beneficios" class="section-title text-center" data-scroll-reveal="fade-in">Por que escolher a **BellaFlor**?</h2>
-                <p class="section-subtitle text-center" data-scroll-reveal="fade-in" data-delay="100">Nosso compromisso com a qualidade e o seu momento é o nosso maior diferencial.</p>
-                
-                <div class="diferenciais-grid">
-                    <div class="diferencial-card" data-scroll-reveal="fade-up">
-                        <i class="fas fa-spa icon-diferencial"></i>
-                        <h3>Flores Sempre Frescas</h3>
-                        <p>Seleção diária para garantir o máximo de vida e beleza ao seu arranjo.</p>
-                    </div>
-                    <div class="diferencial-card" data-scroll-reveal="fade-up" data-delay="100">
-                        <i class="fas fa-shipping-fast icon-diferencial"></i>
-                        <h3>Entrega Rápida Local</h3>
-                        <p>Seu pedido chega rápido e intacto em qualquer ponto de Artur Nogueira.</p>
-                    </div>
-                    <div class="diferencial-card" data-scroll-reveal="fade-up" data-delay="200">
-                        <i class="fas fa-heart-circle-check icon-diferencial"></i>
-                        <h3>Padrão Premium Garantido</h3>
-                        <p>Acabamento impecável e design sofisticado, digno do seu momento especial.</p>
-                    </div>
-                    <div class="diferencial-card" data-scroll-reveal="fade-up" data-delay="300">
-                        <i class="fas fa-hand-holding-heart icon-diferencial"></i>
-                        <h3>Atendimento Personalizado</h3>
-                        <p>Fale conosco no WhatsApp para consultoria na escolha ideal do seu presente.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="ofertas" class="section-padding" aria-labelledby="heading-ofertas">
-            <div class="container">
-                <h2 id="heading-ofertas" class="section-title text-center" data-scroll-reveal="fade-in">Não Deixe para Última Hora!</h2>
-                <p class="section-subtitle text-center" data-scroll-reveal="fade-in" data-delay="100">Reserve agora seu presente para as datas mais importantes do ano e garanta a exclusividade.</p>
-
-                <div class="ofertas-grid">
-                    <article class="oferta-card" data-scroll-reveal="scale-up">
-                        <i class="fas fa-gift icon-oferta"></i>
-                        <h3>Aniversários & Presentes</h3>
-                        <p>Buquês de flores nobres para tornar o dia ainda mais memorável.</p>
-                        <a href="https://wa.me/5519998028205?text=Ol%C3%A1%2C+BellaFlor!+Gostaria+de+encomendar+um+presente+de+anivers%C3%A1rio%2Fpresente." target="_blank" class="cta-tertiary">Encomendar Agora</a>
-                    </article>
-                    <article class="oferta-card bg-highlight" data-scroll-reveal="scale-up" data-delay="100">
-                        <i class="fas fa-calendar-heart icon-oferta"></i>
-                        <h3>Dia das Mães / Namorados</h3>
-                        <p>Arranjos exclusivos com alta demanda. **Reserve com antecedência!**</p>
-                        <a href="https://wa.me/5519998028205?text=Ol%C3%A1%2C+BellaFlor!+Quero+reservar+meu+pedido+para+a+pr%C3%B3xima+data+comemorativa." target="_blank" class="cta-primary">Garantir Minha Reserva</a>
-                    </article>
-                    <article class="oferta-card" data-scroll-reveal="scale-up" data-delay="200">
-                        <i class="fas fa-cross icon-oferta"></i>
-                        <h3>Serviço de Luto / Coroas</h3>
-                        <p>Atendimento prioritário e entrega urgente com discrição e respeito.</p>
-                        <a href="https://wa.me/5519998028205?text=URGENTE%3A+Preciso+de+informa%C3%A7%C3%B5es+sobre+Coroas+F%C3%BAnebres." target="_blank" class="cta-tertiary cta-urgencia">Contato Urgente</a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="depoimentos" class="section-padding bg-light-gray" aria-labelledby="heading-depoimentos">
-            <div class="container">
-                <h2 id="heading-depoimentos" class="section-title text-center" data-scroll-reveal="fade-in">O que nossos **clientes dizem**</h2>
-                
-                <div class="depoimento-slider">
-                    <blockquote class="depoimento-card" role="region" aria-label="Depoimento de Cliente" data-scroll-reveal="fade-in">
-                        <div class="rating" aria-label="Avaliação 5 estrelas">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="depoimento-text">"As flores da BellaFlor são incomparáveis. Chegaram super frescas e o arranjo era ainda mais lindo pessoalmente. Atendimento e qualidade 5 estrelas!"</p>
-                        <cite class="depoimento-author">- Ana Clara F., Artur Nogueira</cite>
-                    </blockquote>
-                    <blockquote class="depoimento-card" role="region" aria-label="Depoimento de Cliente" data-scroll-reveal="fade-in" data-delay="100">
-                        <div class="rating" aria-label="Avaliação 5 estrelas">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="depoimento-text">"A entrega foi muito rápida e a equipe ajudou a personalizar a mensagem. O buquê fez o maior sucesso! Viramos clientes fiéis."</p>
-                        <cite class="depoimento-author">- João V. C., Cliente há 2 anos</cite>
-                    </blockquote>
-                    </div>
-                
-                <div class="text-center mt-4">
-                    <img src="[URL_SELO_CONFIANCA]" alt="Selo de Clientes Satisfeitos" class="selo-satisfacao" loading="lazy">
-                </div>
-            </div>
-        </section>
-
-        <section id="galeria" class="section-padding" aria-labelledby="heading-galeria">
-            <div class="container">
-                <h2 id="heading-galeria" class="section-title text-center" data-scroll-reveal="fade-in">Galeria **Inspiração**</h2>
-                <p class="section-subtitle text-center" data-scroll-reveal="fade-in" data-delay="100">Detalhes e beleza dos nossos trabalhos que já encantaram Artur Nogueira.</p>
-
-                <div class="galeria-grid">
-                    <figure class="galeria-item buques" data-scroll-reveal="fade-up">
-                        <img src="[URL_FOTO_1]" alt="Buquê vibrante de girassóis" loading="lazy">
-                        <figcaption>Buquês</figcaption>
-                    </figure>
-                    <figure class="galeria-item arranjos" data-scroll-reveal="fade-up" data-delay="100">
-                        <img src="[URL_FOTO_2]" alt="Arranjo sofisticado de lírios" loading="lazy">
-                        <figcaption>Arranjos</figcaption>
-                    </figure>
-                    <figure class="galeria-item buques" data-scroll-reveal="fade-up" data-delay="200">
-                        <img src="[URL_FOTO_3]" alt="Buquê de rosas champagne" loading="lazy">
-                        <figcaption>Buquês</figcaption>
-                    </figure>
-                    <figure class="galeria-item arranjos" data-scroll-reveal="fade-up" data-delay="300">
-                        <img src="[URL_FOTO_4]" alt="Mini-vaso com flores do campo" loading="lazy">
-                        <figcaption>Decoração</figcaption>
-                    </figure>
-                </div>
-            </div>
-        </section>
-
-        <section id="como-funciona" class="section-padding bg-highlight-soft" aria-labelledby="heading-jornada">
-            <div class="container">
-                <h2 id="heading-jornada" class="section-title text-center" data-scroll-reveal="fade-in">Sua Jornada até o **Arranjo Perfeito**</h2>
-                
-                <div class="jornada-grid">
-                    <div class="jornada-step" data-scroll-reveal="slide-left">
-                        <div class="step-icon">1</div>
-                        <h3>Escolha seu Produto</h3>
-                        <p>Navegue em nosso catálogo e encontre a flor ideal para sua ocasião.</p>
-                    </div>
-                    <div class="jornada-step" data-scroll-reveal="slide-left" data-delay="100">
-                        <div class="step-icon">2</div>
-                        <h3>Fale conosco no WhatsApp</h3>
-                        <p>Clique no botão, tire dúvidas e finalize o pedido com nosso atendimento.</p>
-                    </div>
-                    <div class="jornada-step" data-scroll-reveal="slide-left" data-delay="200">
-                        <div class="step-icon">3</div>
-                        <h3>Personalizamos seu Pedido</h3>
-                        <p>Adicione chocolates, cartões e mensagens especiais para um toque único.</p>
-                    </div>
-                    <div class="jornada-step" data-scroll-reveal="slide-left" data-delay="300">
-                        <div class="step-icon">4</div>
-                        <h3>Entregamos com Carinho</h3>
-                        <p>Sua encomenda é entregue de forma rápida e segura em Artur Nogueira.</p>
-                    </div>
-                </div>
-
-                <div class="text-center pt-4" data-scroll-reveal="fade-in" data-delay="400">
-                    <a href="https://wa.me/5519998028205?text=Ol%C3%A1%2C+BellaFlor!+Gostaria+de+come%C3%A7ar+meu+pedido+agora." target="_blank" class="cta-primary cta-large">
-                        <i class="fas fa-hand-point-right"></i> Começar Pedido Agora
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="sobre" class="section-padding" aria-labelledby="heading-sobre">
-            <div class="container sobre-grid">
-                <div class="sobre-texto" data-scroll-reveal="slide-right">
-                    <h2 id="heading-sobre" class="section-title">A História por trás da **BellaFlor**</h2>
-                    <p class="section-subtitle">Mais que flores, entregamos emoção e excelência.</p>
-                    <p>Nascida em Artur Nogueira, a BellaFlor carrega a missão de transformar sentimentos em arte. Acreditamos que um buquê é uma extensão do carinho, por isso, cada pétala é escolhida com o máximo rigor, garantindo frescor e qualidade premium.</p>
-                    <p>**Nosso Valor:** Oferecer um serviço sofisticado e atencioso, posicionando a BellaFlor como a floricultura referência em elegância e confiança na região.</p>
-                </div>
-                <div class="sobre-imagem" data-scroll-reveal="slide-left">
-                    <img src="[URL_FOTO_LOJA_OU_EQUIPE]" alt="Fachada da Floricultura BellaFlor em Artur Nogueira" loading="lazy">
-                </div>
-            </div>
-        </section>
+    <!-- Products Section -->
+    <section id="produtos" class="products-section">
+        <h2 class="section-title">Nossa Coleção</h2>
+        <p class="section-subtitle">Escolha o presente perfeito para cada ocasião</p>
         
-        <section id="personalizacao" class="section-padding bg-light-gray" aria-labelledby="heading-personalizacao">
-            <div class="container">
-                <h2 id="heading-personalizacao" class="section-title text-center" data-scroll-reveal="fade-in">Serviços **Exclusivos**</h2>
-                <p class="section-subtitle text-center" data-scroll-reveal="fade-in" data-delay="100">Seu desejo, transformado em arte floral sob medida.</p>
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="buque">Buquês</button>
+            <button class="filter-btn" data-filter="arranjo">Arranjos</button>
+            <button class="filter-btn" data-filter="orquidea">Orquídeas</button>
+            <button class="filter-btn" data-filter="cesta">Cestas</button>
+        </div>
 
-                <div class="servicos-grid">
-                    <div class="servico-item" data-scroll-reveal="fade-up">
-                        <i class="fas fa-drafting-compass icon-servico"></i>
-                        <h3>Arranjos Sob Medida</h3>
-                        <p>Criamos um design floral único para você, seguindo cores, espécies e orçamento.</p>
-                    </div>
-                    <div class="servico-item" data-scroll-reveal="fade-up" data-delay="100">
-                        <i class="fas fa-bell-concierge icon-servico"></i>
-                        <h3>Atendimento para Eventos</h3>
-                        <p>Decoração floral completa para casamentos, festas e eventos corporativos.</p>
-                    </div>
-                    <div class="servico-item" data-scroll-reveal="fade-up" data-delay="200">
-                        <i class="fas fa-envelope-open-text icon-servico"></i>
-                        <h3>Mensagens Especiais</h3>
-                        <p>Cartões escritos à mão para transmitir seu carinho com máxima delicadeza.</p>
-                    </div>
-                </div>
+        <div class="products-grid" id="productsGrid">
+            <!-- Produtos serão inseridos via JS -->
+        </div>
+    </section>
 
-                <div class="text-center pt-4" data-scroll-reveal="fade-in" data-delay="300">
-                    <a href="https://wa.me/5519998028205?text=Ol%C3%A1%2C+BellaFlor!+Gostaria+de+solicitar+um+arranjo%2Fbuqu%C3%AA+personalizado." target="_blank" class="cta-secondary">
-                        <i class="fas fa-edit"></i> Solicitar Orçamento Personalizado
-                    </a>
-                </div>
+    <!-- Info Strip -->
+    <section id="sobre" class="info-strip">
+        <div class="info-grid">
+            <div class="info-item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <h4>Entrega Rápida</h4>
+                <p>Em toda Artur Nogueira e região</p>
             </div>
-        </section>
-
-        <section id="localizacao" class="section-padding" aria-labelledby="heading-localizacao">
-            <div class="container">
-                <h2 id="heading-localizacao" class="section-title text-center" data-scroll-reveal="fade-in">Onde nos **Encontrar**</h2>
-                <div class="mapa-container" data-scroll-reveal="fade-in" data-delay="100">
-                    <iframe src="[URL_GOOGLE_MAPS_EMBED]" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Mapa da localização da Floricultura BellaFlor em Artur Nogueira."></iframe>
-                    <div class="local-info" data-scroll-reveal="fade-up">
-                        <address>
-                            **BellaFlor Artur Nogueira**<br>
-                            [Endereço Completo da Loja]<br>
-                            Artur Nogueira – SP
-                        </address>
-                        <a href="[URL_GOOGLE_MAPS_DIRECTIONS]" target="_blank" class="cta-mapa">
-                            <i class="fas fa-map-marked-alt"></i> Traçar Rota no Google Maps
-                        </a>
-                    </div>
-                </div>
+            <div class="info-item">
+                <i class="fa-solid fa-gift"></i>
+                <h4>Embalagem Premium</h4>
+                <p>Cada detalhe feito com amor</p>
             </div>
-        </section>
-
-        <section id="contato" class="section-padding bg-highlight-soft" aria-labelledby="heading-contato">
-            <div class="container contato-grid">
-                <div class="contato-form-area" data-scroll-reveal="slide-right">
-                    <h2 id="heading-contato" class="section-title">Fale Conosco</h2>
-                    <p class="section-subtitle">Prefere contato direto? Preencha o formulário ou nos chame no WhatsApp!</p>
-                    
-                    <form id="contact-form" action="#" method="POST" aria-label="Formulário de Contato">
-                        <label for="nome">Nome *</label>
-                        <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
-                        
-                        <label for="telefone">WhatsApp *</label>
-                        <input type="tel" id="telefone" name="telefone" required placeholder="(19) 99802-8205">
-                        
-                        <label for="mensagem">Mensagem *</label>
-                        <textarea id="mensagem" name="mensagem" required placeholder="Gostaria de um orçamento para..."></textarea>
-                        
-                        <button type="submit" class="cta-primary">Enviar Mensagem</button>
-                    </form>
-
-                    <div class="alternativa-contato" role="note">
-                        <p>**Alternativa Rápida:** Atendemos de forma imediata pelo WhatsApp:</p>
-                        <a href="https://wa.me/5519998028205?text=Ol%C3%A1%2C+BellaFlor!+Gostaria+de+come%C3%A7ar+meu+pedido+agora." target="_blank" class="cta-whatsapp-alt">
-                            <i class="fab fa-whatsapp"></i> (19) 99802-8205
-                        </a>
-                    </div>
-                </div>
-
-                <div class="faq-area" data-scroll-reveal="slide-left">
-                    <h2 class="section-title">Perguntas Frequentes</h2>
-                    <dl class="faq-list">
-                        <dt class="faq-question">Qual o prazo de entrega?</dt>
-                        <dd class="faq-answer">Geralmente, entregamos em até 2 horas em Artur Nogueira. Para datas especiais ou arranjos sob medida, o prazo pode ser ajustado na hora do pedido.</dd>
-                        
-                        <dt class="faq-question">Quais formas de pagamento aceitas?</dt>
-                        <dd class="faq-answer">Aceitamos Pix, Cartão de Crédito/Débito (na loja ou online) e dinheiro. O pagamento é confirmado no WhatsApp.</dd>
-
-                        <dt class="faq-question">Vocês atendem em datas como Dia das Mães?</dt>
-                        <dd class="faq-answer">Sim, temos um serviço especial para datas comemorativas, mas é crucial fazer a reserva com antecedência devido à alta demanda.</dd>
-                    </dl>
-                </div>
-            </div>
-        </section>
-        
-    </main>
-
-    <footer id="footer">
-        <div class="container footer-grid">
-            <div class="footer-col footer-logo">
-                <a href="#hero" class="logo">Bella**Flor**</a>
-                <p>Floricultura Premium em Artur Nogueira, dedicada à excelência e carinho em cada arranjo.</p>
-                <div class="social-links">
-                    <a href="[URL_INSTAGRAM]" target="_blank" aria-label="Instagram da BellaFlor"><i class="fab fa-instagram"></i></a>
-                    <a href="[URL_FACEBOOK]" target="_blank" aria-label="Facebook da BellaFlor"><i class="fab fa-facebook-f"></i></a>
-                </div>
-            </div>
-            
-            <div class="footer-col">
-                <h3>Links Rápidos</h3>
-                <ul>
-                    <li><a href="#produtos">Produtos em Destaque</a></li>
-                    <li><a href="#galeria">Galeria de Fotos</a></li>
-                    <li><a href="#sobre">Nossa História</a></li>
-                    <li><a href="#contato">Fale Conosco / FAQ</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-col">
-                <h3>Horário & Contato</h3>
-                <p>Segunda a Sábado: 8h às 18h</p>
-                <p>Domingos e Feriados: 9h às 13h (verificar em datas especiais)</p>
-                <a href="https://wa.me/5519998028205?text=Ol%C3%A1%2C+BellaFlor!+Gostaria+de+fazer+um+pedido+ou+tirar+uma+d%C3%BAvida." target="_blank" class="whatsapp-footer">
-                    <i class="fab fa-whatsapp"></i> (19) 99802-8205
-                </a>
+            <div class="info-item">
+                <i class="fa-solid fa-credit-card"></i>
+                <h4>Pagamento Seguro</h4>
+                <p>Pix, Cartão e Dinheiro</p>
             </div>
         </div>
-        
-        <div class="footer-bottom">
-            <div class="container">
-                <p>&copy; 2025 BellaFlor Artur Nogueira. Todos os direitos reservados.</p>
-                <p class="politicas">
-                    <a href="[LINK_POLITICA_PRIVACIDADE]">Política de Privacidade</a> | 
-                    <a href="[LINK_TERMOS_USO]">Termos de Uso</a>
-                </p>
-            </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato">
+        <div class="footer-logo">BellaFlor Artur Nogueira</div>
+        <p>Rua 7 de Setembro, Centro, Artur Nogueira - SP</p>
+        <p>Telefone / WhatsApp: (19) 99802-8205</p>
+        <div style="margin-top: 1rem; font-size: 1.5rem;">
+            <i class="fa-brands fa-instagram" style="margin: 0 10px; cursor: pointer;"></i>
+            <i class="fa-brands fa-facebook" style="margin: 0 10px; cursor: pointer;"></i>
         </div>
+        <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.7;">&copy; 2024 BellaFlor. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Modal de Checkout -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-container">
+            <span class="close-modal" onclick="closeModal('checkoutModal')">&times;</span>
+            <h3 class="modal-title">Finalizar Compra</h3>
+            
+            <div id="modalProductDetails" class="checkout-summary">
+                <!-- Detalhes do produto dinâmicos -->
+            </div>
+
+            <form id="checkoutForm" onsubmit="processPayment(event)">
+                <div class="form-group">
+                    <label>Seu Nome</label>
+                    <input type="text" class="form-control" required placeholder="Digite seu nome completo">
+                </div>
+                <div class="form-group">
+                    <label>Endereço de Entrega</label>
+                    <input type="text" class="form-control" required placeholder="Rua, número e bairro">
+                </div>
+
+                <label style="display:block; margin-bottom:0.5rem; font-weight:500;">Forma de Pagamento</label>
+                <div class="payment-options">
+                    <div class="payment-opt selected" onclick="selectPayment(this, 'Pix')">
+                        <i class="fa-brands fa-pix"></i> Pix
+                    </div>
+                    <div class="payment-opt" onclick="selectPayment(this, 'Cartão')">
+                        <i class="fa-regular fa-credit-card"></i> Cartão
+                    </div>
+                    <div class="payment-opt" onclick="selectPayment(this, 'Dinheiro')">
+                        <i class="fa-solid fa-money-bill-wave"></i> Dinheiro
+                    </div>
+                </div>
+                <input type="hidden" id="selectedPayment" value="Pix">
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Confirmar Pedido</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Sucesso -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-container modal-success">
+            <span class="close-modal" onclick="closeModal('successModal')">&times;</span>
+            <i class="fa-solid fa-circle-check success-icon"></i>
+            <h3>Pedido Realizado!</h3>
+            <p style="margin-bottom: 1.5rem; color: #666;">Obrigado por comprar na BellaFlor. Entraremos em contato em breve para confirmar a entrega.</p>
+            <button class="btn btn-primary" onclick="closeModal('successModal')">Voltar à Loja</button>
+        </div>
+    </div>
+
+    <script>
+        // --- DADOS DOS PRODUTOS ---
+        // Gerando 30 produtos simulados com imagens de alta qualidade
+        const flowers = [
+            { id: 1, name: "Buquê Rosas Vermelhas", price: 149.90, category: "buque", img: "https://images.unsplash.com/photo-1591886960571-74d43a9d4166?auto=format&fit=crop&w=600&q=80", desc: "Clássico buquê com 12 rosas colombianas vermelhas." },
+            { id: 2, name: "Orquídea Phalaenopsis", price: 129.90, category: "orquidea", img: "https://images.unsplash.com/photo-1566952726577-1c6d860d5c21?auto=format&fit=crop&w=600&q=80", desc: "Orquídea branca de duas hastes em vaso decorativo." },
+            { id: 3, name: "Cesta Café da Manhã", price: 219.90, category: "cesta", img: "https://images.unsplash.com/photo-1588164053912-4c2847a97210?auto=format&fit=crop&w=600&q=80", desc: "Completa com flores, pães, sucos e frutas frescas." },
+            { id: 4, name: "Arranjo Mix Primavera", price: 89.90, category: "arranjo", img: "https://images.unsplash.com/photo-1563241527-94fbc1930026?auto=format&fit=crop&w=600&q=80", desc: "Mix colorido de gérberas, astromélias e folhagens." },
+            { id: 5, name: "Buquê Girassóis", price: 99.90, category: "buque", img: "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=600&q=80", desc: "A energia vibrante de 6 girassóis selecionados." },
+            { id: 6, name: "Box de Rosas & Chocolate", price: 189.90, category: "cesta", img: "https://images.unsplash.com/photo-1549416878-b971e909eeec?auto=format&fit=crop&w=600&q=80", desc: "Caixa cartonada com rosas e bombons Ferrero Rocher." },
+            { id: 7, name: "Lírios Brancos", price: 119.90, category: "arranjo", img: "https://images.unsplash.com/photo-1587574293340-e0011c4e8ecf?auto=format&fit=crop&w=600&q=80", desc: "Elegância pura em um maço de lírios perfumados." },
+            { id: 8, name: "Vaso de Begônias", price: 45.00, category: "arranjo", img: "https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=600&q=80", desc: "Pequeno vaso florido, ideal para lembrancinhas." },
+            { id: 9, name: "Buquê Amor Perfeito", price: 169.90, category: "buque", img: "https://images.unsplash.com/photo-1533616688419-07a585039ecf?auto=format&fit=crop&w=600&q=80", desc: "Rosas rosas e brancas envoltas em papel kraft." },
+            { id: 10, name: "Orquídea Azul Rara", price: 199.90, category: "orquidea", img: "https://images.unsplash.com/photo-1629815830206-38292c23f139?auto=format&fit=crop&w=600&q=80", desc: "Exótica orquídea azul tinturada (Blue Mystique)." },
+            { id: 11, name: "Terrário Suculentas", price: 79.90, category: "arranjo", img: "https://images.unsplash.com/photo-1517191434949-5e90cd67d2b6?auto=format&fit=crop&w=600&q=80", desc: "Mini jardim em vidro geométrico." },
+            { id: 12, name: "Cesta Happy Hour", price: 159.90, category: "cesta", img: "https://images.unsplash.com/photo-1615598288544-0a95f9d141e6?auto=format&fit=crop&w=600&q=80", desc: "Cervejas artesanais, petiscos e mini suculenta." },
+            { id: 13, name: "Tulipas Holandesas", price: 139.90, category: "buque", img: "https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=600&q=80", desc: "Maço com 10 tulipas frescas da estação." },
+            { id: 14, name: "Coração de Rosas", price: 299.90, category: "arranjo", img: "https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?auto=format&fit=crop&w=600&q=80", desc: "Arranjo em formato de coração com 30 rosas." },
+            { id: 15, name: "Buquê do Campo", price: 79.90, category: "buque", img: "https://images.unsplash.com/photo-1463936575829-25148e1db1b8?auto=format&fit=crop&w=600&q=80", desc: "Flores silvestres e trigo seco." },
+            { id: 16, name: "Orquídea Chuva de Ouro", price: 89.90, category: "orquidea", img: "https://images.unsplash.com/photo-1596726618361-59173f4e1781?auto=format&fit=crop&w=600&q=80", desc: "Oncidium amarelo vibrante em cachepô rústico." },
+            { id: 17, name: "Cesta Maternidade", price: 249.90, category: "cesta", img: "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&q=80", desc: "Urso de pelúcia, flores suaves e chocolates." },
+            { id: 18, name: "Vaso de Lavanda", price: 59.90, category: "arranjo", img: "https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=600&q=80", desc: "Aroma relaxante para ambientes internos." },
+            { id: 19, name: "Buquê Elegance", price: 189.90, category: "buque", img: "https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=600&q=80", desc: "Mix nobre de lisianthus e rosas." },
+            { id: 20, name: "Bonsai Ficus", price: 149.90, category: "arranjo", img: "https://images.unsplash.com/photo-1599598425947-5202e70e9b9c?auto=format&fit=crop&w=600&q=80", desc: "Arte milenar para decorar escritórios." },
+            { id: 21, name: "Cesta Romântica", price: 279.90, category: "cesta", img: "https://images.unsplash.com/photo-1582239401497-200cb29cb26c?auto=format&fit=crop&w=600&q=80", desc: "Vinho, taças, queijos e rosas vermelhas." },
+            { id: 22, name: "Astromélias Coloridas", price: 69.90, category: "buque", img: "https://images.unsplash.com/photo-1592500851897-4048455799be?auto=format&fit=crop&w=600&q=80", desc: "Durabilidade e cor para alegrar a casa." },
+            { id: 23, name: "Orquídea Cymbidium", price: 159.90, category: "orquidea", img: "https://images.unsplash.com/photo-1599299446654-20a2185d568c?auto=format&fit=crop&w=600&q=80", desc: "Haste pendente com flores grandes e duráveis." },
+            { id: 24, name: "Mini Rosas em Vaso", price: 39.90, category: "arranjo", img: "https://images.unsplash.com/photo-1534885320675-b08aa131cc5e?auto=format&fit=crop&w=600&q=80", desc: "Delicadeza em tamanho compacto." },
+            { id: 25, name: "Buquê Noiva Civil", price: 199.90, category: "buque", img: "https://images.unsplash.com/photo-1550920405-38c208462d7c?auto=format&fit=crop&w=600&q=80", desc: "Tons pastéis e acabamento em cetim." },
+            { id: 26, name: "Cesta Frutas Tropicais", price: 139.90, category: "cesta", img: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=600&q=80", desc: "Seleção da estação com arranjo floral simples." },
+            { id: 27, name: "Arranjo Zen Bambu", price: 55.00, category: "arranjo", img: "https://images.unsplash.com/photo-1621262331773-5da52402120e?auto=format&fit=crop&w=600&q=80", desc: "Bambu da sorte para boas energias." },
+            { id: 28, name: "Orquídea Vanda", price: 299.90, category: "orquidea", img: "https://images.unsplash.com/photo-1588622157143-f11186cb2a78?auto=format&fit=crop&w=600&q=80", desc: "Raízes aéreas e flores exuberantes em vaso de vidro." },
+            { id: 29, name: "Buquê Desconstruído", price: 179.90, category: "buque", img: "https://images.unsplash.com/photo-1562690868-60bbe7293e94?auto=format&fit=crop&w=600&q=80", desc: "Design moderno assimétrico com folhagens secas." },
+            { id: 30, name: "Kit Presente Spa", price: 189.90, category: "cesta", img: "https://images.unsplash.com/photo-1551656096-75f82245b771?auto=format&fit=crop&w=600&q=80", desc: "Flores, sabonetes artesanais e velas aromáticas." }
+        ];
+
+        // --- RENDERIZAÇÃO ---
+        const productsGrid = document.getElementById('productsGrid');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        function renderProducts(filter = 'all') {
+            productsGrid.innerHTML = '';
+            
+            const filtered = filter === 'all' 
+                ? flowers 
+                : flowers.filter(p => p.category === filter);
+
+            filtered.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-img-wrapper">
+                        <img src="${product.img}" alt="${product.name}" loading="lazy">
+                        <span class="product-tag">${product.category}</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-desc">${product.desc}</p>
+                        <div class="product-price">R$ ${product.price.toFixed(2).replace('.', ',')}</div>
+                        <div class="product-actions">
+                            <button class="btn-cart" onclick="openCheckout(${product.id})">
+                                <i class="fa-solid fa-bag-shopping"></i> Comprar
+                            </button>
+                            <button class="btn-whatsapp" onclick="openWhatsApp('${product.name}', ${product.price})" title="Comprar pelo WhatsApp">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                productsGrid.appendChild(card);
+            });
+        }
+
+        // --- FILTROS ---
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderProducts(btn.dataset.filter);
+            });
+        });
+
+        // --- WHATSAPP LOGIC ---
+        function openWhatsApp(name, price) {
+            const phone = "5519998028205";
+            const text = `Olá BellaFlor! Gostaria de encomendar o produto: *${name}* (R$ ${price.toFixed(2).replace('.', ',')}). Ainda está disponível?`;
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        }
+
+        // --- MODAL & CHECKOUT LOGIC ---
+        let currentProduct = null;
+
+        function openCheckout(id) {
+            currentProduct = flowers.find(p => p.id === id);
+            
+            // Preencher modal
+            const details = document.getElementById('modalProductDetails');
+            details.innerHTML = `
+                <img src="${currentProduct.img}" class="checkout-img" alt="${currentProduct.name}">
+                <div>
+                    <h4 style="margin-bottom:0.2rem">${currentProduct.name}</h4>
+                    <span style="color:var(--primary-dark); font-weight:700">R$ ${currentProduct.price.toFixed(2).replace('.', ',')}</span>
+                </div>
+            `;
+
+            document.getElementById('checkoutModal').classList.add('open');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll no fundo
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('open');
+            document.body.style.overflow = 'auto';
+        }
+
+        function selectPayment(element, type) {
+            document.querySelectorAll('.payment-opt').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('selectedPayment').value = type;
+        }
+
+        function processPayment(e) {
+            e.preventDefault();
+            // Simulação de processamento (loading poderia ser adicionado aqui)
+            
+            // Fechar modal de checkout
+            closeModal('checkoutModal');
+            
+            // Mostrar modal de sucesso
+            setTimeout(() => {
+                document.getElementById('successModal').classList.add('open');
+                
+                // Atualizar contador do carrinho (simulação)
+                const cartCount = document.querySelector('.cart-count');
+                cartCount.innerText = parseInt(cartCount.innerText) + 1;
+            }, 300);
+
+            // Resetar form
+            e.target.reset();
+        }
+
+        // Fechar modal clicando fora
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('open');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // --- MENU MOBILE ---
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Inicializar
+        renderProducts();
+
+    </script>
 </body>
 </html>
