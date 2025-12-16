@@ -2,29 +2,107 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Produtos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Produtos | Floricultura BellaFlor Artur Nogueira</title>
+  <meta name="description" content="Catálogo completo de flores, buquês e arranjos da Floricultura BellaFlor em Artur Nogueira.">
+
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<header class="topo">
-  <h1>Nossos Produtos</h1>
-  <nav>
-    <a href="index.html">Início</a>
-    <a href="produtos.html">Produtos</a>
-  </nav>
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="header-top">
+    <p>📍 Artur Nogueira • 🚚 Entrega rápida • 💬 WhatsApp</p>
+  </div>
+
+  <div class="header-main">
+    <div class="logo-area">
+      <h1 class="logo">🌸 BellaFlor</h1>
+      <span class="logo-sub">Floricultura em Artur Nogueira</span>
+    </div>
+
+    <nav class="menu">
+      <a href="index.html">Início</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="index.html#contato">Contato</a>
+    </nav>
+  </div>
 </header>
 
-<section class="produtos">
+<!-- ================= TOPO PRODUTOS ================= -->
+<section class="topo-produtos">
+  <h2>Nossos Produtos</h2>
+  <p>
+    Buquês, arranjos e flores especiais para todos os momentos.
+  </p>
+</section>
 
-  <div class="produto">
-    <img src="img/produto1.jpg" alt="Buquê Romântico">
-    <h3>Buquê Romântico</h3>
-    <p>Flores selecionadas do dia</p>
-    <strong>R$ 189,90</strong>
+<!-- ================= FILTROS ================= -->
+<section class="filtros">
+  <button class="filtro ativo">Todos</button>
+  <button class="filtro">Buquês</button>
+  <button class="filtro">Arranjos</button>
+  <button class="filtro">Românticos</button>
+  <button class="filtro">Aniversário</button>
+  <button class="filtro">Condolências</button>
+</section>
+
+<!-- ================= GRADE DE PRODUTOS ================= -->
+<section class="produtos produtos-pagina">
+
+  <div class="produtos-grid">
+
+    <!-- PRODUTO -->
+    <article class="produto-card">
+      <img src="img/produto1.jpg" alt="Buquê Romântico">
+      <div class="produto-info">
+        <h3>Buquê Romântico</h3>
+        <p>Flores selecionadas com acabamento premium.</p>
+        <strong class="preco">R$ 189,90</strong>
+        <a href="https://wa.me/5519998028205" target="_blank" class="btn-comprar">
+          Comprar no WhatsApp
+        </a>
+      </div>
+    </article>
+
+    <!-- PRODUTO -->
+    <article class="produto-card">
+      <img src="img/produto2.jpg" alt="Arranjo Elegante">
+      <div class="produto-info">
+        <h3>Arranjo Elegante</h3>
+        <p>Sofisticação para presentear.</p>
+        <strong class="preco">R$ 229,90</strong>
+        <a href="https://wa.me/5519998028205" target="_blank" class="btn-comprar">
+          Comprar no WhatsApp
+        </a>
+      </div>
+    </article>
+
+    <!-- DUPLIQUE ESSE BLOCO PARA MAIS PRODUTOS -->
+
   </div>
 
 </section>
+
+<!-- ================= CTA FINAL ================= -->
+<section class="cta-final">
+  <h2>Não encontrou o que procura?</h2>
+  <p>Chame no WhatsApp que montamos um arranjo personalizado.</p>
+
+  <a href="https://wa.me/5519998028205" target="_blank" class="btn-whatsapp">
+    💬 Falar com a BellaFlor
+  </a>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-copy">
+    © 2025 Floricultura BellaFlor Artur Nogueira
+  </div>
+</footer>
 
 </body>
 </html>

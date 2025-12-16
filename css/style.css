@@ -1,39 +1,250 @@
-body {
+/* ================= RESET ================= */
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f6f6f6;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.topo {
-  background: #2e7d32;
-  color: white;
-  padding: 15px;
-  text-align: center;
+body {
+  background-color: #f8f8f8;
+  color: #333;
+  line-height: 1.6;
 }
 
-.topo a {
-  color: white;
-  margin: 0 10px;
+a {
   text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ================= HEADER ================= */
+.header-top {
+  background: #6a1b9a;
+  color: #fff;
+  text-align: center;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.logo {
+  font-size: 32px;
+  color: #6a1b9a;
+}
+
+.logo-sub {
+  font-size: 14px;
+  color: #777;
+}
+
+.menu a {
+  margin-left: 25px;
+  font-weight: 500;
+  color: #444;
+  position: relative;
+}
+
+.menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #6a1b9a;
+  transition: 0.3s;
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+/* ================= HERO ================= */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  padding: 60px 40px;
+  background: linear-gradient(135deg, #f3e5f5, #fff);
+}
+
+.hero-content h2 {
+  font-size: 42px;
+  color: #6a1b9a;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.btn-primary {
+  background: #6a1b9a;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 30px;
+  margin-right: 15px;
   font-weight: bold;
 }
 
-.hero {
-  padding: 40px;
-  text-align: center;
-  background: #e8f5e9;
+.btn-secondary {
+  border: 2px solid #6a1b9a;
+  color: #6a1b9a;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-weight: bold;
 }
 
-.produtos {
+/* ================= SECTIONS ================= */
+section {
+  padding: 70px 40px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 34px;
+  color: #6a1b9a;
+  margin-bottom: 15px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+/* ================= CATEGORIAS ================= */
+.categorias-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.categoria-card {
+  background: #fff;
+  padding: 30px 20px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.categoria-card:hover {
+  transform: translateY(-8px);
+}
+
+.categoria-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+/* ================= PRODUTOS ================= */
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.produto-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.produto-card:hover {
+  transform: translateY(-10px);
+}
+
+.produto-info {
   padding: 20px;
 }
 
-.produto {
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
+.produto-info h3 {
+  color: #6a1b9a;
+  margin-bottom: 8px;
+}
+
+.preco {
+  display: block;
+  margin: 10px 0;
+  font-size: 20px;
+}
+
+.btn-comprar {
+  display: inline-block;
+  background: #25d366;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+/* ================= CTA ================= */
+.cta-final {
+  background: linear-gradient(135deg, #6a1b9a, #8e24aa);
+  color: #fff;
   text-align: center;
+}
+
+.cta-final h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.btn-whatsapp {
+  display: inline-block;
+  margin-top: 20px;
+  background: #25d366;
+  padding: 15px 30px;
+  border-radius: 40px;
+  font-size: 18px;
+  color: #fff;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  background: #111;
+  color: #ccc;
+  padding: 40px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.footer-copy {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+}
+
+/* ================= RESPONSIVO ================= */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .menu {
+    display: none;
+  }
 }
