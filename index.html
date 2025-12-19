@@ -3,808 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BellaFlor | Sua Floricultura em Artur Nogueira</title>
-    <!-- Meta tags básicas de SEO -->
-    <meta name="description" content="BellaFlor - Flores e arranjos florais em Artur Nogueira. Catálogo completo, compra fácil via PIX, Cartão e WhatsApp.">
-    <meta name="keywords" content="Floricultura, Artur Nogueira, Flores, Buquês, Arranjos, Rosas, Girassóis, Orquídeas">
-
-    <!-- Tailwind CSS CDN para estilização rápida e responsiva -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="BellaFlor Artur Nogueira - As mais belas flores e arranjos da região. Compre online ou via WhatsApp.">
+    <title>BellaFlor Artur Nogueira | Floricultura Online</title>
+    
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* Paleta de cores e fontes personalizadas */
         :root {
-            --color-primary: #D34C7C; /* Rosa Floral Profundo */
-            --color-secondary: #4CAF50; /* Verde Fresco */
-            --color-text: #333333;
-            --color-background: #FAF8F8; /* Branco Suave */
-            --color-hover: #E91E63;
+            --primary: #FF6B81; /* Rosa Flor */
+            --secondary: #2C3E50; /* Azul Escuro */
+            --accent: #27ae60; /* Verde WhatsApp */
+            --background: #F9F9F9;
+            --white: #FFFFFF;
+            --text: #333333;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Configuração de Fonte Inter (Tailwind Default) */
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--color-background);
-            color: var(--color-text);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-main); background-color: var(--background); color: var(--text); line-height: 1.6; }
 
-        /* Estilos customizados para botões e cards */
-        .btn-whatsapp {
-            background-color: var(--color-secondary);
-            transition: background-color 0.3s, transform 0.2s;
-        }
-        .btn-whatsapp:hover {
-            background-color: #388E3C;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+        /* Header & Nav */
+        header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        nav { max-width: 1200px; margin: 0 auto; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .nav-links { list-style: none; display: flex; gap: 20px; }
+        .nav-links a { text-decoration: none; color: var(--secondary); font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+        .mobile-menu { display: none; font-size: 1.5rem; cursor: pointer; }
 
-        .btn-buy {
-            background-color: var(--color-primary);
-            transition: background-color 0.3s, transform 0.2s;
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1490750967868-bcdf92dd2184?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover; background-position: center;
+            height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white); padding: 20px;
         }
-        .btn-buy:hover {
-            background-color: var(--color-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; }
+        .btn { padding: 10px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; transition: transform 0.2s; border: none; cursor: pointer; display: inline-block; }
+        .btn-primary { background: var(--primary); color: var(--white); }
+        .btn:hover { transform: scale(1.05); }
 
-        .product-card {
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
+        /* Catalog Grid */
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+        .section-title { text-align: center; margin-bottom: 2rem; color: var(--secondary); }
+        
+        .filters { text-align: center; margin-bottom: 2rem; }
+        .filter-btn { background: var(--white); border: 1px solid #ddd; padding: 8px 16px; margin: 5px; border-radius: 20px; cursor: pointer; }
+        .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-        /* Responsividade do Grid de Produtos */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
-        }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
+        
+        .product-card { background: var(--white); border-radius: 10px; overflow: hidden; box-shadow: 0 3px 10px rgba(0,0,0,0.05); transition: transform 0.3s; display: flex; flex-direction: column; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .product-img { width: 100%; height: 250px; object-fit: cover; }
+        .product-info { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .product-title { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--secondary); font-weight: 600; }
+        .product-price { color: var(--primary); font-size: 1.3rem; font-weight: bold; margin-bottom: 1rem; }
+        .product-actions { margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
+        
+        .btn-whatsapp { background: var(--accent); color: white; width: 100%; text-align: center; padding: 10px; border-radius: 5px; }
+        .btn-buy { background: var(--secondary); color: white; width: 100%; text-align: center; padding: 10px; border-radius: 5px; }
 
-        /* Estilo para ícones SVG */
-        .icon-svg {
-            display: inline-block;
-            width: 1.25em;
-            height: 1.25em;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
+        /* About & Contact */
+        .about-section { background: var(--white); padding: 4rem 1rem; text-align: center; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+        .contact-info { text-align: left; }
+        .contact-item { margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
 
-        /* Estilos do Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
-        }
-        .modal-overlay.open {
-            opacity: 1;
-            visibility: visible;
-        }
-        .modal-content {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            max-width: 90%;
-            width: 500px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transform: scale(0.9);
-            transition: transform 0.3s ease-out;
-        }
-        .modal-overlay.open .modal-content {
-            transform: scale(1);
-        }
+        /* Footer */
+        footer { background: var(--secondary); color: var(--white); padding: 2rem 1rem; text-align: center; margin-top: 4rem; }
+        .social-links { margin-top: 1rem; }
+        .social-links a { color: var(--white); font-size: 1.5rem; margin: 0 10px; }
 
-        /* Estilos do Alerta Customizado */
-        #custom-alert {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1100;
-            padding: 15px 25px;
-            border-radius: 8px;
-            color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: opacity 0.3s, transform 0.3s;
+        /* Modal Pagamento */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); align-items: center; justify-content: center; }
+        .modal-content { background-color: #fff; padding: 2rem; border-radius: 10px; width: 90%; max-width: 500px; position: relative; }
+        .close-modal { position: absolute; right: 20px; top: 15px; font-size: 24px; cursor: pointer; }
+        #wallet_container { margin-top: 20px; min-height: 150px; }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu { display: block; }
+            .hero h1 { font-size: 2rem; }
+            .contact-grid { grid-template-columns: 1fr; }
         }
-        #custom-alert.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        #custom-alert.success { background-color: #4CAF50; }
-        #custom-alert.error { background-color: #F44336; }
     </style>
 </head>
 <body>
 
-    <!-- Alerta Customizado (Substitui alert()) -->
-    <div id="custom-alert" class="hidden" role="alert"></div>
-
-    <!-- HEADER (Navegação Fixa) -->
-    <header class="sticky top-0 z-50 bg-white shadow-md">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-3xl font-bold" style="color: var(--color-primary);">
-                🌸 Bella<span style="color: var(--color-secondary);">Flor</span>
-            </a>
-            <nav class="hidden md:flex space-x-6 text-lg font-medium">
-                <a href="#hero" class="hover:text-gray-600 transition duration-150" style="color: var(--color-primary);">Início</a>
-                <a href="#catalogo" class="hover:text-gray-600 transition duration-150" style="color: var(--color-primary);">Catálogo</a>
-                <a href="#contato" class="hover:text-gray-600 transition duration-150" style="color: var(--color-primary);">Contato</a>
-            </nav>
-            <div class="flex items-center space-x-4">
-                <!-- Campo de Busca -->
-                <div class="relative hidden sm:block">
-                    <input type="text" id="search-input" placeholder="Buscar flores..." class="py-2 pl-10 pr-4 border border-gray-300 rounded-full focus:ring-1" style="border-color: var(--color-primary); focus-ring: var(--color-primary);">
-                    <svg class="icon-svg absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                </div>
-                <!-- Botão do Carrinho -->
-                <button id="open-cart-btn" class="relative p-2 rounded-full hover:bg-gray-100 transition duration-150" aria-label="Carrinho de Compras" style="color: var(--color-primary);">
-                    <svg class="icon-svg w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                    <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">0</span>
-                </button>
-                <!-- Menu Mobile (Hamburguer) -->
-                <button id="menu-toggle-btn" class="md:hidden p-2 rounded-full hover:bg-gray-100 transition duration-150" aria-label="Menu" style="color: var(--color-primary);">
-                    <svg class="icon-svg w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                </button>
-            </div>
-        </div>
-        <!-- Menu Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white px-4 pb-4">
-            <a href="#hero" class="block py-2 text-lg hover:bg-gray-50 rounded" style="color: var(--color-primary);">Início</a>
-            <a href="#catalogo" class="block py-2 text-lg hover:bg-gray-50 rounded" style="color: var(--color-primary);">Catálogo</a>
-            <a href="#contato" class="block py-2 text-lg hover:bg-gray-50 rounded" style="color: var(--color-primary);">Contato</a>
-            <input type="text" id="search-input-mobile" placeholder="Buscar flores..." class="w-full mt-2 py-2 pl-4 pr-4 border border-gray-300 rounded-full focus:ring-1" style="border-color: var(--color-primary); focus-ring: var(--color-primary);">
-        </div>
+    <header>
+        <nav>
+            <a href="#" class="logo"><i class="fas fa-leaf"></i> BellaFlor Artur Nogueira</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="mobile-menu"><i class="fas fa-bars"></i></div>
+        </nav>
     </header>
 
-    <main>
-        <!-- HERO/BANNER -->
-        <section id="hero" class="relative bg-gray-50 pt-20 pb-24" style="background-image: linear-gradient(135deg, #F9E7F1 0%, #E0F2F1 100%);">
-            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
-                <div class="md:w-1/2 mb-10 md:mb-0 text-center md:text-left">
-                    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4" style="color: var(--color-primary);">
-                        Flores Frescas. Emoções Inesquecíveis.
-                    </h1>
-                    <p class="text-xl text-gray-700 mb-8">
-                        Entrega rápida em Artur Nogueira. Encontre o arranjo perfeito para cada ocasião.
-                    </p>
-                    <a href="#catalogo" class="btn-buy inline-block px-8 py-4 text-white font-semibold text-lg rounded-full shadow-lg hover:shadow-xl transition duration-300">
-                        Ver Catálogo Agora
-                    </a>
+    <section id="home" class="hero">
+        <div>
+            <h1>Flores que Emocionam</h1>
+            <p>Arranjos exclusivos e entrega rápida em Artur Nogueira e região.</p>
+            <a href="#catalogo" class="btn btn-primary">Ver Produtos</a>
+        </div>
+    </section>
+
+    <section id="catalogo" class="container">
+        <h2 class="section-title">Nossos Produtos</h2>
+        
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterProducts('todos')">Todos</button>
+            <button class="filter-btn" onclick="filterProducts('buques')">Buquês</button>
+            <button class="filter-btn" onclick="filterProducts('arranjos')">Arranjos</button>
+            <button class="filter-btn" onclick="filterProducts('plantas')">Plantas</button>
+            <button class="filter-btn" onclick="filterProducts('cestas')">Cestas</button>
+        </div>
+
+        <div class="products-grid" id="products-grid">
+            </div>
+    </section>
+
+    <section id="sobre" class="about-section">
+        <div class="container">
+            <h2 class="section-title">Sobre a BellaFlor</h2>
+            <p style="max-width: 800px; margin: 0 auto;">
+                Localizada no coração de Artur Nogueira, a BellaFlor nasceu da paixão por conectar pessoas através da natureza. 
+                Trabalhamos apenas com flores frescas selecionadas diariamente, garantindo qualidade e durabilidade. 
+                Seja para um casamento, aniversário ou um simples gesto de carinho, temos o arranjo perfeito para você.
+            </p>
+        </div>
+    </section>
+
+    <section id="contato" class="container">
+        <h2 class="section-title">Fale Conosco</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt" style="color: var(--primary); font-size: 1.5rem;"></i>
+                    <div>
+                        <strong>Endereço:</strong><br>
+                        Rua das Flores, 123, Centro<br>
+                        Artur Nogueira - SP, 13160-000
+                    </div>
                 </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <!-- Imagem Placeholder para o Hero -->
-                    <img src="https://placehold.co/500x350/F48FB1/FFFFFF?text=BellaFlor+em+Artur+Nogueira" alt="[Imagem de Buquê de Flores vibrante]" class="rounded-2xl shadow-2xl object-cover w-full max-w-md">
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp" style="color: var(--accent); font-size: 1.5rem;"></i>
+                    <div>
+                        <strong>WhatsApp:</strong><br>
+                        (19) 99999-9999
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock" style="color: var(--secondary); font-size: 1.5rem;"></i>
+                    <div>
+                        <strong>Horário:</strong><br>
+                        Seg - Sex: 08h às 18h<br>
+                        Sábado: 08h às 13h
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <!-- CATÁLOGO DE PRODUTOS -->
-        <section id="catalogo" class="py-16 md:py-24">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-center mb-12" style="color: var(--color-text);">Nosso Catálogo Floral</h2>
-
-                <div id="products-grid" class="product-grid">
-                    <!-- Produtos serão injetados aqui pelo JavaScript -->
-                    <div class="col-span-full text-center py-10" id="loading-message">Carregando o catálogo de flores...</div>
-                </div>
-                
-                <div id="no-results-message" class="col-span-full text-center py-10 text-xl text-gray-500 hidden">Nenhum produto encontrado. Tente outra busca.</div>
-
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58934.82963654388!2d-47.1996515!3d-22.572454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c88a5f0f3545ef%3A0x6e3d237937d7e35b!2sArtur%20Nogueira%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" width="100%" height="300" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <!-- FOOTER (Contatos e Informações) -->
-    <footer id="contato" class="bg-gray-800 text-white mt-16">
-        <div class="container mx-auto px-4 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 border-b border-gray-700 pb-8 mb-8">
-                <div>
-                    <h3 class="text-2xl font-bold mb-4" style="color: var(--color-primary);">BellaFlor</h3>
-                    <p class="text-gray-400">Sua floricultura de confiança em Artur Nogueira. Levando a beleza da natureza até você.</p>
-                </div>
-                <div>
-                    <h4 class="text-xl font-semibold mb-4">Links Rápidos</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#hero" class="text-gray-400 hover:text-white transition duration-150">Início</a></li>
-                        <li><a href="#catalogo" class="text-gray-400 hover:text-white transition duration-150">Catálogo</a></li>
-                        <li><a href="#contato" class="text-gray-400 hover:text-white transition duration-150">Localização</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-xl font-semibold mb-4">Contato</h4>
-                    <p class="text-gray-400">
-                        <svg class="icon-svg inline w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2zM12 16.92v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2zM22 3.92v3a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2zM12 3.92v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2z"></path></svg>
-                        (19) 99802-8205 (WhatsApp)
-                    </p>
-                    <p class="text-gray-400 mt-2">
-                        <svg class="icon-svg inline w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                        Seg-Sex: 9h - 18h
-                    </p>
-                    <p class="text-gray-400 mt-2">
-                        Sábado: 9h - 13h
-                    </p>
-                </div>
-                <div>
-                    <h4 class="text-xl font-semibold mb-4">Localização</h4>
-                    <p class="text-gray-400">Artur Nogueira, São Paulo</p>
-                    <p class="text-gray-400 mt-2">Atendemos toda a região com o frescor das flores.</p>
-                </div>
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3 id="modalProductName">Checkout Seguro</h3>
+            <p>Valor: <strong id="modalProductPrice"></strong></p>
+            <hr style="margin: 15px 0;">
+            <p style="font-size: 0.9rem; color: #666;">Selecione como deseja pagar:</p>
+            
+            <div style="margin-top: 15px; text-align: center;">
+                <p><strong>Chave PIX (CNPJ):</strong> 00.000.000/0001-00</p>
+                <p style="font-size: 0.8rem;">Envie o comprovante no WhatsApp após o pagamento.</p>
             </div>
-            <div class="text-center text-gray-500 text-sm">
-                &copy; 2024 BellaFlor. Todos os direitos reservados.
-            </div>
+
+            <div id="wallet_container"></div>
+            
+            <p style="margin-top:15px; font-size: 0.8rem; text-align: center; color: #888;">Pagamentos processados via Mercado Pago</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 BellaFlor Artur Nogueira. Todos os direitos reservados.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
         </div>
     </footer>
 
-    <!-- MODAL DE PAGAMENTO (escondido) -->
-    <div id="payment-modal-overlay" class="modal-overlay">
-        <div class="modal-content">
-            <div class="flex justify-between items-center border-b pb-3 mb-4">
-                <h3 class="text-2xl font-bold" style="color: var(--color-primary);">Finalizar Compra</h3>
-                <button id="close-payment-modal-btn" class="text-gray-500 hover:text-gray-800">
-                    <svg class="icon-svg w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
-            </div>
-            
-            <div id="modal-product-info">
-                <p class="text-lg font-semibold">Produto: <span id="modal-product-name" class="font-normal"></span></p>
-                <p class="text-2xl font-bold mb-6" style="color: var(--color-secondary);">Preço: <span id="modal-product-price"></span></p>
-            </div>
-
-            <h4 class="text-xl font-semibold mb-4">Selecione o Método de Pagamento:</h4>
-            
-            <div class="space-y-4">
-                <button id="pay-pix" class="w-full text-center py-3 rounded-lg text-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 transition duration-150">
-                    PIX <span class="text-sm font-normal">(Recomendado)</span>
-                </button>
-                <button id="pay-card" class="w-full text-center py-3 rounded-lg text-lg font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition duration-150">
-                    Cartão de Crédito
-                </button>
-                <button id="pay-boleto" class="w-full text-center py-3 rounded-lg text-lg font-semibold text-gray-700 bg-yellow-400 hover:bg-yellow-500 transition duration-150">
-                    Boleto Bancário
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- MODAL DO CARRINHO (escondido) -->
-    <div id="cart-modal-overlay" class="modal-overlay">
-        <div class="modal-content max-w-lg">
-            <div class="flex justify-between items-center border-b pb-3 mb-4">
-                <h3 class="text-2xl font-bold" style="color: var(--color-primary);">Seu Carrinho (Firestore)</h3>
-                <button id="close-cart-modal-btn" class="text-gray-500 hover:text-gray-800">
-                    <svg class="icon-svg w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
-            </div>
-            
-            <div id="cart-items-list" class="space-y-4 max-h-80 overflow-y-auto pr-2">
-                <!-- Itens do carrinho serão injetados aqui -->
-                <p id="empty-cart-message" class="text-center text-gray-500">Seu carrinho está vazio.</p>
-            </div>
-            
-            <div class="mt-6 pt-4 border-t">
-                <p class="text-xl font-bold flex justify-between">Total: <span id="cart-total" style="color: var(--color-primary);">R$ 0,00</span></p>
-                <button id="checkout-all-btn" class="w-full btn-buy mt-4 px-4 py-3 text-white font-semibold rounded-lg disabled:opacity-50" disabled>
-                    Finalizar Todos os Itens
-                </button>
-            </div>
-            
-            <div class="mt-4 text-xs text-gray-400 text-center">
-                ID do Usuário: <span id="current-user-id">Aguardando autenticação...</span>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- FIREBASE SETUP via CDN (MUST BE type="module") -->
-    <script type="module">
-        // Importa módulos necessários do Firebase via CDN
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, addDoc, setDoc, deleteDoc, onSnapshot, collection, query, updateDoc, increment } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        // Variáveis globais fornecidas pelo ambiente Canvas
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-
-        let db = null;
-        let auth = null;
-        let userId = null;
-        let isAuthReady = false;
-        let cartItems = [];
-        let unsubscribeCart = null; // Para desinscrever o listener do Firestore
-
-        setLogLevel('debug'); // Ativa o log de debug do Firebase
-
-        // --- DEFINIÇÃO DOS 30 PRODUTOS DA BELLAFOR ---
+    <script>
+        // CONFIGURAÇÕES
+        const WHATSAPP_NUMBER = "5519999999999"; // Coloque o número real aqui
+        
+        // --- BASE DE DADOS DE PRODUTOS (30+ Itens) ---
         const products = [
-            { id: 1, name: "Buquê de Rosas Vermelhas", desc: "Clássico da paixão. 12 rosas colombianas.", price: 149.90, img: "https://placehold.co/400x300/F48FB1/FFFFFF?text=Rosas+Vermelhas" },
-            { id: 2, name: "Arranjo de Girassóis", desc: "Alegria e energia. 5 girassóis com folhagem.", price: 99.50, img: "https://placehold.co/400x300/FFC107/FFFFFF?text=Girassóis" },
-            { id: 3, name: "Orquídea Phalaenopsis Branca", desc: "Elegância pura. Orquídea em vaso de cerâmica.", price: 199.90, img: "https://placehold.co/400x300/FFFFFF/333333?text=Orquídea+Branca" },
-            { id: 4, name: "Cesta de Café da Manhã Floral", desc: "Presente completo com flores e delícias.", price: 179.00, img: "https://placehold.co/400x300/8BC34A/FFFFFF?text=Cesta+Floral" },
-            { id: 5, name: "Rosa Encantada (A Bela e a Fera)", desc: "Rosa preservada em cúpula de vidro.", price: 250.00, img: "https://placehold.co/400x300/D34C7C/FFFFFF?text=Rosa+Encantada" },
-            { id: 6, name: "Lírios Perfumados (Buquê)", desc: "Mix de lírios brancos e rosas. Aroma incrível.", price: 110.00, img: "https://placehold.co/400x300/F06292/FFFFFF?text=Buquê+de+Lírios" },
-            { id: 7, name: "Planta Suculenta Decorativa", desc: "Mini-jardim em pote de cimento.", price: 45.00, img: "https://placehold.co/400x300/795548/FFFFFF?text=Suculentas" },
-            { id: 8, name: "Buquê Colorido da Gratidão", desc: "Mix vibrante de flores do campo.", price: 85.90, img: "https://placehold.co/400x300/FF9800/FFFFFF?text=Buquê+Gratidão" },
-            { id: 9, name: "Arranjo Fúcsia em Caixa", desc: "Rosas e astromélias em tons de fúcsia.", price: 135.00, img: "https://placehold.co/400x300/E91E63/FFFFFF?text=Arranjo+Fúcsia" },
-            { id: 10, name: "Kalanchoe em Vaso", desc: "Flor da fortuna. Várias cores disponíveis.", price: 35.00, img: "https://placehold.co/400x300/FF5722/FFFFFF?text=Kalanchoe" },
-            { id: 11, name: "Buquê de 6 Rosas Champanhe", desc: "Elegância e sofisticação para celebrar.", price: 95.00, img: "https://placehold.co/400x300/FFE082/333333?text=Rosas+Champanhe" },
-            { id: 12, name: "Coroa de Flores Naturais", desc: "Para ocasiões solenes. Entrega em 2h.", price: 299.00, img: "https://placehold.co/400x300/607D8B/FFFFFF?text=Coroa+de+Flores" },
-            { id: 13, name: "Vaso de Violetas Africanas", desc: "Pequena e delicada. Perfeita para decorar.", price: 25.00, img: "https://placehold.co/400x300/9C27B0/FFFFFF?text=Violetas" },
-            { id: 14, name: "Arranjo Tropical com Gengibre", desc: "Exotismo e cores fortes. Para ambientes modernos.", price: 155.00, img: "https://placehold.co/400x300/00BCD4/FFFFFF?text=Arranjo+Tropical" },
-            { id: 15, name: "Buquê de Alstroemérias Coloridas", desc: "Astromélias em tons de arco-íris.", price: 79.90, img: "https://placehold.co/400x300/FF4081/FFFFFF?text=Astromélias" },
-            { id: 16, name: "Mini Cactos Sortidos", desc: "Kit com 3 mini cactos em vasinhos decorados.", price: 60.00, img: "https://placehold.co/400x300/4CAF50/FFFFFF?text=Mini+Cactos" },
-            { id: 17, name: "Orquídea Chuva de Ouro (Oncidium)", desc: "Cascata de pequenas flores amarelas.", price: 180.00, img: "https://placehold.co/400x300/FFEB3B/333333?text=Chuva+de+Ouro" },
-            { id: 18, name: "Buquê de Tulipas Roxas", desc: "Símbolo de realeza. 10 tulipas frescas.", price: 165.00, img: "https://placehold.co/400x300/673AB7/FFFFFF?text=Tulipas+Roxas" },
-            { id: 19, name: "Arranjo para Mesa de Jantar", desc: "Flores baixas e cheias de requinte.", price: 120.00, img: "https://placehold.co/400x300/9E9E9E/FFFFFF?text=Mesa+de+Jantar" },
-            { id: 20, name: "Hortênsia Azul em Vaso", desc: "Flor cheia e vibrante. Vaso decorativo.", price: 140.00, img: "https://placehold.co/400x300/2196F3/FFFFFF?text=Hortênsia+Azul" },
-            { id: 21, name: "Buquê de Rosas Brancas", desc: "Paz e pureza. Ideal para casamentos e pedidos.", price: 130.00, img: "https://placehold.co/400x300/CFD8DC/333333?text=Rosas+Brancas" },
-            { id: 22, name: "Mix de Flores do Campo", desc: "Charme rústico em buquê com 7 variedades.", price: 75.00, img: "https://placehold.co/400x300/CDDC39/333333?text=Flores+do+Campo" },
-            { id: 23, name: "Planta Pata de Elefante", desc: "Decoração moderna e durável em vaso alto.", price: 210.00, img: "https://placehold.co/400x300/A5D6A7/333333?text=Pata+de+Elefante" },
-            { id: 24, name: "Buquê de Margaridas Coloridas", desc: "Simplicidade e inocência. Ideal para crianças.", price: 65.00, img: "https://placehold.co/400x300/FFCDD2/333333?text=Margaridas" },
-            { id: 25, name: "Arranjo para Maternidade (Urso)", desc: "Flores e ursinho de pelúcia.", price: 160.00, img: "https://placehold.co/400x300/F8BBD0/FFFFFF?text=Maternidade" },
-            { id: 26, name: "Antúrio Vermelho em Vaso", desc: "Durabilidade e coração vermelho intenso.", price: 89.00, img: "https://placehold.co/400x300/F44336/FFFFFF?text=Antúrio+Vermelho" },
-            { id: 27, name: "Buquê Amarelo de Amizade", desc: "Flores amarelas diversas. Alegria garantida.", price: 105.00, img: "https://placehold.co/400x300/FFEB3B/333333?text=Buquê+Amarelo" },
-            { id: 28, name: "Mini Rosa em Pote de Vidro", desc: "Lembrancinha charmosa. Várias cores.", price: 30.00, img: "https://placehold.co/400x300/FCE4EC/333333?text=Mini+Rosa" },
-            { id: 29, name: "Bonsai de Carmona", desc: "Pequena árvore decorativa para interiores.", price: 190.00, img: "https://placehold.co/400x300/8D6E63/FFFFFF?text=Bonsai" },
-            { id: 30, name: "Arranjo de Gérberas Rosa", desc: "Gérberas vibrantes em tons de rosa e pink.", price: 115.00, img: "https://placehold.co/400x300/FF80AB/FFFFFF?text=Gérberas+Rosa" },
+            // Buquês
+            { id: 1, name: "Buquê de Rosas Vermelhas (12 hastes)", price: 149.90, category: "buques", img: "https://images.unsplash.com/photo-1562690868-60bbe7293e94?auto=format&fit=crop&w=400&q=80" },
+            { id: 2, name: "Buquê Mix do Campo", price: 89.90, category: "buques", img: "https://images.unsplash.com/photo-1599733589046-10c005739ef9?auto=format&fit=crop&w=400&q=80" },
+            { id: 3, name: "Buquê de Girassóis Radiante", price: 119.90, category: "buques", img: "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=400&q=80" },
+            { id: 4, name: "Buquê de Lírios Brancos", price: 139.90, category: "buques", img: "https://images.unsplash.com/photo-1587524094770-65230c25a1d5?auto=format&fit=crop&w=400&q=80" },
+            { id: 5, name: "Buquê Romântico (Rosas e Gipsófilas)", price: 169.90, category: "buques", img: "https://images.unsplash.com/photo-1549416878-b9ca95255250?auto=format&fit=crop&w=400&q=80" },
+            { id: 6, name: "Buquê de Gérberas Coloridas", price: 99.90, category: "buques", img: "https://images.unsplash.com/photo-1572454591674-2739f30d8c40?auto=format&fit=crop&w=400&q=80" },
+            { id: 7, name: "Buquê de Astromélias", price: 79.90, category: "buques", img: "https://images.unsplash.com/photo-1621532986420-5d6b8c8c0d99?auto=format&fit=crop&w=400&q=80" },
+            { id: 8, name: "Mini Buquê de Rosas (6 hastes)", price: 79.90, category: "buques", img: "https://images.unsplash.com/photo-1563241527-3004b7be0ee0?auto=format&fit=crop&w=400&q=80" },
+            
+            // Arranjos
+            { id: 9, name: "Arranjo Clássico em Vaso de Vidro", price: 189.90, category: "arranjos", img: "https://images.unsplash.com/photo-1582794543139-8ac92a9ab4d9?auto=format&fit=crop&w=400&q=80" },
+            { id: 10, name: "Arranjo Tropical", price: 159.90, category: "arranjos", img: "https://images.unsplash.com/photo-1563241527-3004b7be0ee0?auto=format&fit=crop&w=400&q=80" },
+            { id: 11, name: "Centro de Mesa Floral", price: 129.90, category: "arranjos", img: "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?auto=format&fit=crop&w=400&q=80" },
+            { id: 12, name: "Box de Rosas Premium", price: 219.90, category: "arranjos", img: "https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?auto=format&fit=crop&w=400&q=80" },
+            { id: 13, name: "Arranjo de Flores Secas Boho", price: 149.90, category: "arranjos", img: "https://images.unsplash.com/photo-1620311492328-98e612948676?auto=format&fit=crop&w=400&q=80" },
+            { id: 14, name: "Arranjo Pequeno para Presente", price: 59.90, category: "arranjos", img: "https://images.unsplash.com/photo-1595185966440-425b741d40c9?auto=format&fit=crop&w=400&q=80" },
+            { id: 15, name: "Coroa de Flores para Homenagem", price: 350.00, category: "arranjos", img: "https://images.unsplash.com/photo-1595231776515-ddffb1f4eb73?auto=format&fit=crop&w=400&q=80" },
+            
+            // Plantas
+            { id: 16, name: "Orquídea Phalaenopsis Branca (Pote 15)", price: 129.90, category: "plantas", img: "https://images.unsplash.com/photo-1566904660856-7878d672d420?auto=format&fit=crop&w=400&q=80" },
+            { id: 17, name: "Orquídea Roxa Dupla", price: 149.90, category: "plantas", img: "https://images.unsplash.com/photo-1554631221-f9603e6808be?auto=format&fit=crop&w=400&q=80" },
+            { id: 18, name: "Vaso de Suculentas Mix", price: 49.90, category: "plantas", img: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?auto=format&fit=crop&w=400&q=80" },
+            { id: 19, name: "Bonsai Ficus", price: 189.90, category: "plantas", img: "https://images.unsplash.com/photo-1599598425947-32c342f04dc7?auto=format&fit=crop&w=400&q=80" },
+            { id: 20, name: "Samambaia Americana (Pote 21)", price: 69.90, category: "plantas", img: "https://images.unsplash.com/photo-1628639207865-66e60b86a836?auto=format&fit=crop&w=400&q=80" },
+            { id: 21, name: "Zamioculca em Vaso Cerâmico", price: 119.90, category: "plantas", img: "https://images.unsplash.com/photo-1632207691143-643e2a9a9361?auto=format&fit=crop&w=400&q=80" },
+            { id: 22, name: "Espada de São Jorge Decorada", price: 89.90, category: "plantas", img: "https://images.unsplash.com/photo-1629197479634-9310a0e50f3b?auto=format&fit=crop&w=400&q=80" },
+            { id: 23, name: "Costela de Adão (Vaso Grande)", price: 159.90, category: "plantas", img: "https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=400&q=80" },
+            
+            // Cestas
+            { id: 24, name: "Cesta de Café da Manhã Completa", price: 249.90, category: "cestas", img: "https://images.unsplash.com/photo-1590311825124-73ec5233cb0a?auto=format&fit=crop&w=400&q=80" },
+            { id: 25, name: "Cesta de Chocolates e Flores", price: 189.90, category: "cestas", img: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=80" },
+            { id: 26, name: "Cesta Romântica com Vinho", price: 299.90, category: "cestas", img: "https://images.unsplash.com/photo-1585553616435-2dc0a54e271d?auto=format&fit=crop&w=400&q=80" },
+            { id: 27, name: "Cesta de Frutas Tropicais", price: 159.90, category: "cestas", img: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=400&q=80" },
+            { id: 28, name: "Cesta de Maternidade (Urso + Flores)", price: 199.90, category: "cestas", img: "https://images.unsplash.com/photo-1584143997233-d8b321a6f875?auto=format&fit=crop&w=400&q=80" },
+            { id: 29, name: "Kit Spa e Relaxamento", price: 179.90, category: "cestas", img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=400&q=80" },
+            { id: 30, name: "Cesta de Happy Hour (Cervejas e Petiscos)", price: 169.90, category: "cestas", img: "https://images.unsplash.com/photo-1563514227147-6d2ff63448ee?auto=format&fit=crop&w=400&q=80" }
         ];
 
+        // --- LÓGICA DE RENDERIZAÇÃO ---
+        const grid = document.getElementById('products-grid');
 
-        // --- FUNÇÕES UTILITÁRIAS ---
-
-        /**
-         * Exibe um alerta customizado no canto superior direito.
-         * @param {string} message - Mensagem a ser exibida.
-         * @param {'success'|'error'} type - Tipo do alerta para cor (verde/vermelho).
-         */
-        function showCustomAlert(message, type = 'success') {
-            const alertBox = document.getElementById('custom-alert');
-            alertBox.textContent = message;
-            alertBox.className = `show ${type}`; // Adiciona classes de exibição e tipo
-            alertBox.style.display = 'block';
-
-            setTimeout(() => {
-                alertBox.className = 'hidden'; // Remove classes para ocultar
-                alertBox.style.display = 'none';
-            }, 3000); // 3 segundos
-        }
-
-        /**
-         * Formata um número para o padrão de moeda BRL.
-         * @param {number} value
-         * @returns {string}
-         */
-        function formatCurrency(value) {
-            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        }
-
-
-        // --- FIREBASE / AUTH / FIRESTORE SETUP ---
-        
-        /**
-         * Inicializa o Firebase e realiza a autenticação.
-         */
-        async function initializeFirebase() {
-            try {
-                if (Object.keys(firebaseConfig).length === 0) {
-                    console.error("Firebase Configuração não encontrada.");
-                    showCustomAlert("Erro: Configuração do Firebase ausente.", 'error');
-                    isAuthReady = true;
-                    return;
-                }
-
-                const app = initializeApp(firebaseConfig);
-                db = getFirestore(app);
-                auth = getAuth(app);
-
-                // Autenticação
-                if (initialAuthToken) {
-                    await signInWithCustomToken(auth, initialAuthToken);
-                } else {
-                    await signInAnonymously(auth);
-                }
-                
-                // Listener de Estado de Autenticação
-                onAuthStateChanged(auth, (user) => {
-                    if (user) {
-                        userId = user.uid;
-                        document.getElementById('current-user-id').textContent = userId;
-                        console.log("Usuário autenticado:", userId);
-                        isAuthReady = true;
-                        if (db) {
-                            setupFirestoreListeners(userId);
-                        }
-                    } else {
-                        userId = null;
-                        document.getElementById('current-user-id').textContent = 'Anônimo (Não persistente)';
-                        isAuthReady = true;
-                        console.log("Usuário deslogado/anônimo.");
-                    }
-                });
-
-            } catch (error) {
-                console.error("Erro ao inicializar Firebase ou autenticar:", error);
-                showCustomAlert("Erro de conexão com o servidor. Tente recarregar.", 'error');
-                isAuthReady = true;
-            }
-        }
-
-        /**
-         * Configura o listener do Firestore para o carrinho de compras.
-         * @param {string} currentUserId
-         */
-        function setupFirestoreListeners(currentUserId) {
-            if (!db || !currentUserId) return;
-
-            // Desinscreve o listener anterior, se houver
-            if (unsubscribeCart) {
-                unsubscribeCart();
-            }
-
-            // Path: /artifacts/{appId}/users/{userId}/cart_items
-            const cartCollectionPath = `artifacts/${appId}/users/${currentUserId}/cart_items`;
-            const cartQuery = collection(db, cartCollectionPath);
-
-            unsubscribeCart = onSnapshot(cartQuery, (snapshot) => {
-                cartItems = [];
-                snapshot.forEach(doc => {
-                    cartItems.push({ id: doc.id, ...doc.data() });
-                });
-                renderCart();
-                console.log("Carrinho atualizado:", cartItems);
-            }, (error) => {
-                console.error("Erro ao carregar carrinho via onSnapshot:", error);
-                showCustomAlert("Erro ao sincronizar carrinho.", 'error');
-            });
-        }
-
-
-        // --- LÓGICA DO CARRINHO (FIRESTORE) ---
-
-        /**
-         * Adiciona ou atualiza um produto no carrinho do Firestore.
-         * @param {object} product - Produto a ser adicionado.
-         */
-        async function addToCart(product) {
-            if (!isAuthReady || !userId || !db) {
-                showCustomAlert("Aguarde a conexão com o servidor.", 'error');
-                return;
-            }
-
-            const cartCollectionPath = `artifacts/${appId}/users/${userId}/cart_items`;
-            const existingItem = cartItems.find(item => item.productId === product.id);
-
-            try {
-                if (existingItem) {
-                    // Atualiza a quantidade do item existente
-                    const itemDocRef = doc(db, cartCollectionPath, existingItem.id);
-                    await updateDoc(itemDocRef, {
-                        quantity: increment(1)
-                    });
-                } else {
-                    // Adiciona um novo item
-                    await addDoc(collection(db, cartCollectionPath), {
-                        productId: product.id,
-                        name: product.name,
-                        price: product.price,
-                        quantity: 1,
-                        addedAt: new Date().toISOString()
-                    });
-                }
-                showCustomAlert(`"${product.name}" adicionado ao carrinho!`, 'success');
-            } catch (error) {
-                console.error("Erro ao adicionar ao carrinho:", error);
-                showCustomAlert("Falha ao adicionar produto ao carrinho. Tente novamente.", 'error');
-            }
-        }
-
-        /**
-         * Remove um produto do carrinho.
-         * @param {string} docId - ID do documento no Firestore.
-         */
-        async function removeFromCart(docId) {
-            if (!isAuthReady || !userId || !db) return;
-
-            const cartCollectionPath = `artifacts/${appId}/users/${userId}/cart_items`;
-            const itemDocRef = doc(db, cartCollectionPath, docId);
-            
-            try {
-                await deleteDoc(itemDocRef);
-                showCustomAlert("Item removido do carrinho.", 'success');
-            } catch (error) {
-                console.error("Erro ao remover do carrinho:", error);
-                showCustomAlert("Falha ao remover item. Tente novamente.", 'error');
-            }
-        }
-
-        /**
-         * Renderiza o conteúdo do carrinho no modal.
-         */
-        function renderCart() {
-            const listContainer = document.getElementById('cart-items-list');
-            const cartTotalElement = document.getElementById('cart-total');
-            const emptyMessage = document.getElementById('empty-cart-message');
-            const checkoutBtn = document.getElementById('checkout-all-btn');
-            
-            listContainer.innerHTML = '';
-            let total = 0;
-
-            if (cartItems.length === 0) {
-                emptyMessage.style.display = 'block';
-                checkoutBtn.disabled = true;
-            } else {
-                emptyMessage.style.display = 'none';
-                checkoutBtn.disabled = false;
-                
-                cartItems.forEach(item => {
-                    const productData = products.find(p => p.id === item.productId);
-                    const itemPrice = (productData ? productData.price : item.price) * item.quantity;
-                    total += itemPrice;
-
-                    const itemElement = document.createElement('div');
-                    itemElement.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-lg';
-                    itemElement.innerHTML = `
-                        <div>
-                            <p class="font-semibold">${item.name} (${item.quantity}x)</p>
-                            <p class="text-sm text-gray-600">${formatCurrency(itemPrice)}</p>
-                        </div>
-                        <button data-doc-id="${item.id}" class="remove-from-cart-btn text-red-500 hover:text-red-700 transition duration-150">
-                            <svg class="icon-svg w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                        </button>
-                    `;
-                    listContainer.appendChild(itemElement);
-                });
-            }
-
-            cartTotalElement.textContent = formatCurrency(total);
-            document.getElementById('cart-count').textContent = cartItems.length;
-
-            // Adiciona listeners aos botões de remoção
-            listContainer.querySelectorAll('.remove-from-cart-btn').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const docId = e.currentTarget.getAttribute('data-doc-id');
-                    removeFromCart(docId);
-                });
-            });
-        }
-
-
-        // --- LÓGICA DE RENDERIZAÇÃO E UI ---
-
-        /**
-         * Renderiza a lista de produtos na página.
-         * @param {Array} productList - Lista de produtos filtrada ou completa.
-         */
-        function renderProducts(productList) {
-            const grid = document.getElementById('products-grid');
-            const loading = document.getElementById('loading-message');
-            const noResults = document.getElementById('no-results-message');
-            
-            loading.style.display = 'none';
+        function renderProducts(filter = 'todos') {
             grid.innerHTML = '';
+            
+            const filtered = filter === 'todos' 
+                ? products 
+                : products.filter(p => p.category === filter);
 
-            if (productList.length === 0) {
-                noResults.style.display = 'block';
-                return;
-            }
-            noResults.style.display = 'none';
-
-
-            productList.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:border-gray-200';
-                
-                const priceFormatted = formatCurrency(product.price);
-                const descTruncated = product.desc.length > 50 ? product.desc.substring(0, 47) + '...' : product.desc;
-
-                productCard.innerHTML = `
-                    <img src="${product.img}" alt="[Imagem de ${product.name}]" class="w-full h-48 object-cover">
-                    <div class="p-5">
-                        <h3 class="text-xl font-bold mb-2 h-14" style="color: var(--color-text);">${product.name}</h3>
-                        <p class="text-sm text-gray-500 mb-3 h-10">${descTruncated}</p>
-                        <p class="text-3xl font-extrabold mb-4" style="color: var(--color-primary);">${priceFormatted}</p>
-                        
-                        <div class="flex flex-col space-y-2">
-                            <!-- Botão WhatsApp -->
-                            <a href="https://wa.me/5519998028205?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20${encodeURIComponent(product.name)}%20-%20${encodeURIComponent(priceFormatted)}" 
-                                target="_blank" 
-                                class="btn-whatsapp flex items-center justify-center px-4 py-2 text-white font-semibold rounded-lg shadow-md text-sm">
-                                <svg class="icon-svg w-5 h-5 mr-2 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 15c-1.4 1.7-2.9 2.5-4.5 2.5s-3.1-.8-4.5-2.5c-1.4 1.7-2.9 2.5-4.5 2.5S3.9 16.7 2.5 15a10 10 0 1 1 18.5 0z" fill="none"></path><path d="M12.25 10.75A.75.75 0 0 0 13 10c0-.4-.35-.75-.75-.75zm-1.5 0A.75.75 0 0 0 11 10c0-.4-.35-.75-.75-.75zm0 3.5A.75.75 0 0 0 11 14.25c0 .4-.35.75-.75.75zm1.5 0A.75.75 0 0 0 13 14.25c0 .4-.35.75-.75.75z"></path><path d="M12 2C6.48 2 2 6.48 2 12c0 1.5.35 2.9.96 4.17l-.76 2.76 2.76-.76C7.1 21.65 8.5 22 10 22h4c1.5 0 2.9-.35 4.17-.96l2.76.76-.76-2.76C21.65 19.9 22 18.5 22 17c0-5.52-4.48-10-10-10zM12 20c-1.37 0-2.7-.35-3.89-1l-.54-.2-1.93.53.53-1.93-.2-.54C4.35 14.7 4 13.37 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z" fill="none"></path></svg>
-                                Falar no WhatsApp
-                            </a>
-                            
-                            <!-- Botão Comprar (Abre Modal de Pagamento) -->
-                            <button data-product-id="${product.id}" 
-                                class="btn-buy open-payment-modal flex items-center justify-center px-4 py-2 text-white font-semibold rounded-lg shadow-md text-sm">
-                                <svg class="icon-svg w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-                                Comprar / Ver Opções
+            filtered.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${product.img}" alt="${product.name}" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-price">R$ ${product.price.toFixed(2).replace('.', ',')}</div>
+                        <div class="product-actions">
+                            <button onclick="openWhatsApp(${product.id})" class="btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i> Comprar no Whats
                             </button>
-                            
-                            <!-- Botão Adicionar ao Carrinho -->
-                            <button data-product-id="${product.id}" 
-                                class="add-to-cart-btn flex items-center justify-center px-4 py-2 text-gray-700 font-semibold rounded-lg border border-gray-300 hover:bg-gray-100 transition duration-150 text-sm">
-                                <svg class="icon-svg w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                                Adicionar ao Carrinho
+                            <button onclick="openPaymentModal(${product.id})" class="btn btn-buy">
+                                <i class="fas fa-credit-card"></i> Pagar Agora
                             </button>
                         </div>
                     </div>
                 `;
-                grid.appendChild(productCard);
+                grid.appendChild(card);
             });
         }
 
-        /**
-         * Abre o modal de pagamento com as informações do produto.
-         * @param {object} product - Produto selecionado.
-         */
-        function showPaymentModal(product) {
-            document.getElementById('modal-product-name').textContent = product.name;
-            document.getElementById('modal-product-price').textContent = formatCurrency(product.price);
-            
-            const modalOverlay = document.getElementById('payment-modal-overlay');
-            modalOverlay.classList.add('open');
-            modalOverlay.setAttribute('data-product-id', product.id);
+        // Filtros
+        function filterProducts(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderProducts(category);
         }
 
-        /**
-         * Fecha o modal de pagamento.
-         */
-        function closePaymentModal() {
-            document.getElementById('payment-modal-overlay').classList.remove('open');
-            document.getElementById('payment-modal-overlay').removeAttribute('data-product-id');
+        // Função WhatsApp
+        function openWhatsApp(id) {
+            const product = products.find(p => p.id === id);
+            const message = `Olá BellaFlor! Gostaria de encomendar o *${product.name}* (R$ ${product.price.toFixed(2)}). Qual o prazo de entrega para Artur Nogueira?`;
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
         }
+
+        // --- LÓGICA DE PAGAMENTO (MERCADO PAGO) ---
         
-        /**
-         * Abre o modal do carrinho.
-         */
-        function openCartModal() {
-            document.getElementById('cart-modal-overlay').classList.add('open');
-        }
-        
-        /**
-         * Fecha o modal do carrinho.
-         */
-        function closeCartModal() {
-            document.getElementById('cart-modal-overlay').classList.remove('open');
+        // Inicialize o Mercado Pago com sua CHAVE PÚBLICA (Pegue no painel do Mercado Pago)
+        // Exemplo: const mp = new MercadoPago('TEST-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+        // Para demonstração, o objeto mp não será inicializado sem a chave.
+        let mp = null; 
+        try {
+            // Substitua 'SUA_PUBLIC_KEY_AQUI' pela sua chave pública real do Mercado Pago
+            // mp = new MercadoPago('SUA_PUBLIC_KEY_AQUI', { locale: 'pt-BR' });
+        } catch (e) {
+            console.log("Adicione sua chave pública do MP no código.");
         }
 
+        function openPaymentModal(id) {
+            const product = products.find(p => p.id === id);
+            document.getElementById('modalProductName').innerText = product.name;
+            document.getElementById('modalProductPrice').innerText = `R$ ${product.price.toFixed(2).replace('.', ',')}`;
+            document.getElementById('paymentModal').style.display = 'flex';
 
-        /**
-         * Simula o processo de pagamento e redirecionamento.
-         * @param {string} method - Método de pagamento ('pix', 'card', 'boleto').
-         * @param {object} product - Produto a ser pago.
-         */
-        function processPayment(method, product) {
-            closePaymentModal();
-            const simulatedUrl = `https://simulacao-pagamento.com/${method}?prod=${product.id}&val=${product.price}`;
+            // ATENÇÃO: Integração REAL de cartão requer Backend para criar 'preferenceId'.
+            // Como este é um site estático, simulamos a renderização ou redirecionamos.
             
-            // Simulação de redirecionamento para gateway de pagamento
-            console.log(`Simulando redirecionamento para ${method}: ${simulatedUrl}`);
-
-            showCustomAlert(`✅ Sucesso! Simulação de pagamento via ${method.toUpperCase()} iniciada para ${product.name}. Redirecionando...`, 'success');
-
-            // No mundo real, você usaria window.location.href = simulatedUrl aqui.
-            // Para o escopo da tarefa, apenas a mensagem de sucesso é suficiente.
+            const container = document.getElementById('wallet_container');
+            container.innerHTML = '<p style="text-align:center; padding: 20px; background: #f0f0f0; border-radius: 5px;">Ambiente de Demonstração.<br>Para integração real, insira sua Public Key no código e gere o PreferenceID no backend.</p>';
+            
+            /* // CÓDIGO PARA INTEGRAÇÃO REAL (Se tiver backend):
+            if (mp) {
+                mp.bricks().create("wallet", "wallet_container", {
+                    initialization: {
+                        preferenceId: "ID_DA_PREFERENCIA_GERADO_NO_BACKEND",
+                    },
+                });
+            }
+            */
         }
 
-        /**
-         * Configura todos os event listeners da página.
-         */
-        function setupListeners() {
-            // 1. Catálogo (Botões Comprar e Carrinho)
-            document.getElementById('products-grid').addEventListener('click', (e) => {
-                const productId = parseInt(e.target.closest('[data-product-id]')?.getAttribute('data-product-id'));
-                if (!productId) return;
-
-                const product = products.find(p => p.id === productId);
-                if (!product) return;
-
-                if (e.target.closest('.open-payment-modal')) {
-                    showPaymentModal(product);
-                } else if (e.target.closest('.add-to-cart-btn')) {
-                    addToCart(product);
-                }
-            });
-
-            // 2. Modais (Fechamento)
-            document.getElementById('close-payment-modal-btn').addEventListener('click', closePaymentModal);
-            document.getElementById('payment-modal-overlay').addEventListener('click', (e) => {
-                if (e.target === e.currentTarget) closePaymentModal();
-            });
-
-            document.getElementById('close-cart-modal-btn').addEventListener('click', closeCartModal);
-            document.getElementById('cart-modal-overlay').addEventListener('click', (e) => {
-                if (e.target === e.currentTarget) closeCartModal();
-            });
-
-            // 3. Modal (Opções de Pagamento)
-            document.getElementById('payment-modal-overlay').addEventListener('click', (e) => {
-                const modalOverlay = document.getElementById('payment-modal-overlay');
-                const productId = parseInt(modalOverlay.getAttribute('data-product-id'));
-                const product = products.find(p => p.id === productId);
-                if (!product) return;
-
-                if (e.target.id === 'pay-pix') {
-                    processPayment('pix', product);
-                } else if (e.target.id === 'pay-card') {
-                    processPayment('card', product);
-                } else if (e.target.id === 'pay-boleto') {
-                    processPayment('boleto', product);
-                }
-            });
-            
-            // 4. Carrinho (Abertura e Checkout)
-            document.getElementById('open-cart-btn').addEventListener('click', openCartModal);
-            document.getElementById('checkout-all-btn').addEventListener('click', () => {
-                if (cartItems.length > 0) {
-                    closeCartModal();
-                    // Simula checkout de todos os itens do carrinho (idealmente processaria a compra via PIX/Card)
-                    showCustomAlert(`Simulação de Checkout de ${cartItems.length} itens do carrinho.`, 'success');
-                    // Aqui seria a lógica para limpar o carrinho no Firestore, mas vamos apenas simular.
-                    console.log("Simulação: Checkout de todos os itens do carrinho. O carrinho permance para demonstração.");
-                } else {
-                    showCustomAlert("Carrinho vazio!", 'error');
-                }
-            });
-
-            // 5. Busca/Filtro
-            const searchInputDesktop = document.getElementById('search-input');
-            const searchInputMobile = document.getElementById('search-input-mobile');
-            
-            const handleSearch = (event) => {
-                const query = event.target.value.toLowerCase();
-                const filteredProducts = products.filter(p => 
-                    p.name.toLowerCase().includes(query) || 
-                    p.desc.toLowerCase().includes(query)
-                );
-                renderProducts(filteredProducts);
-            };
-
-            searchInputDesktop.addEventListener('keyup', handleSearch);
-            searchInputMobile.addEventListener('keyup', handleSearch);
-            
-            // 6. Menu Mobile
-            document.getElementById('menu-toggle-btn').addEventListener('click', () => {
-                document.getElementById('mobile-menu').classList.toggle('hidden');
-            });
+        function closeModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+            document.getElementById('wallet_container').innerHTML = '';
         }
 
+        // Fechar modal ao clicar fora
+        window.onclick = function(event) {
+            const modal = document.getElementById('paymentModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
 
-        // --- INICIALIZAÇÃO GERAL ---
-
-        window.onload = function() {
-            // 1. Renderiza o catálogo inicial
-            renderProducts(products);
-            
-            // 2. Configura os listeners de interação
-            setupListeners();
-            
-            // 3. Inicializa Firebase (Autenticação e Listener do Carrinho)
-            initializeFirebase();
-        };
+        // Inicializar
+        renderProducts();
 
     </script>
-
 </body>
 </html>
