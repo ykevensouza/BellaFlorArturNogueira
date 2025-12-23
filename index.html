@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>BellaFlor Artur Nogueira | Floricultura Online</title>
   <meta name="description" content="BellaFlor Artur Nogueira - Arranjos, buquês e cestas. Encomende pelo WhatsApp." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -23,27 +24,34 @@
       --shadow-sm: 0 6px 18px rgba(16,24,40,0.06);
       --shadow-md: 0 20px 40px rgba(16,24,40,0.08);
       --transition: 240ms cubic-bezier(.2,.9,.3,1);
+      --max-width:1200px;
+      --success:#10B981;
+      --danger:#EF4444;
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{font-family:'Poppins',sans-serif;background:linear-gradient(180deg,var(--bg),#fff);color:#111;margin:0;line-height:1.45}
+    body{font-family:'Poppins',sans-serif;background:linear-gradient(180deg,var(--bg),#fff);color:#111;margin:0;line-height:1.45;-webkit-font-smoothing:antialiased}
     a{color:inherit}
 
     /* Header */
     header{position:sticky;top:0;z-index:1200;background:rgba(255,255,255,0.9);backdrop-filter:saturate(120%) blur(6px);box-shadow:var(--shadow-sm)}
-    .nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;gap:12px}
+    .nav{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;gap:12px}
     .brand{display:flex;align-items:center;gap:12px;font-weight:700}
-    .brand i{font-size:26px;color:var(--primary-dark)}
-    .brand span{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--primary-dark)}
+    .brand i{font-size:28px;color:var(--primary-dark)}
+    .brand span{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--primary-dark);line-height:1}
+    .brand small{display:block;font-size:11px;font-weight:600;color:var(--muted)}
 
     .nav-actions{display:flex;gap:12px;align-items:center}
-    .btn-whatsapp{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;padding:10px 16px;border-radius:999px;font-weight:600;box-shadow:0 6px 18px rgba(37,211,102,0.16);border:none}
+    .btn-whatsapp{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;padding:10px 16px;border-radius:999px;font-weight:600;box-shadow:0 6px 18px rgba(37,211,102,0.16);border:none;text-decoration:none}
     .btn-whatsapp i{font-size:16px}
 
     /* Hero */
-    .hero{max-width:1200px;margin:18px auto;padding:28px 20px;display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:center}
-    @media (max-width:980px){.hero{grid-template-columns:1fr;}}
-    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.7),rgba(255,255,255,0.5));padding:28px;border-radius:var(--radius);box-shadow:var(--shadow-md);}
+    .hero{max-width:var(--max-width);margin:18px auto;padding:28px 20px;display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:center}
+    @media (max-width:980px){.hero{grid-template-columns:1fr;padding:20px}} 
+    @media (max-width:720px){.hero{grid-template-columns:1fr 1fr}} 
+
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.76),rgba(255,255,255,0.5));padding:28px;border-radius:var(--radius);box-shadow:var(--shadow-md);}
     .hero-title{font-family:'Playfair Display',serif;font-size:2rem;color:var(--primary-dark);margin-bottom:8px}
     .hero-sub{color:var(--muted);margin-bottom:18px}
 
@@ -52,6 +60,7 @@
     .search{flex:1;display:flex;gap:8px;align-items:center;background:var(--card);padding:8px;border-radius:12px;border:1px solid rgba(0,0,0,0.04)}
     .search input{border:0;outline:0;padding:8px;font-size:14px;width:100%;background:transparent}
     .chip{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:8px 12px;border-radius:999px;font-weight:600;cursor:pointer}
+    .chip.active{background:linear-gradient(90deg,var(--primary),var(--primary-dark));color:#fff;border-color:transparent}
 
     /* Features */
     .features{display:flex;gap:12px;margin:18px 0}
@@ -59,7 +68,7 @@
     .feature i{font-size:20px;color:var(--primary)}
 
     /* Products grid */
-    .products-wrap{max-width:1200px;margin:10px auto;padding:0 20px}
+    .products-wrap{max-width:var(--max-width);margin:10px auto;padding:0 20px}
     .controls-row{display:flex;justify-content:space-between;align-items:center;margin:6px 0}
     .grid{display:grid;grid-template-columns:repeat(1,1fr);gap:18px}
     @media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
@@ -76,15 +85,19 @@
     .desc{font-size:13px;color:var(--muted);flex:1}
     .meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
     .price{font-weight:800;color:var(--primary-dark)}
+    .price small{font-weight:600;color:var(--muted);font-size:12px}
     .actions{display:flex;gap:8px}
     .btn-small{padding:8px 10px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
     .btn-outline{background:transparent;border:1px solid rgba(0,0,0,0.06)}
     .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff}
 
-    .badge{position:absolute;left:12px;top:12px;background:rgba(255,255,255,0.85);padding:6px 10px;border-radius:999px;font-weight:700;border:1px solid rgba(0,0,0,0.06)}
+    .badge{position:absolute;left:12px;top:12px;background:rgba(255,255,255,0.95);padding:6px 10px;border-radius:999px;font-weight:700;border:1px solid rgba(0,0,0,0.06)}
+    .badge.sale{background:linear-gradient(90deg,#FFF0F6,#FFE6EF);color:var(--primary-dark);border:1px solid rgba(226,24,90,0.06)}
+    .badge.pulse{animation:pulse 2s infinite}
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
 
     /* Floating whatsapp */
-    .fab-whatsapp{position:fixed;right:18px;bottom:18px;background:var(--accent);color:#fff;border-radius:999px;padding:14px 16px;box-shadow:0 10px 30px rgba(37,211,102,0.12);z-index:1300}
+    .fab-whatsapp{position:fixed;right:18px;bottom:18px;background:var(--accent);color:#fff;border-radius:999px;padding:14px 16px;box-shadow:0 10px 30px rgba(37,211,102,0.12);z-index:1300;text-decoration:none}
 
     /* Modal */
     .modal{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:flex;align-items:center;justify-content:center;padding:20px;visibility:hidden;opacity:0;transition:opacity var(--transition),visibility var(--transition)}
@@ -95,55 +108,62 @@
     .modal-body{padding:18px}
 
     footer{background:#111;color:#ddd;padding:28px 20px;margin-top:30px}
-    .footer-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between}
+    .footer-inner{max-width:var(--max-width);margin:0 auto;display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between}
     .footer-inner p{margin:0}
 
     /* small helpers */
     .muted{color:var(--muted)}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
+    /* tiny responsive niceties */
+    @media(max-width:480px){
+      .hero{grid-template-columns:1fr}
+      .brand span{font-size:1rem}
+      .hero-title{font-size:1.5rem}
+    }
   </style>
 </head>
 <body>
 
   <!--
     DICAS DE CUSTOMIZAÇÃO RÁPIDA (edite aqui):
-    - Trocar número WhatsApp: altere a variável phoneNumber no final do arquivo (script).
+    - Trocar número WhatsApp: altere a constante `phoneNumber` no final do arquivo (script).
     - Trocar imagens/produtos: edite a array `products` no script; cada item tem: id, title, category, price, img, badge, desc.
-    - Se preferir HTML estático ao invés de geração por JS, copie o template de card dentro da função renderProductCard.
+    - Configurações adicionais: `enableFavorites` (salvar favoritos no localStorage), `defaultSort`.
+    - Se preferir HTML estático ao invés de geração por JS, copie o template de card dentro da função `renderProductCard`.
   -->
 
   <header>
     <div class="nav">
-      <div class="brand">
-        <i class="fas fa-seedling"></i>
-        <span>BellaFlor <small style="display:block;font-size:11px;font-weight:600;color:var(--muted)">Artur Nogueira</small></span>
+      <div class="brand" aria-label="BellaFlor - Artur Nogueira">
+        <i class="fas fa-seedling" aria-hidden="true"></i>
+        <span>BellaFlor <small>Artur Nogueira</small></span>
       </div>
 
-      <div class="nav-actions">
-        <button class="chip" id="allFilter">Todos</button>
-        <button class="chip" data-category="Romântico">Romântico</button>
-        <button class="chip" data-category="Decoração">Decoração</button>
-        <button class="chip" data-category="Cestas">Cestas</button>
-        <button class="chip" data-category="Homenagem">Homenagem</button>
+      <div class="nav-actions" role="navigation" aria-label="filtros e contato">
+        <button class="chip" id="allFilter" aria-pressed="true" tabindex="0">Todos</button>
+        <button class="chip" data-category="Romântico" tabindex="0">Romântico</button>
+        <button class="chip" data-category="Decoração" tabindex="0">Decoração</button>
+        <button class="chip" data-category="Cestas" tabindex="0">Cestas</button>
+        <button class="chip" data-category="Homenagem" tabindex="0">Homenagem</button>
 
-        <a class="btn-whatsapp" id="headerWa" href="#" target="_blank" aria-label="Contactar pelo WhatsApp"><i class="fab fa-whatsapp"></i> (19) 99802-8205</a>
+        <a class="btn-whatsapp" id="headerWa" href="#" target="_blank" aria-label="Contactar pelo WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i> (19) 99802-8205</a>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" aria-labelledby="heroTitle">
       <div class="hero-card">
-        <div class="hero-title">Flores que Encantam — Entrega Rápida</div>
+        <h1 id="heroTitle" class="hero-title">Flores que Encantam — Entrega Rápida</h1>
         <p class="hero-sub">Arranjos frescos, buquês personalizados e cestas para todas as ocasiões. Encomende via WhatsApp com atendimento humano.</p>
 
-        <div style="margin-top:14px" class="controls">
-          <div class="search" role="search" aria-label="Pesquisar produtos">
-            <i class="fas fa-search" style="color:var(--muted)"></i>
-            <input id="searchInput" placeholder="Buscar por buquê, flor ou ocasião..." />
+        <div style="margin-top:14px" class="controls" role="search">
+          <div class="search" aria-hidden="false">
+            <i class="fas fa-search" style="color:var(--muted)" aria-hidden="true"></i>
+            <input id="searchInput" placeholder="Buscar por buquê, flor ou ocasião..." aria-label="Pesquisar produtos" />
           </div>
-          <select id="sortSelect" class="chip" style="padding:8px 12px;">
+          <select id="sortSelect" class="chip" style="padding:8px 12px;" aria-label="Ordenar produtos">
             <option value="default">Ordenar: Destaques</option>
             <option value="price_asc">Menor preço</option>
             <option value="price_desc">Maior preço</option>
@@ -152,14 +172,14 @@
         </div>
 
         <div class="features" style="margin-top:18px">
-          <div class="feature"><i class="fas fa-truck"></i><div><strong>Entrega em Artur Nogueira</strong><div class="muted">Mesmo dia (em horários selecionados)</div></div></div>
-          <div class="feature"><i class="fas fa-hand-holding-heart"></i><div><strong>Feito à mão</strong><div class="muted">Floristas experientes</div></div></div>
-          <div class="feature"><i class="fas fa-award"></i><div><strong>Qualidade Premium</strong><div class="muted">Flores selecionadas diariamente</div></div></div>
+          <div class="feature"><i class="fas fa-truck" aria-hidden="true"></i><div><strong>Entrega em Artur Nogueira</strong><div class="muted">Mesmo dia (em horários selecionados)</div></div></div>
+          <div class="feature"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i><div><strong>Feito à mão</strong><div class="muted">Floristas experientes</div></div></div>
+          <div class="feature"><i class="fas fa-award" aria-hidden="true"></i><div><strong>Qualidade Premium</strong><div class="muted">Flores selecionadas diariamente</div></div></div>
         </div>
 
       </div>
 
-      <div style="display:flex;flex-direction:column;gap:12px">
+      <aside style="display:flex;flex-direction:column;gap:12px" aria-label="promoções e destaque">
         <div style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:18px;border-radius:12px;box-shadow:var(--shadow-md)">
           <div style="font-weight:800;font-size:1.05rem">Promoção de Natal</div>
           <div style="margin-top:6px;font-size:13px;">Descontos especiais em buquês selecionados. Peça pelo WhatsApp e feche em minutos.</div>
@@ -172,21 +192,21 @@
             <div class="muted" style="font-size:13px">Envie suas dúvidas e finalize a compra rapidamente.</div>
           </div>
         </div>
-      </div>
+      </aside>
     </section>
 
-    <section class="products-wrap">
+    <section class="products-wrap" aria-labelledby="productsLabel">
       <div class="controls-row">
         <div><strong id="resultsCount">20</strong> produtos encontrados</div>
         <div class="muted">Filtre por categoria ou busque pelo nome</div>
       </div>
 
-      <div id="grid" class="grid" aria-live="polite"></div>
+      <div id="grid" class="grid" aria-live="polite" aria-label="lista de produtos"></div>
 
     </section>
 
     <!-- Modal quick view -->
-    <div id="modal" class="modal" role="dialog" aria-hidden="true">
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
       <div class="modal-card" role="document">
         <div class="modal-media" id="modalMedia"></div>
         <div class="modal-body">
@@ -206,7 +226,7 @@
 
   </main>
 
-  <a id="floatingWa" class="fab-whatsapp" href="#" target="_blank" aria-label="Abrir WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a id="floatingWa" class="fab-whatsapp" href="#" target="_blank" aria-label="Abrir WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
 
   <footer>
     <div class="footer-inner">
@@ -221,7 +241,7 @@
       </div>
       <div style="min-width:220px;display:flex;flex-direction:column;gap:8px">
         <div style="font-weight:700">Redes</div>
-        <div style="display:flex;gap:8px"><a href="#" class="muted"><i class="fab fa-instagram"></i> Instagram</a> <a href="#" class="muted"><i class="fab fa-facebook-f"></i> Facebook</a></div>
+        <div style="display:flex;gap:8px"><a href="#" class="muted"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a> <a href="#" class="muted"><i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook</a></div>
       </div>
     </div>
     <div style="text-align:center;margin-top:18px;color:#888">&copy; 2025 BellaFlor Artur Nogueira. Todos os direitos reservados.</div>
@@ -229,11 +249,12 @@
 
   <script>
     /* ====== CONFIGURATION ====== */
-    // Altere apenas este número para mudar para o seu WhatsApp (formato: 55 + DDD + número sem sinais)
-    const phoneNumber = '5519998028205';
+    // Altere apenas estas variáveis para customizar:
+    const phoneNumber = '5519998028205'; // 55 + DDD + número (apenas dígitos)
+    const enableFavorites = true; // salvar favoritos no localStorage
+    const defaultSort = 'default';
 
-    // Produtos: altere, adicione ou remova objetos conforme necessário.
-    // Campos: id, title, category, price (string), img, badge (opcional), desc
+    /* ====== PRODUCTS (20 itens mínimo) ====== */
     const products = [
       {id:1,title:'Buquê de Rosas Vermelhas - 12 unidades',category:'Romântico',price:'R$ 139,90',img:'https://images.unsplash.com/photo-1599739291060-4578e77dac5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',badge:'Mais Vendido',desc:'Rosas frescas selecionadas, embalagem premium.'},
       {id:2,title:'Arranjo Primavera',category:'Decoração',price:'R$ 129,90',img:'https://images.unsplash.com/photo-1563241527-3004b7be025f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',desc:'Mix vibrante de flores da estação em vaso de vidro.'},
@@ -274,8 +295,27 @@
     const floatingWa = document.getElementById('floatingWa');
 
     /* ====== UTILIDADES ====== */
-    function waLinkFor(product){
-      const text = encodeURIComponent(`Olá, gostaria de encomendar: *${product.title}* — ${product.price}. \nID: ${product.id}`);
+    function escapeHtml(s){return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+
+    // Converte strings de preço como "R$ 99,90" ou "R$ 99,90/mês" em número 99.9
+    function parsePriceToNumber(priceStr){
+      if(!priceStr) return 0;
+      // remove tudo que não seja dígito, vírgula ou ponto
+      let s = priceStr.replace(/[^0-9,\.]/g,'').trim();
+      // Se existir ambas '.' e ',' assumimos que '.' é separador de milhares -> remover '.'
+      if(s.indexOf('.') !== -1 && s.indexOf(',') !== -1){ s = s.replace(/\./g,''); }
+      // trocar vírgula por ponto
+      s = s.replace(/,/g,'.');
+      const n = parseFloat(s);
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function formatBRL(n){
+      return n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+    }
+
+    function waLinkFor(product,qty=1){
+      const text = encodeURIComponent(`Olá, gostaria de encomendar: *${product.title}* — ${product.price}${qty>1?` (x${qty})`:''}.\nID: ${product.id}`);
       return `https://wa.me/${phoneNumber}?text=${text}`;
     }
 
@@ -283,27 +323,53 @@
     function renderProductCard(p){
       const el = document.createElement('article');
       el.className = 'card';
+      el.setAttribute('data-id',p.id);
       el.innerHTML = `
         <div class="media">
-          ${p.badge?`<div class="badge">${p.badge}</div>`:''}
-          <img loading="lazy" alt="${p.title}" src="${p.img}" />
+          ${p.badge?`<div class="badge ${p.badge.toLowerCase().includes('oferta')||p.badge.toLowerCase().includes('sazonal')? 'sale':''}">${escapeHtml(p.badge)}</div>`:''}
+          <img loading="lazy" alt="${escapeHtml(p.title)}" src="${p.img}" />
         </div>
         <div class="card-body">
-          <div class="category">${p.category}</div>
-          <div class="title">${p.title}</div>
-          <div class="desc">${p.desc}</div>
+          <div class="category">${escapeHtml(p.category)}</div>
+          <div class="title">${escapeHtml(p.title)}</div>
+          <div class="desc">${escapeHtml(p.desc)}</div>
           <div class="meta">
-            <div class="price">${p.price}</div>
+            <div class="price">${escapeHtml(p.price)}</div>
             <div class="actions">
-              <button class="btn-small btn-outline" data-action="quick" data-id="${p.id}">Ver</button>
-              <a class="btn-small btn-primary" href="${waLinkFor(p)}" target="_blank">Comprar</a>
+              <button class="btn-small btn-outline" data-action="quick" data-id="${p.id}" aria-label="Ver ${escapeHtml(p.title)}">Ver</button>
+              <a class="btn-small btn-primary" href="${waLinkFor(p)}" target="_blank" rel="noopener">Comprar</a>
             </div>
           </div>
         </div>`;
+
+      // Accessibility: make the card focusable and open quick view on Enter
+      el.tabIndex = 0;
+      el.addEventListener('keydown', (e)=>{ if(e.key === 'Enter'){ openModal(p); } });
+
+      // Favorite button (small heart) if enabled
+      if(enableFavorites){
+        const fav = document.createElement('button');
+        fav.className = 'chip';
+        fav.style.position = 'absolute';
+        fav.style.right = '12px';
+        fav.style.top = '12px';
+        fav.style.padding = '6px 8px';
+        fav.style.borderRadius = '999px';
+        fav.setAttribute('aria-label','Favoritar produto');
+        fav.innerHTML = `<i class="fa-regular fa-heart"></i>`;
+        fav.addEventListener('click',(ev)=>{ ev.stopPropagation(); toggleFavorite(p.id, fav); });
+        el.querySelector('.media').appendChild(fav);
+        // set initial state
+        if(isFavorite(p.id)) fav.innerHTML = `<i class="fa-solid fa-heart"></i>`;
+      }
+
       return el;
     }
 
+    /* Modal behavior with small focus trap */
+    let lastFocused = null;
     function openModal(product){
+      lastFocused = document.activeElement;
       modal.classList.add('open');
       modal.setAttribute('aria-hidden','false');
       modalTitle.textContent = product.title;
@@ -312,15 +378,32 @@
       modalPrice.textContent = product.price;
       modalMedia.innerHTML = `<img src="${product.img}" alt="${product.title}" style="width:100%;height:100%;object-fit:cover">`;
       modalBuy.onclick = ()=> window.open(waLinkFor(product), '_blank');
+      // focus trap simple
+      modal.querySelector('#modalClose').focus();
+      document.body.style.overflow = 'hidden';
     }
 
     function closeModal(){
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+      if(lastFocused) lastFocused.focus();
     }
 
     modalClose.addEventListener('click', closeModal);
     modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal();});
+
+    /* Favorites */
+    function favoriteKey(){ return 'bellaflor_favs_v1'; }
+    function favoritesList(){ try{ return JSON.parse(localStorage.getItem(favoriteKey())||'[]'); }catch(e){return []} }
+    function isFavorite(id){ return favoritesList().includes(id); }
+    function toggleFavorite(id, btn){
+      const list = favoritesList();
+      const idx = list.indexOf(id);
+      if(idx === -1){ list.push(id); btn.innerHTML = `<i class="fa-solid fa-heart"></i>`; }
+      else { list.splice(idx,1); btn.innerHTML = `<i class="fa-regular fa-heart"></i>`; }
+      localStorage.setItem(favoriteKey(), JSON.stringify(list));
+    }
 
     /* Filter / search / sort */
     function applyFilters(){
@@ -333,9 +416,9 @@
       if(q) filtered = filtered.filter(p => (p.title + ' ' + p.desc + ' ' + p.category).toLowerCase().includes(q));
 
       // Sorting
-      const sort = sortSelect.value;
-      if(sort === 'price_asc') filtered.sort((a,b)=>parseFloat(a.price.replace(/[R$ ,\/mês]/g,'')) - parseFloat(b.price.replace(/[R$ ,\/mês]/g,'')));
-      if(sort === 'price_desc') filtered.sort((a,b)=>parseFloat(b.price.replace(/[R$ ,\/mês]/g,'')) - parseFloat(a.price.replace(/[R$ ,\/mês]/g,'')));
+      const sort = sortSelect.value || defaultSort;
+      if(sort === 'price_asc') filtered.sort((a,b)=>parsePriceToNumber(a.price) - parsePriceToNumber(b.price));
+      if(sort === 'price_desc') filtered.sort((a,b)=>parsePriceToNumber(b.price) - parsePriceToNumber(a.price));
       if(sort === 'name_az') filtered.sort((a,b)=>a.title.localeCompare(b.title,'pt-BR'));
 
       renderGrid(filtered);
@@ -343,15 +426,14 @@
 
     function renderGrid(list){
       grid.innerHTML = '';
-      if(!list.length){ grid.innerHTML = '<div class="muted">Nenhum produto encontrado.</div>'; resultsCount.textContent = 0; return; }
+      if(!list.length){ grid.innerHTML = '<div class="muted">Nenhum produto encontrado. Tente outra busca ou remova filtros.</div>'; resultsCount.textContent = 0; return; }
       resultsCount.textContent = list.length;
-      list.forEach(p => {
-        const card = renderProductCard(p);
-        grid.appendChild(card);
-      });
+      const fragment = document.createDocumentFragment();
+      list.forEach(p => fragment.appendChild(renderProductCard(p)));
+      grid.appendChild(fragment);
     }
 
-    // Chips behaviour
+    // Chips behaviour (keyboard + mouse)
     document.querySelectorAll('.chip').forEach(ch => {
       ch.addEventListener('click', ()=>{
         document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
@@ -363,6 +445,7 @@
         }
         applyFilters();
       });
+      ch.addEventListener('keydown',(e)=>{ if(e.key === 'Enter') ch.click(); });
     });
 
     // Delegate quick view
@@ -394,8 +477,8 @@
     // Progressive enhancement: make chips "Todos" active by default
     document.getElementById('allFilter').classList.add('active');
 
-    // If you want to export this as static HTML, run `document.documentElement.outerHTML` in the console and copy.
-
+    // Expose some helpers to console for quick editing
+    window.BellaFlor = { products, applyFilters, renderGrid, parsePriceToNumber };
   </script>
 
 </body>
