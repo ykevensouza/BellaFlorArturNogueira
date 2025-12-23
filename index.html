@@ -3,39 +3,46 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-  <meta name="theme-color" content="#9D174D">
-  
-  <title>BellaFlor | Floricultura Boutique em Artur Nogueira</title>
-  <meta name="description" content="Arranjos florais exclusivos, cestas de café e presentes de luxo em Artur Nogueira." />
+  <meta name="theme-color" content="#881337"> <title>BellaFlor Boutique | Floricultura Premium em Artur Nogueira</title>
+  <meta name="description" content="A floricultura mais exclusiva de Artur Nogueira. Arranjos de luxo, cestas de café da manhã e presentes inesquecíveis. Entrega rápida." />
+  <meta name="keywords" content="floricultura, artur nogueira, flores, buquê, cestas, presentes, luxo, rosas" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     /* =========================================
-       1. DESIGN SYSTEM (Edite as cores aqui)
-       ========================================= */
+      1. DESIGN SYSTEM & VARIÁVEIS CSS
+      (Edite as cores e fontes aqui para mudar a marca)
+      =========================================
+    */
     :root {
-      /* Paleta de Cores Boutique */
-      --primary: #9D174D;       /* Marsala Nobre */
-      --primary-light: #FCE7F3; /* Rosa Pálido */
-      --secondary: #064E3B;     /* Verde Botânico Profundo */
-      --accent: #D97706;        /* Ouro */
+      /* Cores da Marca */
+      --color-primary: #881337;       /* Marsala Profundo (Luxo) */
+      --color-primary-light: #FFF1F2; /* Fundo suave rosa */
+      --color-secondary: #064E3B;     /* Verde Botânico */
+      --color-gold: #B45309;          /* Dourado para detalhes */
+      --color-accent: #F59E0B;        /* Laranja suave para destaques */
+
+      /* Cores Neutras */
+      --bg-body: #FFFCF9;             /* Papel Creme (Mais sofisticado que branco) */
+      --bg-card: #FFFFFF;
+      --bg-footer: #1C1917;
       
-      --bg-body: #FFFCF9;       /* Creme Suave (Papel de Carta) */
-      --surface: #FFFFFF;       /* Branco Puro */
-      
-      --text-main: #1F2937;
-      --text-muted: #64748B;
-      
-      /* Sombras e Bordas */
-      --radius: 12px;
-      --radius-pill: 50px;
-      --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
-      --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+      /* Tipografia */
+      --text-dark: #1F2937;
+      --text-gray: #6B7280;
+      --text-light: #F9FAFB;
+
+      /* UI Elements */
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 32px;
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -46,333 +53,575 @@
     body {
       font-family: 'Lato', sans-serif;
       background-color: var(--bg-body);
-      color: var(--text-main);
+      color: var(--text-dark);
       line-height: 1.6;
       overflow-x: hidden;
     }
 
-    h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; color: var(--text-main); line-height: 1.2; }
+    /* Títulos Elegantes */
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--text-dark); line-height: 1.1; }
+    
+    /* Imagens e Links */
     img { max-width: 100%; display: block; object-fit: cover; }
-    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    a { text-decoration: none; color: inherit; transition: var(--transition); cursor: pointer; }
     button { cursor: pointer; border: none; background: none; font-family: inherit; transition: var(--transition); }
+    ul { list-style: none; }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    /* Classes Utilitárias */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .section-padding { padding: 80px 0; }
+    .text-center { text-align: center; }
     .hidden { display: none !important; }
+    
+    /* Título de Seção com Linha Decorativa */
+    .section-title {
+      font-size: 2.5rem; margin-bottom: 1rem; position: relative; display: inline-block;
+    }
+    .section-subtitle {
+      color: var(--color-gold); text-transform: uppercase; letter-spacing: 3px; font-size: 0.85rem; font-weight: 700; display: block; margin-bottom: 10px;
+    }
+
+    /* Scrollbar Personalizada */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-body); }
+    ::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
 
     /* =========================================
-       2. HEADER GLASSMORPHISM
-       ========================================= */
+      2. COMPONENTES DE UI
+      =========================================
+    */
+
+    /* Top Bar (Faixa de Aviso) */
+    .top-bar {
+      background-color: var(--color-primary); color: white;
+      text-align: center; font-size: 0.8rem; padding: 8px 0;
+      letter-spacing: 1px; font-weight: 300;
+    }
+
+    /* Header & Nav */
     header {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255, 252, 249, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 999;
+      background: rgba(255, 252, 249, 0.9);
+      backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
       border-bottom: 1px solid rgba(0,0,0,0.05);
-      padding: 15px 0;
+      padding: 15px 0; transition: var(--transition);
     }
-    
+    header.scrolled { padding: 10px 0; box-shadow: var(--shadow-sm); }
+
     .nav-flex { display: flex; justify-content: space-between; align-items: center; }
-    
-    .brand { display: flex; align-items: center; gap: 10px; }
-    .brand i { font-size: 32px; color: var(--primary); background: -webkit-linear-gradient(45deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .brand-text h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.5px; margin: 0; }
-    .brand-text span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-weight: 700; display: block; }
 
-    .header-actions { display: flex; gap: 15px; align-items: center; }
-    
-    .btn-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--primary-light); color: var(--primary); font-size: 1.1rem; }
-    .btn-icon:hover { background: var(--primary); color: white; transform: rotate(15deg); }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo i { font-size: 28px; color: var(--color-primary); }
+    .logo-text h1 { font-size: 1.5rem; font-weight: 700; margin: 0; letter-spacing: -0.5px; }
+    .logo-text span { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-gray); display: block; }
 
-    /* =========================================
-       3. HERO SECTION (BANNER)
-       ========================================= */
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--text-dark); position: relative; }
+    .nav-links a::after {
+      content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0;
+      background-color: var(--color-primary); transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--color-primary); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .header-icons { display: flex; gap: 15px; }
+    .icon-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #E5E7EB; display: flex; align-items: center; justify-content: center; color: var(--text-dark); position: relative; }
+    .icon-btn:hover { background: var(--color-primary); color: white; border-color: var(--color-primary); }
+    .cart-count { position: absolute; top: -5px; right: -5px; background: var(--color-gold); color: white; font-size: 0.7rem; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+
+    /* Hero Section (Banner Principal) */
     .hero {
-      position: relative;
-      height: 60vh; min-height: 500px;
-      border-radius: 0 0 40px 40px;
-      overflow: hidden;
+      position: relative; height: 80vh; min-height: 600px;
       display: flex; align-items: center; justify-content: center;
-      text-align: center; color: white;
-      margin-bottom: 50px;
+      text-align: center; color: white; overflow: hidden;
+      margin: 20px; border-radius: 30px; /* Borda moderna */
     }
-    
     .hero-bg {
-      position: absolute; inset: 0;
-      /* Imagem de Fundo de Alta Qualidade */
-      background: url('https://images.unsplash.com/photo-1507290439931-a861b5a38200?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
-      filter: brightness(0.6);
-      transform: scale(1.05);
-      animation: zoomSlow 20s infinite alternate;
+      position: absolute; inset: 0; z-index: 1;
+      /* Imagem de Fundo Premium */
+      background: url('https://images.unsplash.com/photo-1563241527-3af801d8e12f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+      filter: brightness(0.65);
+      animation: kenBurns 20s infinite alternate;
     }
+    @keyframes kenBurns { from { transform: scale(1); } to { transform: scale(1.1); } }
 
-    @keyframes zoomSlow { from { transform: scale(1); } to { transform: scale(1.1); } }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; animation: fadeInUp 1s ease; }
+    .hero h2 { font-size: 4rem; margin-bottom: 20px; font-weight: 400; font-style: italic; }
+    .hero p { font-size: 1.25rem; font-weight: 300; margin-bottom: 40px; opacity: 0.95; }
 
-    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
-    .hero-badge { display: inline-block; padding: 6px 16px; background: rgba(255,255,255,0.2); backdrop-filter: blur(4px); border-radius: 50px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.3); }
-    
-    .hero h2 { font-size: 3.5rem; margin-bottom: 15px; text-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-    .hero p { font-size: 1.25rem; font-weight: 300; margin-bottom: 30px; opacity: 0.9; }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: white; color: var(--text-dark);
+      padding: 16px 36px; border-radius: 50px;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;
+      transition: var(--transition);
+    }
+    .btn-cta:hover { background: var(--color-primary); color: white; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
-    /* Search Input Flutuante */
+    /* Barra de Busca Flutuante */
     .search-wrapper {
-      background: white; padding: 8px; border-radius: 50px;
-      display: flex; width: 100%; max-width: 500px; margin: 0 auto;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      margin-top: 30px;
+      background: rgba(255,255,255,0.95); padding: 8px 8px 8px 25px; border-radius: 50px;
+      display: flex; width: 100%; max-width: 500px; margin-left: auto; margin-right: auto;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     }
-    .search-input { flex: 1; border: none; padding: 12px 20px; font-size: 1rem; border-radius: 50px; color: var(--text-main); }
-    .search-btn { background: var(--primary); color: white; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-    .search-btn:hover { background: var(--secondary); }
+    .search-input { flex: 1; border: none; background: transparent; font-size: 1rem; color: var(--text-dark); }
+    .search-btn { background: var(--color-primary); color: white; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
-    /* =========================================
-       4. FILTROS & CATEGORIAS
-       ========================================= */
-    .filter-section { margin-bottom: 40px; padding: 10px 0; overflow-x: auto; white-space: nowrap; -ms-overflow-style: none; scrollbar-width: none; }
-    .filter-section::-webkit-scrollbar { display: none; }
-    
-    .chip-container { display: inline-flex; gap: 10px; padding: 0 5px; }
-    .chip {
-      padding: 10px 24px; border-radius: 50px; border: 1px solid #E2E8F0;
-      background: white; color: var(--text-muted); font-weight: 600; font-size: 0.9rem;
-      display: flex; align-items: center; gap: 8px;
+    /* Benefícios (Ícones) */
+    .benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: -50px; position: relative; z-index: 10; padding-bottom: 50px; }
+    .benefit-card { background: white; padding: 30px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); text-align: center; transition: var(--transition); }
+    .benefit-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+    .benefit-card i { font-size: 2.5rem; color: var(--color-gold); margin-bottom: 15px; }
+    .benefit-card h4 { font-size: 1.1rem; margin-bottom: 10px; font-weight: 700; }
+    .benefit-card p { font-size: 0.9rem; color: var(--text-gray); }
+
+    /* Filtros e Categorias */
+    .filter-scroll {
+      display: flex; gap: 12px; overflow-x: auto; padding: 10px 5px 20px; 
+      justify-content: center; flex-wrap: wrap;
     }
-    .chip:hover { border-color: var(--primary); color: var(--primary); }
-    .chip.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 4px 12px rgba(157, 23, 77, 0.3); }
+    .filter-btn {
+      padding: 10px 24px; border-radius: 50px; border: 1px solid #E5E7EB;
+      background: white; color: var(--text-gray); font-weight: 600; font-size: 0.9rem;
+      white-space: nowrap;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--color-primary); background: var(--color-primary); color: white;
+      box-shadow: 0 4px 12px rgba(136, 19, 55, 0.3);
+    }
 
-    /* =========================================
-       5. GRID DE PRODUTOS
-       ========================================= */
-    .catalog-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; font-size: 0.9rem; color: var(--text-muted); }
+    /* Grid de Produtos */
+    .catalog-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 40px;
+      margin-top: 40px;
+    }
     
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; padding-bottom: 60px; }
-
-    .card {
-      background: white; border-radius: var(--radius);
-      box-shadow: var(--shadow-sm); overflow: hidden; position: relative;
+    .product-card {
+      background: var(--bg-card); border-radius: var(--radius-md);
+      transition: var(--transition); position: relative;
       border: 1px solid rgba(0,0,0,0.03);
-      display: flex; flex-direction: column;
     }
-    .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+    .product-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
 
-    .card-image-box { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; background: #f3f4f6; }
-    .card-image-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-    .card:hover .card-image-box img { transform: scale(1.1); }
-
-    .card-badge { position: absolute; top: 15px; left: 15px; background: white; color: var(--text-main); font-size: 0.7rem; font-weight: 800; padding: 4px 12px; border-radius: 4px; text-transform: uppercase; z-index: 2; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    
-    .card-like { 
-      position: absolute; top: 15px; right: 15px; 
-      width: 36px; height: 36px; background: rgba(255,255,255,0.9); border-radius: 50%; 
-      display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 2;
-      transition: 0.2s; color: #ccc;
+    .card-img-wrap {
+      position: relative; width: 100%; aspect-ratio: 4/5; /* Formato retrato elegante */
+      overflow: hidden; border-radius: var(--radius-md) var(--radius-md) 0 0; background: #f3f4f6;
     }
-    .card-like:hover { transform: scale(1.1); }
-    .card-like.active { color: #ef4444; }
+    .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+    .product-card:hover .card-img-wrap img { transform: scale(1.1); }
 
-    .card-details { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-    .card-cat { color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
-    .card-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 10px; color: var(--text-main); }
+    .card-badge {
+      position: absolute; top: 15px; left: 15px; background: white; color: var(--text-dark);
+      font-size: 0.7rem; font-weight: 800; padding: 6px 14px; border-radius: 4px;
+      text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 2;
+    }
     
-    .card-bottom { margin-top: auto; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #f3f4f6; padding-top: 15px; }
-    .price { font-size: 1.25rem; font-weight: 700; color: var(--secondary); }
-    .btn-buy-mini { color: var(--primary); font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; }
-    .btn-buy-mini:hover { gap: 8px; }
+    .card-quick-view {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(255,255,255,0.9); padding: 12px;
+      text-align: center; color: var(--color-primary); font-weight: 700; font-size: 0.85rem;
+      transform: translateY(100%); transition: var(--transition);
+      cursor: pointer;
+    }
+    .product-card:hover .card-quick-view { transform: translateY(0); }
 
-    /* =========================================
-       6. MODAL DO PRODUTO
-       ========================================= */
+    .card-info { padding: 20px; }
+    .card-cat { color: var(--color-gold); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px; }
+    .card-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 10px; color: var(--text-dark); font-family: 'Playfair Display', serif; }
+    .card-price { font-size: 1.25rem; font-weight: 700; color: var(--color-secondary); }
+
+    /* Seção Sobre */
+    .about-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; background: white; border-radius: 30px; overflow: hidden; }
+    .about-img { width: 100%; height: 100%; min-height: 400px; }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; }
+    .about-text { padding: 60px; }
+    .about-text h3 { font-size: 2.5rem; margin-bottom: 20px; color: var(--color-primary); }
+    .about-text p { color: var(--text-gray); margin-bottom: 20px; font-size: 1.05rem; }
+
+    /* FAQ (Accordion) */
+    .faq-container { max-width: 800px; margin: 0 auto; }
+    .accordion-item { border-bottom: 1px solid #E5E7EB; padding: 20px 0; }
+    .accordion-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; font-size: 1.1rem; color: var(--text-dark); }
+    .accordion-header:hover { color: var(--color-primary); }
+    .accordion-icon { transition: transform 0.3s; }
+    .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; }
+    .accordion-item.active .accordion-body { max-height: 200px; margin-top: 15px; }
+    .accordion-item.active .accordion-icon { transform: rotate(180deg); }
+
+    /* Modal de Produto */
     .modal-overlay {
       position: fixed; inset: 0; z-index: 2000;
-      background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(8px);
       display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none; transition: 0.3s;
-      padding: 20px;
+      opacity: 0; pointer-events: none; transition: 0.3s; padding: 20px;
     }
     .modal-overlay.open { opacity: 1; pointer-events: all; }
 
     .modal {
-      background: white; width: 100%; max-width: 900px;
+      background: white; width: 100%; max-width: 1000px;
       border-radius: 20px; overflow: hidden;
-      display: grid; grid-template-columns: 1fr 1fr;
+      display: grid; grid-template-columns: 1.2fr 1fr;
       box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-      transform: scale(0.95); transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform: scale(0.95); transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     .modal-overlay.open .modal { transform: scale(1); }
 
-    .modal-img-area { height: 100%; min-height: 400px; background: #f0f0f0; }
-    .modal-img-area img { width: 100%; height: 100%; object-fit: cover; }
+    .modal-gallery { background: #f9fafb; position: relative; height: 100%; min-height: 500px; }
+    .modal-gallery img { width: 100%; height: 100%; object-fit: cover; }
+    .modal-content { padding: 50px; display: flex; flex-direction: column; justify-content: center; position: relative; }
     
-    .modal-content { padding: 40px; position: relative; display: flex; flex-direction: column; justify-content: center; }
-    .close-modal { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: #999; cursor: pointer; }
-    .close-modal:hover { color: var(--primary); }
+    .close-modal { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; color: #999; cursor: pointer; z-index: 10; }
+    .close-modal:hover { color: var(--color-primary); }
 
-    .modal-tag { display: inline-block; background: var(--primary-light); color: var(--primary); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 15px; align-self: flex-start; }
-    .modal h2 { font-size: 2.2rem; margin-bottom: 15px; color: var(--text-main); }
-    .modal-price { font-size: 2rem; color: var(--secondary); font-weight: 700; margin-bottom: 25px; display: block; }
-    .modal-desc { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 30px; line-height: 1.7; }
+    .modal-tag { display: inline-block; background: var(--color-primary-light); color: var(--color-primary); padding: 5px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; margin-bottom: 20px; align-self: flex-start; text-transform: uppercase; letter-spacing: 1px; }
+    .modal-title { font-size: 2.5rem; margin-bottom: 10px; line-height: 1.1; }
+    .modal-price { font-size: 2.2rem; color: var(--color-secondary); font-weight: 700; margin-bottom: 25px; }
+    .modal-desc { color: var(--text-gray); font-size: 1rem; margin-bottom: 40px; line-height: 1.8; }
 
     .btn-whatsapp {
-      background: #25D366; color: white; width: 100%; padding: 16px; border-radius: 12px;
-      font-size: 1.1rem; font-weight: 700; display: flex; justify-content: center; align-items: center; gap: 10px;
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+      background: #25D366; color: white; width: 100%; padding: 18px; border-radius: 12px;
+      font-size: 1.1rem; font-weight: 700; display: flex; justify-content: center; align-items: center; gap: 12px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); transition: var(--transition);
     }
-    .btn-whatsapp:hover { background: #20BA5A; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); }
-
-    /* =========================================
-       7. MOBILE RESPONSIVE
-       ========================================= */
-    @media(max-width: 768px) {
-      .hero { height: auto; min-height: 400px; border-radius: 0 0 30px 30px; }
-      .hero h2 { font-size: 2.2rem; }
-      .modal { grid-template-columns: 1fr; max-height: 90vh; overflow-y: auto; }
-      .modal-img-area { height: 250px; }
-      .modal-content { padding: 25px; }
-    }
-
-    /* Botão Flutuante Geral */
-    .float-wa {
-      position: fixed; bottom: 30px; right: 30px; z-index: 999;
-      width: 60px; height: 60px; background: #25D366; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; color: white; font-size: 30px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3); animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+    .btn-whatsapp:hover { background: #1ebc51; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
 
     /* Footer */
-    footer { background: #1a1a1a; color: #888; padding: 60px 0 20px; text-align: center; margin-top: 80px; }
-    .footer-logo { font-family: 'Playfair Display'; font-size: 2rem; color: white; margin-bottom: 10px; display: inline-block; }
+    footer { background: var(--bg-footer); color: #9CA3AF; padding: 80px 0 30px; margin-top: 100px; font-size: 0.9rem; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 60px; }
+    .footer-col h5 { color: white; font-size: 1.1rem; margin-bottom: 20px; font-family: 'Playfair Display'; }
+    .footer-col ul li { margin-bottom: 12px; }
+    .footer-col ul li a:hover { color: white; text-decoration: underline; }
+    .social-links { display: flex; gap: 15px; margin-top: 20px; }
+    .social-links a { font-size: 1.2rem; transition: 0.3s; }
+    .social-links a:hover { color: white; transform: translateY(-3px); }
+    .copyright { border-top: 1px solid #333; padding-top: 30px; text-align: center; font-size: 0.8rem; }
+
+    /* Botão Flutuante */
+    .float-wa {
+      position: fixed; bottom: 30px; right: 30px; z-index: 990;
+      width: 64px; height: 64px; background: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; color: white; font-size: 32px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3); animation: pulse 2s infinite;
+    }
+    .float-wa:hover { transform: scale(1.1); }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+
+    /* Responsividade */
+    @media(max-width: 1024px) {
+      .about-section { grid-template-columns: 1fr; }
+      .about-img { min-height: 300px; order: -1; }
+      .nav-links { display: none; } /* Poderia adicionar um menu hambúrguer aqui */
+    }
+    @media(max-width: 768px) {
+      .hero { height: auto; min-height: 500px; border-radius: 0 0 20px 20px; margin: 0; }
+      .hero h2 { font-size: 2.8rem; }
+      .modal { grid-template-columns: 1fr; max-height: 90vh; overflow-y: auto; }
+      .modal-gallery { min-height: 300px; }
+      .modal-content { padding: 30px 20px; }
+      .section-title { font-size: 2rem; }
+      .filter-scroll { justify-content: flex-start; }
+    }
+    
+    /* Animação de Scroll Reveal */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
   </style>
 </head>
 <body>
 
-  <header>
+  <div class="top-bar">
+    FRETE GRÁTIS PARA ARTUR NOGUEIRA ACIMA DE R$ 199,00 🚚
+  </div>
+
+  <header id="header">
     <div class="container nav-flex">
-      <div class="brand">
+      <div class="logo">
         <i class="fa-brands fa-pagelines"></i>
-        <div class="brand-text">
+        <div class="logo-text">
           <h1>BellaFlor</h1>
           <span>Artur Nogueira</span>
         </div>
       </div>
-      <div class="header-actions">
-        <button class="btn-icon" onclick="alert('Seus favoritos estão salvos neste dispositivo!')">
-          <i class="far fa-heart"></i>
+      
+      <nav class="nav-links">
+        <a href="#home">Início</a>
+        <a href="#catalogo">Coleção</a>
+        <a href="#sobre">A Marca</a>
+        <a href="#faq">Dúvidas</a>
+      </nav>
+
+      <div class="header-icons">
+        <button class="icon-btn" onclick="document.getElementById('searchInput').focus()">
+          <i class="fas fa-search"></i>
         </button>
-        <a href="https://wa.me/5519998028205" target="_blank" class="btn-icon" style="background:#25D366; color:white">
+        <a href="https://wa.me/5519998028205" target="_blank" class="icon-btn">
           <i class="fab fa-whatsapp"></i>
         </a>
       </div>
     </div>
   </header>
 
-  <section class="hero">
+  <section id="home" class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <span class="hero-badge">Entrega Rápida na Região</span>
+      <span style="font-family:'Playfair Display'; font-style:italic; font-size:1.2rem;">Arte Floral & Presentes</span>
       <h2>Emoções que florescem</h2>
-      <p>Buquês autorais e cestas exclusivas para tornar cada momento inesquecível.</p>
+      <p>Buquês autorais, cestas de café e presentes exclusivos. <br>Design floral sofisticado para os momentos mais importantes da sua vida.</p>
       
+      <a href="#catalogo" class="btn-cta">
+        Ver Coleção <i class="fas fa-arrow-right"></i>
+      </a>
+
       <div class="search-wrapper">
-        <input type="text" id="searchInput" class="search-input" placeholder="O que você procura? (ex: Rosas, Amor...)">
+        <input type="text" id="searchInput" class="search-input" placeholder="O que você deseja enviar hoje? (ex: Rosas...)">
         <button class="search-btn"><i class="fas fa-search"></i></button>
       </div>
     </div>
   </section>
 
   <main class="container">
-    
-    <div class="filter-section">
-      <div class="chip-container">
-        <button class="chip active" data-cat="all">✨ Todos</button>
-        <button class="chip" data-cat="romantico">💘 Amor & Romance</button>
-        <button class="chip" data-cat="aniversario">🎂 Aniversário</button>
-        <button class="chip" data-cat="cestas">🧺 Cestas Matinais</button>
-        <button class="chip" data-cat="orquideas">🌸 Orquídeas</button>
-        <button class="chip" data-cat="condolencias">🕊️ Condolências</button>
+
+    <div class="benefits reveal">
+      <div class="benefit-card">
+        <i class="fas fa-truck-fast"></i>
+        <h4>Entrega Expressa</h4>
+        <p>Receba no mesmo dia em Artur Nogueira e região para pedidos até as 14h.</p>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-leaf"></i>
+        <h4>Frescor Garantido</h4>
+        <p>Flores selecionadas diariamente pelos melhores produtores de Holambra.</p>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-shield-heart"></i>
+        <h4>Pagamento Seguro</h4>
+        <p>Pague via Pix ou Cartão no ato da entrega com total segurança.</p>
       </div>
     </div>
 
-    <div class="catalog-info">
-      <span id="countResult">Carregando coleção exclusiva...</span>
-      <span><i class="fas fa-sort-amount-down"></i> Populares</span>
-    </div>
-
-    <div id="grid" class="grid">
+    <section id="catalogo" class="section-padding">
+      <div class="text-center reveal">
+        <span class="section-subtitle">Nossa Coleção</span>
+        <h3 class="section-title">Escolha o Presente Perfeito</h3>
       </div>
+
+      <div class="filter-scroll reveal">
+        <button class="filter-btn active" data-cat="all">✨ Ver Tudo</button>
+        <button class="filter-btn" data-cat="romantico">💘 Amor</button>
+        <button class="filter-btn" data-cat="aniversario">🎂 Aniversário</button>
+        <button class="filter-btn" data-cat="cestas">🧺 Cestas Matinais</button>
+        <button class="filter-btn" data-cat="orquideas">🌸 Orquídeas</button>
+        <button class="filter-btn" data-cat="maternidade">👶 Maternidade</button>
+        <button class="filter-btn" data-cat="condolencias">🕊️ Condolências</button>
+      </div>
+
+      <div class="catalog-info text-center" style="margin-top: 20px; color: #999; font-size: 0.9rem;">
+        <span id="countResult">Carregando produtos...</span>
+      </div>
+
+      <div id="grid" class="catalog-grid">
+        </div>
+      
+    </section>
+
+    <section id="sobre" class="section-padding reveal">
+      <div class="about-section">
+        <div class="about-img">
+          <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Florista trabalhando">
+        </div>
+        <div class="about-text">
+          <span class="section-subtitle">Sobre a BellaFlor</span>
+          <h3>Design Floral com Alma</h3>
+          <p>Localizada no coração de Artur Nogueira, a <strong>BellaFlor</strong> não é apenas uma floricultura, é um atelier de sentimentos. Desde 2018, transformamos as flores mais frescas de Holambra em arranjos autorais que contam histórias.</p>
+          <p>Nossa missão é levar sofisticação e carinho em cada detalhe, desde a escolha da fita de cetim até a entrega pontual nas mãos de quem você ama.</p>
+          
+          <div style="margin-top: 30px; display: flex; gap: 20px;">
+            <div>
+              <h4 style="font-size: 1.5rem; color: var(--color-primary);">5k+</h4>
+              <span style="font-size: 0.8rem; text-transform: uppercase;">Entregas</span>
+            </div>
+            <div>
+              <h4 style="font-size: 1.5rem; color: var(--color-primary);">100%</h4>
+              <span style="font-size: 0.8rem; text-transform: uppercase;">Satisfação</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section-padding reveal">
+      <div class="text-center" style="margin-bottom: 50px;">
+        <span class="section-subtitle">Dúvidas Frequentes</span>
+        <h3 class="section-title">Como podemos ajudar?</h3>
+      </div>
+      
+      <div class="faq-container">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            Vocês entregam em quais cidades?
+            <i class="fas fa-chevron-down accordion-icon"></i>
+          </div>
+          <div class="accordion-body">
+            Entregamos principalmente em Artur Nogueira, Holambra, Cosmópolis e Engenheiro Coelho. Para outras regiões, consulte disponibilidade no WhatsApp.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            Consigo agendar o horário da entrega?
+            <i class="fas fa-chevron-down accordion-icon"></i>
+          </div>
+          <div class="accordion-body">
+            Sim! Trabalhamos com janelas de entrega (Manhã, Tarde). Para horários específicos (ex: exatamente às 10h), solicitamos uma pequena taxa de exclusividade.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            Quais as formas de pagamento?
+            <i class="fas fa-chevron-down accordion-icon"></i>
+          </div>
+          <div class="accordion-body">
+            Aceitamos Pix (com 5% de desconto), Cartão de Crédito e Débito (link de pagamento ou maquininha na entrega) e Transferência Bancária.
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            Posso personalizar o arranjo?
+            <i class="fas fa-chevron-down accordion-icon"></i>
+          </div>
+          <div class="accordion-body">
+            Com certeza. Somos um atelier boutique. Chame no WhatsApp e montaremos algo exclusivo conforme seu gosto e orçamento.
+          </div>
+        </div>
+      </div>
+    </section>
 
   </main>
 
   <div id="modalProduct" class="modal-overlay">
     <div class="modal">
-      <div class="modal-img-area">
+      <div class="modal-gallery">
+        <span class="close-modal mobile-only" onclick="closeModal()">&times;</span>
         <img id="mImg" src="" alt="">
       </div>
       <div class="modal-content">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <span class="close-modal desktop-only" onclick="closeModal()">&times;</span>
+        
         <span class="modal-tag" id="mCat">Categoria</span>
-        <h2 id="mTitle">Nome do Produto</h2>
+        <h2 class="modal-title" id="mTitle">Nome do Produto</h2>
         <span class="modal-price" id="mPrice">R$ 00,00</span>
-        <p class="modal-desc" id="mDesc">Descrição...</p>
+        
+        <p class="modal-desc" id="mDesc">Descrição detalhada do produto...</p>
         
         <a href="#" id="mBtn" target="_blank" class="btn-whatsapp">
-          <i class="fab fa-whatsapp"></i> Pedir no WhatsApp
+          <i class="fab fa-whatsapp"></i> Comprar pelo WhatsApp
         </a>
-        <p style="text-align: center; margin-top: 15px; font-size: 0.8rem; color: #aaa;">
-          <i class="fas fa-lock"></i> Pagamento seguro via Pix ou Cartão na entrega
-        </p>
+        
+        <div style="margin-top: 20px; font-size: 0.85rem; color: #888; display: flex; gap: 15px; justify-content: center;">
+          <span><i class="fas fa-check-circle" style="color:var(--color-secondary)"></i> Em estoque</span>
+          <span><i class="fas fa-truck" style="color:var(--color-secondary)"></i> Entrega rápida</span>
+        </div>
       </div>
     </div>
   </div>
 
-  <a href="https://wa.me/5519998028205?text=Olá! Vim pelo site da BellaFlor." class="float-wa" target="_blank">
+  <a href="https://wa.me/5519998028205?text=Olá! Vim pelo site da BellaFlor." class="float-wa" target="_blank" title="Falar no WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
 
   <footer>
     <div class="container">
-      <span class="footer-logo">BellaFlor</span>
-      <p>Rua 13 de Maio, Centro - Artur Nogueira, SP</p>
-      <div style="margin: 20px 0; font-size: 1.5rem; display: flex; justify-content: center; gap: 20px;">
-        <i class="fab fa-instagram hover-color"></i>
-        <i class="fab fa-facebook hover-color"></i>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="margin-bottom: 20px;">
+            <i class="fa-brands fa-pagelines" style="font-size: 30px; color:white;"></i>
+            <div class="logo-text">
+              <h1 style="color: white;">BellaFlor</h1>
+            </div>
+          </div>
+          <p>Transformando sentimentos em gestos concretos através da arte floral.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h5>Navegação</h5>
+          <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#catalogo">Catálogo Completo</a></li>
+            <li><a href="#sobre">Quem Somos</a></li>
+            <li><a href="#faq">Política de Entrega</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Categorias</h5>
+          <ul>
+            <li><a href="#" onclick="filterByFooter('romantico')">Amor & Romance</a></li>
+            <li><a href="#" onclick="filterByFooter('cestas')">Cestas de Café</a></li>
+            <li><a href="#" onclick="filterByFooter('orquideas')">Orquídeas</a></li>
+            <li><a href="#" onclick="filterByFooter('condolencias')">Coroas e Homenagens</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Contato</h5>
+          <ul>
+            <li><i class="fab fa-whatsapp"></i> (19) 99802-8205</li>
+            <li><i class="fas fa-map-marker-alt"></i> Rua 13 de Maio, Centro<br>Artur Nogueira, SP</li>
+            <li><i class="far fa-envelope"></i> contato@bellaflor.com.br</li>
+          </ul>
+        </div>
       </div>
-      <p style="font-size: 0.8rem; color: #555;">&copy; 2024 BellaFlor Boutique. Todos os direitos reservados.</p>
+      
+      <div class="copyright">
+        <p>&copy; 2024 BellaFlor Boutique. Todos os direitos reservados. Design Premium.</p>
+      </div>
     </div>
   </footer>
 
   <script>
     /* =========================================
-       8. LÓGICA & DADOS (Edite aqui)
-       ========================================= */
-    const WHATSAPP_NUM = "5519998028205"; // Seu número
+      3. LÓGICA JAVASCRIPT
+      =========================================
+    */
 
-    // Banco de Dados com Imagens Reais (Unsplash)
+    // --- Configuração ---
+    const WHATSAPP_NUM = "5519998028205"; 
+    
+    // --- Banco de Dados (20 Produtos Premium) ---
     const products = [
       {
         id: 1,
-        title: "Buquê Imperial 12 Rosas",
+        title: "Buquê Imperial 24 Rosas",
         category: "romantico",
-        price: 189.90,
-        badge: "Mais Vendido",
+        price: 389.90,
+        badge: "Luxo",
         img: "https://images.unsplash.com/photo-1596541223131-d85188f5f4b4?auto=format&fit=crop&w=800&q=80",
-        desc: "A declaração perfeita. 12 rosas vermelhas colombianas selecionadas a dedo, com folhagens nobres, envolvidas em papel kraft premium e laço de cetim."
+        desc: "O máximo da sofisticação. 24 rosas vermelhas tipo exportação, folhagens nobres de eucalipto, acabamento em papel kraft premium e laço de cetim duplo."
       },
       {
         id: 2,
-        title: "Cesta Amanhecer de Luxo",
+        title: "Cesta Amanhecer Parisiense",
         category: "cestas",
-        price: 249.90,
-        badge: "Completa",
+        price: 289.00,
+        badge: "Best Seller",
         img: "https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=800&q=80",
-        desc: "Desperte sorrisos. Inclui: Suco de uva integral, frutas da estação, croissants, geleia importada, frios, drip coffee e um mini arranjo floral do dia."
+        desc: "Uma experiência gastronômica. Inclui croissants amanteigados, geleia francesa, suco integral, frutas selecionadas, frios, drip coffee e um mini buquê."
       },
       {
         id: 3,
-        title: "Orquídea Phalaenopsis Branca",
+        title: "Orquídea Phalaenopsis Cascata",
         category: "orquideas",
-        price: 145.00,
-        badge: "Clássico",
+        price: 185.00,
+        badge: "Durável",
         img: "https://images.unsplash.com/photo-1566904692482-d856b3e32b00?auto=format&fit=crop&w=800&q=80",
-        desc: "Sofisticação pura. Orquídea de haste dupla plantada em vaso de cerâmica vitrificada. Durável e elegante, ideal para decorar interiores ou presentear."
+        desc: "Elegância pura em cerâmica branca. Orquídea branca de haste dupla formato cascata, ideal para decorar ambientes sofisticados."
       },
       {
         id: 4,
@@ -380,24 +629,24 @@
         category: "aniversario",
         price: 155.00,
         img: "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=800&q=80",
-        desc: "Energia vibrante. Uma caixa cartonada rígida (Hat Box) recheada com girassóis frescos e gipsófilas. O presente perfeito para desejar felicidade."
+        desc: "Energia vibrante. Hat Box rígida preta recheada com girassóis frescos e gipsófilas. O presente perfeito para desejar felicidade."
       },
       {
         id: 5,
-        title: "Kit Vinho & Romance",
+        title: "Kit Vinho & Romance Premium",
         category: "romantico",
-        price: 280.00,
+        price: 320.00,
         badge: "Presentão",
         img: "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=800&q=80",
-        desc: "Noite inesquecível. Contém: 1 Vinho Tinto Chileno Reserva, caixa de bombons finos (Ferrero ou Lindt) e um buquê com 6 rosas vermelhas."
+        desc: "Noite inesquecível. Vinho Tinto Reserva Chileno, caixa de bombons Lindt e um buquê com 6 rosas vermelhas aveludadas."
       },
       {
         id: 6,
-        title: "Coroa de Homenagem",
+        title: "Coroa de Condolências 'Paz'",
         category: "condolencias",
-        price: 350.00,
+        price: 450.00,
         img: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80",
-        desc: "Uma última homenagem com respeito e dignidade. Flores brancas (Lírios, Rosas e Crisântemos). Inclui faixa personalizada. Entrega prioritária."
+        desc: "Homenagem digna e respeitosa. Flores brancas (Lírios, Rosas e Crisântemos) em grande porte. Faixa de homenagem inclusa. Entrega prioritária."
       },
       {
         id: 7,
@@ -406,57 +655,163 @@
         price: 98.90,
         badge: "Oferta",
         img: "https://images.unsplash.com/photo-1563241527-3af801d8e12f?auto=format&fit=crop&w=800&q=80",
-        desc: "Alegria em forma de flor. Um mix rústico e encantador de astromélias, gérberas e margaridas em vaso de vidro. Cores vibrantes."
+        desc: "Alegria rústica. Um mix encantador de astromélias, gérberas e margaridas em vaso de vidro. Cores vibrantes para alegrar o dia."
       },
       {
         id: 8,
-        title: "Terrário Suculentas Modern",
+        title: "Terrário Moderno",
         category: "orquideas",
         price: 89.90,
         img: "https://images.unsplash.com/photo-1463936575229-46994167ea3b?auto=format&fit=crop&w=800&q=80",
-        desc: "Design e natureza. Mini jardim de suculentas montado em vidro geométrico. Perfeito para escritórios e casas modernas. Baixa manutenção."
+        desc: "Design e natureza. Mini jardim de suculentas montado em vidro geométrico. Perfeito para escritórios e casas modernas."
+      },
+      {
+        id: 9,
+        title: "Buquê de Lírios Rosa",
+        category: "maternidade",
+        price: 165.00,
+        badge: "Delicado",
+        img: "https://images.unsplash.com/photo-1525626294711-30c1e8785860?auto=format&fit=crop&w=800&q=80",
+        desc: "Perfeito para celebrar a vida. Lírios rosas perfumados combinados com gipsófilas. Embalagem em tons pastéis."
+      },
+      {
+        id: 10,
+        title: "Vaso de Begônia",
+        category: "aniversario",
+        price: 65.00,
+        img: "https://images.unsplash.com/photo-1623838237583-42e7d825c942?auto=format&fit=crop&w=800&q=80",
+        desc: "Um clássico que nunca erra. Begônia florida em cachepot decorativo. Disponível em vermelho, rosa ou branco."
+      },
+      {
+        id: 11,
+        title: "Cesta Chá da Tarde",
+        category: "cestas",
+        price: 199.90,
+        img: "https://images.unsplash.com/photo-1550523827-9c9636253450?auto=format&fit=crop&w=800&q=80",
+        desc: "Para um momento relaxante. Seleção de chás importados, biscoitos finos, bolo caseiro, caneca de porcelana e flores do campo."
+      },
+      {
+        id: 12,
+        title: "Urso Teddy & Chocolates",
+        category: "romantico",
+        price: 140.00,
+        img: "https://images.unsplash.com/photo-1582299775347-199bd6838a6a?auto=format&fit=crop&w=800&q=80",
+        desc: "Fofura garantida. Urso de pelúcia antialérgico (30cm) abraçado a uma caixa de Ferrero Rocher 12 unidades."
+      },
+      {
+        id: 13,
+        title: "Buquê Seco Boho Chic",
+        category: "aniversario",
+        price: 129.00,
+        badge: "Tendência",
+        img: "https://images.unsplash.com/photo-1515516089376-88db1e26e9c0?auto=format&fit=crop&w=800&q=80",
+        desc: "Durabilidade e estilo. Arranjo com flores desidratadas, trigo e capim dos pampas. Ideal para decoração de interiores."
+      },
+      {
+        id: 14,
+        title: "Rosas Brancas da Paz",
+        category: "condolencias",
+        price: 189.00,
+        img: "https://images.unsplash.com/photo-1533616688419-b7a585564566?auto=format&fit=crop&w=800&q=80",
+        desc: "Para expressar solidariedade ou pedir desculpas. 12 Rosas brancas importadas em embalagem sóbria e elegante."
+      },
+      {
+        id: 15,
+        title: "Cesta Happy Hour",
+        category: "cestas",
+        price: 260.00,
+        badge: "Masculino",
+        img: "https://images.unsplash.com/photo-1549488344-c7079f856fdd?auto=format&fit=crop&w=800&q=80",
+        desc: "Para eles. 2 Cervejas artesanais, mix de castanhas, salame, queijo provolone, azeitonas e pão italiano."
+      },
+      {
+        id: 16,
+        title: "Tulipas Amarelas",
+        category: "aniversario",
+        price: 199.90,
+        badge: "Sazonal",
+        img: "https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=800&q=80",
+        desc: "Raras e belas. Maço com 10 tulipas amarelas frescas (verificar disponibilidade da estação). Símbolo de prosperidade."
+      },
+      {
+        id: 17,
+        title: "Vaso de Antúrio Vermelho",
+        category: "orquideas",
+        price: 75.00,
+        img: "https://images.unsplash.com/photo-1612363351914-747684df6246?auto=format&fit=crop&w=800&q=80",
+        desc: "Resistência e cor. Planta de fácil cuidado, ideal para ambientes internos com pouca luz direta. Vaso incluso."
+      },
+      {
+        id: 18,
+        title: "Box Baby Blue",
+        category: "maternidade",
+        price: 180.00,
+        img: "https://images.unsplash.com/photo-1516205651411-a41674526547?auto=format&fit=crop&w=800&q=80",
+        desc: "Boas-vindas ao bebê. Box redonda com hortênsias azuis e rosas brancas. Acompanha um mini cartão de nascimento."
+      },
+      {
+        id: 19,
+        title: "Cone de Rosa Única",
+        category: "romantico",
+        price: 45.00,
+        img: "https://images.unsplash.com/photo-1559563362-c667ba5f5480?auto=format&fit=crop&w=800&q=80",
+        desc: "Um gesto singelo. Uma única rosa vermelha colombiana em embalagem de cone luxo preta. Impactante."
+      },
+      {
+        id: 20,
+        title: "Cesta Diet & Light",
+        category: "cestas",
+        price: 230.00,
+        img: "https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?auto=format&fit=crop&w=800&q=80",
+        desc: "Saúde com sabor. Frutas, iogurte desnatado, granola sem açúcar, pão integral, queijo branco e chá verde."
       }
     ];
 
-    /* --- Sistema de Renderização --- */
+    // --- Elementos do DOM ---
     const grid = document.getElementById('grid');
     const searchInput = document.getElementById('searchInput');
     const countEl = document.getElementById('countResult');
+    const modal = document.getElementById('modalProduct');
     let activeFilter = 'all';
 
+    // --- Função de Renderização ---
     function render(list) {
       grid.innerHTML = "";
       
       if(list.length === 0) {
-        grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 40px; color: #999;">
-          <i class="fas fa-search" style="font-size: 30px; margin-bottom:15px"></i><br>
-          Nenhum produto encontrado.
-        </div>`;
-        countEl.innerText = "0 produtos";
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1; text-align:center; padding: 60px 20px; color: #999;">
+            <i class="fas fa-search" style="font-size: 40px; margin-bottom:20px; color: var(--color-primary-light);"></i><br>
+            <h4 style="color: var(--text-dark)">Nenhum produto encontrado.</h4>
+            <p>Tente buscar por "rosas", "cestas" ou navegue pelas categorias.</p>
+          </div>`;
+        countEl.innerText = "";
         return;
       }
 
-      countEl.innerText = `${list.length} produtos selecionados`;
+      countEl.innerText = `Exibindo ${list.length} produtos exclusivos`;
 
       list.forEach((p, index) => {
-        // Criação do Card HTML
         const card = document.createElement('article');
-        card.className = 'card';
-        card.style.animation = `fadeUp 0.5s ease forwards ${index * 0.1}s`;
-        card.style.opacity = '0'; // Para animação funcionar
-        
+        card.className = 'product-card';
+        // Efeito escalonado de entrada
+        card.style.animation = `fadeInUp 0.6s ease forwards ${index * 0.05}s`;
+        card.style.opacity = '0'; 
+
         card.innerHTML = `
-          <div class="card-image-box" onclick="openModal(${p.id})">
+          <div class="card-img-wrap" onclick="openModal(${p.id})">
             ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ''}
-            <div class="card-like" onclick="toggleHeart(this, event)"><i class="fas fa-heart"></i></div>
             <img src="${p.img}" alt="${p.title}" loading="lazy">
+            <div class="card-quick-view"><i class="far fa-eye"></i> VISUALIZAÇÃO RÁPIDA</div>
           </div>
-          <div class="card-details" onclick="openModal(${p.id})">
+          <div class="card-info" onclick="openModal(${p.id})">
             <span class="card-cat">${formatCat(p.category)}</span>
             <h3 class="card-title">${p.title}</h3>
-            <div class="card-bottom">
-              <span class="price">${p.price.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</span>
-              <span class="btn-buy-mini">Ver <i class="fas fa-arrow-right"></i></span>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:15px;">
+              <span class="card-price">${p.price.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</span>
+              <button class="icon-btn" style="width:32px; height:32px; border-color:var(--color-primary); color:var(--color-primary);">
+                <i class="fas fa-shopping-bag" style="font-size:0.8rem"></i>
+              </button>
             </div>
           </div>
         `;
@@ -464,31 +819,40 @@
       });
     }
 
-    /* --- Filtros --- */
+    // --- Lógica de Filtros ---
     function filterProducts() {
       const term = searchInput.value.toLowerCase();
       
       const filtered = products.filter(p => {
         const matchCat = activeFilter === 'all' || p.category === activeFilter;
-        const matchTerm = p.title.toLowerCase().includes(term);
+        const matchTerm = p.title.toLowerCase().includes(term) || p.desc.toLowerCase().includes(term);
         return matchCat && matchTerm;
       });
       
       render(filtered);
     }
 
-    document.querySelectorAll('.chip').forEach(btn => {
+    // Event Listeners dos Botões de Categoria
+    document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        document.querySelector('.chip.active').classList.remove('active');
+        document.querySelector('.filter-btn.active').classList.remove('active');
         e.currentTarget.classList.add('active');
         activeFilter = e.currentTarget.dataset.cat;
         filterProducts();
       });
     });
+    
+    // Atalho para filtro via Footer
+    function filterByFooter(cat) {
+      document.getElementById('catalogo').scrollIntoView();
+      // Simula o clique no botão correto
+      const btn = document.querySelector(`.filter-btn[data-cat="${cat}"]`);
+      if(btn) btn.click();
+    }
 
     searchInput.addEventListener('input', filterProducts);
 
-    /* --- Modal --- */
+    // --- Lógica do Modal ---
     function openModal(id) {
       const p = products.find(x => x.id === id);
       if(!p) return;
@@ -499,51 +863,71 @@
       document.getElementById('mPrice').innerText = p.price.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
       document.getElementById('mDesc').innerText = p.desc;
       
-      // Link do WhatsApp dinâmico
-      const msg = `Olá! Gostei do *${p.title}* que vi no site e gostaria de encomendar!`;
+      // Montagem da mensagem do WhatsApp
+      const msg = `Olá, BellaFlor! ✨\nTenho interesse no produto: *${p.title}*.\nPoderiam me passar mais detalhes sobre a entrega?`;
       document.getElementById('mBtn').href = `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(msg)}`;
 
-      document.getElementById('modalProduct').classList.add('open');
-      document.body.style.overflow = 'hidden';
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden'; // Trava o scroll da página
     }
 
     function closeModal() {
-      document.getElementById('modalProduct').classList.remove('open');
+      modal.classList.remove('open');
       document.body.style.overflow = 'auto';
     }
     
     // Fechar ao clicar fora
-    document.getElementById('modalProduct').addEventListener('click', (e) => {
-      if(e.target === document.getElementById('modalProduct')) closeModal();
+    modal.addEventListener('click', (e) => {
+      if(e.target === modal) closeModal();
     });
 
-    /* --- Utilitários --- */
+    // --- Lógica do Acordeão (FAQ) ---
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        item.classList.toggle('active');
+      });
+    });
+
+    // --- Utilitários ---
     function formatCat(slug) {
       const map = {
-        'romantico': 'Romântico', 'aniversario': 'Aniversário', 
+        'romantico': 'Amor & Romance', 'aniversario': 'Aniversário', 
         'cestas': 'Cestas Especiais', 'orquideas': 'Jardim & Orquídeas',
-        'condolencias': 'Condolências'
+        'condolencias': 'Condolências', 'maternidade': 'Bebê & Maternidade'
       };
       return map[slug] || slug;
     }
 
-    function toggleHeart(el, e) {
-      e.stopPropagation();
-      el.classList.toggle('active');
-      // Aqui você poderia salvar no LocalStorage
-    }
+    // --- Efeitos Visuais (Scroll e Header) ---
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if(window.scrollY > 50) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
 
-    // CSS Animation Inject
+    // Intersection Observer para animações ao rolar a página
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Injeção de Animação CSS no JS
     const styleSheet = document.createElement("style");
     styleSheet.innerText = `
-      @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(20px); }
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
         to { opacity: 1; transform: translateY(0); }
       }
     `;
     document.head.appendChild(styleSheet);
 
-    // Init
+    // Inicialização
     render(products);
 
   </script>
