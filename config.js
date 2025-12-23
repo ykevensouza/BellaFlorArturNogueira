@@ -65,7 +65,7 @@ window.SITE_CONFIG = {
 
     footer: {
       desc: "Transformando sentimentos em gestos concretos através da arte floral.",
-      copy: "&copy; 2024 BellaFlor Boutique. Todos os direitos reservados. Design Premium."
+      copy: "&copy; 2025 BellaFlor Boutique. Todos os direitos reservados. Design Premium."
     }
   },
 
