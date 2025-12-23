@@ -3,8 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-  <meta name="theme-color" content="#881337"> <title>BellaFlor Boutique | Floricultura Premium em Artur Nogueira</title>
-  <meta name="description" content="A floricultura mais exclusiva de Artur Nogueira. Arranjos de luxo, cestas de café da manhã e presentes inesquecíveis. Entrega rápida." />
+  <meta name="theme-color" content="#881337"> 
+  
+  <title id="page-title">BellaFlor Boutique | Floricultura Premium em Artur Nogueira</title>
+  <meta id="meta-desc" name="description" content="A floricultura mais exclusiva de Artur Nogueira. Arranjos de luxo, cestas de café da manhã e presentes inesquecíveis. Entrega rápida." />
   <meta name="keywords" content="floricultura, artur nogueira, flores, buquê, cestas, presentes, luxo, rosas" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,19 +18,19 @@
   <style>
     /* =========================================
       1. DESIGN SYSTEM & VARIÁVEIS CSS
-      (Edite as cores e fontes aqui para mudar a marca)
+      (Mantido Original)
       =========================================
     */
     :root {
-      /* Cores da Marca */
-      --color-primary: #881337;       /* Marsala Profundo (Luxo) */
-      --color-primary-light: #FFF1F2; /* Fundo suave rosa */
-      --color-secondary: #064E3B;     /* Verde Botânico */
-      --color-gold: #B45309;          /* Dourado para detalhes */
-      --color-accent: #F59E0B;        /* Laranja suave para destaques */
+      /* Cores da Marca - Serão sobrescritas pelo JS se houver config */
+      --color-primary: #881337;       
+      --color-primary-light: #FFF1F2; 
+      --color-secondary: #064E3B;     
+      --color-gold: #B45309;          
+      --color-accent: #F59E0B;        
 
       /* Cores Neutras */
-      --bg-body: #FFFCF9;             /* Papel Creme (Mais sofisticado que branco) */
+      --bg-body: #FFFCF9;             
       --bg-card: #FFFFFF;
       --bg-footer: #1C1917;
       
@@ -135,11 +137,11 @@
       position: relative; height: 80vh; min-height: 600px;
       display: flex; align-items: center; justify-content: center;
       text-align: center; color: white; overflow: hidden;
-      margin: 20px; border-radius: 30px; /* Borda moderna */
+      margin: 20px; border-radius: 30px; 
     }
     .hero-bg {
       position: absolute; inset: 0; z-index: 1;
-      /* Imagem de Fundo Premium */
+      /* Background configurado via CSS, mas preparado para ser sobrescrito via JS */
       background: url('https://images.unsplash.com/photo-1563241527-3af801d8e12f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
       filter: brightness(0.65);
       animation: kenBurns 20s infinite alternate;
@@ -206,7 +208,7 @@
     .product-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
 
     .card-img-wrap {
-      position: relative; width: 100%; aspect-ratio: 4/5; /* Formato retrato elegante */
+      position: relative; width: 100%; aspect-ratio: 4/5; 
       overflow: hidden; border-radius: var(--radius-md) var(--radius-md) 0 0; background: #f3f4f6;
     }
     .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
@@ -312,7 +314,7 @@
     @media(max-width: 1024px) {
       .about-section { grid-template-columns: 1fr; }
       .about-img { min-height: 300px; order: -1; }
-      .nav-links { display: none; } /* Poderia adicionar um menu hambúrguer aqui */
+      .nav-links { display: none; } 
     }
     @media(max-width: 768px) {
       .hero { height: auto; min-height: 500px; border-radius: 0 0 20px 20px; margin: 0; }
@@ -332,32 +334,32 @@
 </head>
 <body>
 
-  <div class="top-bar">
+  <div class="top-bar" id="top-bar-text">
     FRETE GRÁTIS PARA ARTUR NOGUEIRA ACIMA DE R$ 199,00 🚚
   </div>
 
   <header id="header">
     <div class="container nav-flex">
       <div class="logo">
-        <i class="fa-brands fa-pagelines"></i>
+        <i class="fa-brands fa-pagelines" id="logo-icon"></i>
         <div class="logo-text">
-          <h1>BellaFlor</h1>
-          <span>Artur Nogueira</span>
+          <h1 id="logo-text">BellaFlor</h1>
+          <span id="logo-subtext">Artur Nogueira</span>
         </div>
       </div>
       
       <nav class="nav-links">
-        <a href="#home">Início</a>
-        <a href="#catalogo">Coleção</a>
-        <a href="#sobre">A Marca</a>
-        <a href="#faq">Dúvidas</a>
+        <a href="#home" id="nav-home">Início</a>
+        <a href="#catalogo" id="nav-catalog">Coleção</a>
+        <a href="#sobre" id="nav-about">A Marca</a>
+        <a href="#faq" id="nav-faq">Dúvidas</a>
       </nav>
 
       <div class="header-icons">
         <button class="icon-btn" onclick="document.getElementById('searchInput').focus()">
           <i class="fas fa-search"></i>
         </button>
-        <a href="https://wa.me/5519998028205" target="_blank" class="icon-btn">
+        <a href="https://wa.me/5519998028205" target="_blank" class="icon-btn" id="header-wa-btn">
           <i class="fab fa-whatsapp"></i>
         </a>
       </div>
@@ -365,13 +367,13 @@
   </header>
 
   <section id="home" class="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-bg" id="hero-bg-el"></div>
     <div class="hero-content">
-      <span style="font-family:'Playfair Display'; font-style:italic; font-size:1.2rem;">Arte Floral & Presentes</span>
-      <h2>Emoções que florescem</h2>
-      <p>Buquês autorais, cestas de café e presentes exclusivos. <br>Design floral sofisticado para os momentos mais importantes da sua vida.</p>
+      <span style="font-family:'Playfair Display'; font-style:italic; font-size:1.2rem;" id="hero-subtitle">Arte Floral & Presentes</span>
+      <h2 id="hero-title">Emoções que florescem</h2>
+      <p id="hero-text">Buquês autorais, cestas de café e presentes exclusivos. <br>Design floral sofisticado para os momentos mais importantes da sua vida.</p>
       
-      <a href="#catalogo" class="btn-cta">
+      <a href="#catalogo" class="btn-cta" id="hero-cta">
         Ver Coleção <i class="fas fa-arrow-right"></i>
       </a>
 
@@ -386,36 +388,36 @@
 
     <div class="benefits reveal">
       <div class="benefit-card">
-        <i class="fas fa-truck-fast"></i>
-        <h4>Entrega Expressa</h4>
-        <p>Receba no mesmo dia em Artur Nogueira e região para pedidos até as 14h.</p>
+        <i class="fas fa-truck-fast" id="ben-1-icon"></i>
+        <h4 id="ben-1-title">Entrega Expressa</h4>
+        <p id="ben-1-desc">Receba no mesmo dia em Artur Nogueira e região para pedidos até as 14h.</p>
       </div>
       <div class="benefit-card">
-        <i class="fas fa-leaf"></i>
-        <h4>Frescor Garantido</h4>
-        <p>Flores selecionadas diariamente pelos melhores produtores de Holambra.</p>
+        <i class="fas fa-leaf" id="ben-2-icon"></i>
+        <h4 id="ben-2-title">Frescor Garantido</h4>
+        <p id="ben-2-desc">Flores selecionadas diariamente pelos melhores produtores de Holambra.</p>
       </div>
       <div class="benefit-card">
-        <i class="fas fa-shield-heart"></i>
-        <h4>Pagamento Seguro</h4>
-        <p>Pague via Pix ou Cartão no ato da entrega com total segurança.</p>
+        <i class="fas fa-shield-heart" id="ben-3-icon"></i>
+        <h4 id="ben-3-title">Pagamento Seguro</h4>
+        <p id="ben-3-desc">Pague via Pix ou Cartão no ato da entrega com total segurança.</p>
       </div>
     </div>
 
     <section id="catalogo" class="section-padding">
       <div class="text-center reveal">
-        <span class="section-subtitle">Nossa Coleção</span>
-        <h3 class="section-title">Escolha o Presente Perfeito</h3>
+        <span class="section-subtitle" id="catalog-subtitle">Nossa Coleção</span>
+        <h3 class="section-title" id="catalog-title">Escolha o Presente Perfeito</h3>
       </div>
 
-      <div class="filter-scroll reveal">
-        <button class="filter-btn active" data-cat="all">✨ Ver Tudo</button>
-        <button class="filter-btn" data-cat="romantico">💘 Amor</button>
-        <button class="filter-btn" data-cat="aniversario">🎂 Aniversário</button>
-        <button class="filter-btn" data-cat="cestas">🧺 Cestas Matinais</button>
-        <button class="filter-btn" data-cat="orquideas">🌸 Orquídeas</button>
-        <button class="filter-btn" data-cat="maternidade">👶 Maternidade</button>
-        <button class="filter-btn" data-cat="condolencias">🕊️ Condolências</button>
+      <div class="filter-scroll reveal" id="filter-container">
+        <button class="filter-btn active" data-cat="all" id="btn-cat-all">✨ Ver Tudo</button>
+        <button class="filter-btn" data-cat="romantico" id="btn-cat-romantico">💘 Amor</button>
+        <button class="filter-btn" data-cat="aniversario" id="btn-cat-aniversario">🎂 Aniversário</button>
+        <button class="filter-btn" data-cat="cestas" id="btn-cat-cestas">🧺 Cestas Matinais</button>
+        <button class="filter-btn" data-cat="orquideas" id="btn-cat-orquideas">🌸 Orquídeas</button>
+        <button class="filter-btn" data-cat="maternidade" id="btn-cat-maternidade">👶 Maternidade</button>
+        <button class="filter-btn" data-cat="condolencias" id="btn-cat-condolencias">🕊️ Condolências</button>
       </div>
 
       <div class="catalog-info text-center" style="margin-top: 20px; color: #999; font-size: 0.9rem;">
@@ -430,22 +432,22 @@
     <section id="sobre" class="section-padding reveal">
       <div class="about-section">
         <div class="about-img">
-          <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Florista trabalhando">
+          <img id="about-img-el" src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Florista trabalhando">
         </div>
         <div class="about-text">
-          <span class="section-subtitle">Sobre a BellaFlor</span>
-          <h3>Design Floral com Alma</h3>
-          <p>Localizada no coração de Artur Nogueira, a <strong>BellaFlor</strong> não é apenas uma floricultura, é um atelier de sentimentos. Desde 2018, transformamos as flores mais frescas de Holambra em arranjos autorais que contam histórias.</p>
-          <p>Nossa missão é levar sofisticação e carinho em cada detalhe, desde a escolha da fita de cetim até a entrega pontual nas mãos de quem você ama.</p>
+          <span class="section-subtitle" id="about-subtitle">Sobre a BellaFlor</span>
+          <h3 id="about-title">Design Floral com Alma</h3>
+          <p id="about-desc-1">Localizada no coração de Artur Nogueira, a <strong>BellaFlor</strong> não é apenas uma floricultura, é um atelier de sentimentos. Desde 2018, transformamos as flores mais frescas de Holambra em arranjos autorais que contam histórias.</p>
+          <p id="about-desc-2">Nossa missão é levar sofisticação e carinho em cada detalhe, desde a escolha da fita de cetim até a entrega pontual nas mãos de quem você ama.</p>
           
           <div style="margin-top: 30px; display: flex; gap: 20px;">
             <div>
-              <h4 style="font-size: 1.5rem; color: var(--color-primary);">5k+</h4>
-              <span style="font-size: 0.8rem; text-transform: uppercase;">Entregas</span>
+              <h4 style="font-size: 1.5rem; color: var(--color-primary);" id="stat-1-val">5k+</h4>
+              <span style="font-size: 0.8rem; text-transform: uppercase;" id="stat-1-label">Entregas</span>
             </div>
             <div>
-              <h4 style="font-size: 1.5rem; color: var(--color-primary);">100%</h4>
-              <span style="font-size: 0.8rem; text-transform: uppercase;">Satisfação</span>
+              <h4 style="font-size: 1.5rem; color: var(--color-primary);" id="stat-2-val">100%</h4>
+              <span style="font-size: 0.8rem; text-transform: uppercase;" id="stat-2-label">Satisfação</span>
             </div>
           </div>
         </div>
@@ -454,44 +456,44 @@
 
     <section id="faq" class="section-padding reveal">
       <div class="text-center" style="margin-bottom: 50px;">
-        <span class="section-subtitle">Dúvidas Frequentes</span>
-        <h3 class="section-title">Como podemos ajudar?</h3>
+        <span class="section-subtitle" id="faq-subtitle">Dúvidas Frequentes</span>
+        <h3 class="section-title" id="faq-title">Como podemos ajudar?</h3>
       </div>
       
       <div class="faq-container">
         <div class="accordion-item">
           <div class="accordion-header">
-            Vocês entregam em quais cidades?
+            <span id="faq-1-q">Vocês entregam em quais cidades?</span>
             <i class="fas fa-chevron-down accordion-icon"></i>
           </div>
-          <div class="accordion-body">
+          <div class="accordion-body" id="faq-1-a">
             Entregamos principalmente em Artur Nogueira, Holambra, Cosmópolis e Engenheiro Coelho. Para outras regiões, consulte disponibilidade no WhatsApp.
           </div>
         </div>
         <div class="accordion-item">
           <div class="accordion-header">
-            Consigo agendar o horário da entrega?
+             <span id="faq-2-q">Consigo agendar o horário da entrega?</span>
             <i class="fas fa-chevron-down accordion-icon"></i>
           </div>
-          <div class="accordion-body">
+          <div class="accordion-body" id="faq-2-a">
             Sim! Trabalhamos com janelas de entrega (Manhã, Tarde). Para horários específicos (ex: exatamente às 10h), solicitamos uma pequena taxa de exclusividade.
           </div>
         </div>
         <div class="accordion-item">
           <div class="accordion-header">
-            Quais as formas de pagamento?
+             <span id="faq-3-q">Quais as formas de pagamento?</span>
             <i class="fas fa-chevron-down accordion-icon"></i>
           </div>
-          <div class="accordion-body">
+          <div class="accordion-body" id="faq-3-a">
             Aceitamos Pix (com 5% de desconto), Cartão de Crédito e Débito (link de pagamento ou maquininha na entrega) e Transferência Bancária.
           </div>
         </div>
         <div class="accordion-item">
           <div class="accordion-header">
-            Posso personalizar o arranjo?
+             <span id="faq-4-q">Posso personalizar o arranjo?</span>
             <i class="fas fa-chevron-down accordion-icon"></i>
           </div>
-          <div class="accordion-body">
+          <div class="accordion-body" id="faq-4-a">
             Com certeza. Somos um atelier boutique. Chame no WhatsApp e montaremos algo exclusivo conforme seu gosto e orçamento.
           </div>
         </div>
@@ -527,7 +529,7 @@
     </div>
   </div>
 
-  <a href="https://wa.me/5519998028205?text=Olá! Vim pelo site da BellaFlor." class="float-wa" target="_blank" title="Falar no WhatsApp">
+  <a href="https://wa.me/5519998028205?text=Olá! Vim pelo site da BellaFlor." class="float-wa" target="_blank" title="Falar no WhatsApp" id="float-wa-btn">
     <i class="fab fa-whatsapp"></i>
   </a>
 
@@ -536,21 +538,21 @@
       <div class="footer-grid">
         <div class="footer-col">
           <div class="logo" style="margin-bottom: 20px;">
-            <i class="fa-brands fa-pagelines" style="font-size: 30px; color:white;"></i>
+            <i class="fa-brands fa-pagelines" style="font-size: 30px; color:white;" id="footer-logo-icon"></i>
             <div class="logo-text">
-              <h1 style="color: white;">BellaFlor</h1>
+              <h1 style="color: white;" id="footer-logo-text">BellaFlor</h1>
             </div>
           </div>
-          <p>Transformando sentimentos em gestos concretos através da arte floral.</p>
+          <p id="footer-desc">Transformando sentimentos em gestos concretos através da arte floral.</p>
           <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-pinterest"></i></a>
+            <a href="#" id="social-ig"><i class="fab fa-instagram"></i></a>
+            <a href="#" id="social-fb"><i class="fab fa-facebook"></i></a>
+            <a href="#" id="social-pin"><i class="fab fa-pinterest"></i></a>
           </div>
         </div>
         
         <div class="footer-col">
-          <h5>Navegação</h5>
+          <h5 id="footer-nav-title">Navegação</h5>
           <ul>
             <li><a href="#home">Início</a></li>
             <li><a href="#catalogo">Catálogo Completo</a></li>
@@ -560,7 +562,7 @@
         </div>
 
         <div class="footer-col">
-          <h5>Categorias</h5>
+          <h5 id="footer-cat-title">Categorias</h5>
           <ul>
             <li><a href="#" onclick="filterByFooter('romantico')">Amor & Romance</a></li>
             <li><a href="#" onclick="filterByFooter('cestas')">Cestas de Café</a></li>
@@ -570,209 +572,188 @@
         </div>
 
         <div class="footer-col">
-          <h5>Contato</h5>
+          <h5 id="footer-contact-title">Contato</h5>
           <ul>
-            <li><i class="fab fa-whatsapp"></i> (19) 99802-8205</li>
-            <li><i class="fas fa-map-marker-alt"></i> Rua 13 de Maio, Centro<br>Artur Nogueira, SP</li>
-            <li><i class="far fa-envelope"></i> contato@bellaflor.com.br</li>
+            <li><i class="fab fa-whatsapp"></i> <span id="footer-phone">(19) 99802-8205</span></li>
+            <li><i class="fas fa-map-marker-alt"></i> <span id="footer-address">Rua 13 de Maio, Centro<br>Artur Nogueira, SP</span></li>
+            <li><i class="far fa-envelope"></i> <span id="footer-email">contato@bellaflor.com.br</span></li>
           </ul>
         </div>
       </div>
       
       <div class="copyright">
-        <p>&copy; 2024 BellaFlor Boutique. Todos os direitos reservados. Design Premium.</p>
+        <p id="footer-copy">&copy; 2024 BellaFlor Boutique. Todos os direitos reservados. Design Premium.</p>
       </div>
     </div>
   </footer>
 
   <script>
     /* =========================================
-      3. LÓGICA JAVASCRIPT
+       CONFIGURAÇÃO CENTRALIZADA (PREPARAÇÃO PARA CONFIG.JS)
+       =========================================
+       Aqui residem os dados padrão. Se window.SITE_CONFIG existir,
+       ele sobrescreverá estes valores no carregamento.
+    */
+    const DEFAULT_CONFIG = {
+      // Cores (CSS Variables)
+      colors: {
+        primary: "#881337",
+        secondary: "#064E3B",
+        gold: "#B45309",
+        accent: "#F59E0B"
+      },
+      // Dados de Contato
+      contact: {
+        whatsapp: "5519998028205",
+        phoneDisplay: "(19) 99802-8205",
+        address: "Rua 13 de Maio, Centro<br>Artur Nogueira, SP",
+        email: "contato@bellaflor.com.br",
+        social: {
+          instagram: "#",
+          facebook: "#",
+          pinterest: "#"
+        }
+      },
+      // Textos do Site
+      texts: {
+        topBar: "FRETE GRÁTIS PARA ARTUR NOGUEIRA ACIMA DE R$ 199,00 🚚",
+        logo: { title: "BellaFlor", subtitle: "Artur Nogueira" },
+        hero: {
+          subtitle: "Arte Floral & Presentes",
+          title: "Emoções que florescem",
+          text: "Buquês autorais, cestas de café e presentes exclusivos. <br>Design floral sofisticado para os momentos mais importantes da sua vida.",
+          bgImage: "url('https://images.unsplash.com/photo-1563241527-3af801d8e12f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"
+        },
+        about: {
+          title: "Design Floral com Alma",
+          desc1: "Localizada no coração de Artur Nogueira, a <strong>BellaFlor</strong> não é apenas uma floricultura, é um atelier de sentimentos. Desde 2018, transformamos as flores mais frescas de Holambra em arranjos autorais que contam histórias.",
+          desc2: "Nossa missão é levar sofisticação e carinho em cada detalhe, desde a escolha da fita de cetim até a entrega pontual nas mãos de quem você ama.",
+          img: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+          stat1: { val: "5k+", label: "Entregas" },
+          stat2: { val: "100%", label: "Satisfação" }
+        },
+        faq: [
+          { q: "Vocês entregam em quais cidades?", a: "Entregamos principalmente em Artur Nogueira, Holambra, Cosmópolis e Engenheiro Coelho. Para outras regiões, consulte disponibilidade no WhatsApp." },
+          { q: "Consigo agendar o horário da entrega?", a: "Sim! Trabalhamos com janelas de entrega (Manhã, Tarde). Para horários específicos (ex: exatamente às 10h), solicitamos uma pequena taxa de exclusividade." },
+          { q: "Quais as formas de pagamento?", a: "Aceitamos Pix (com 5% de desconto), Cartão de Crédito e Débito (link de pagamento ou maquininha na entrega) e Transferência Bancária." },
+          { q: "Posso personalizar o arranjo?", a: "Com certeza. Somos um atelier boutique. Chame no WhatsApp e montaremos algo exclusivo conforme seu gosto e orçamento." }
+        ],
+        footer: {
+          desc: "Transformando sentimentos em gestos concretos através da arte floral.",
+          copy: "&copy; 2024 BellaFlor Boutique. Todos os direitos reservados. Design Premium."
+        }
+      },
+      // Lista de Produtos
+      products: [
+        { id: 1, title: "Buquê Imperial 24 Rosas", category: "romantico", price: 389.90, badge: "Luxo", img: "https://images.unsplash.com/photo-1596541223131-d85188f5f4b4?auto=format&fit=crop&w=800&q=80", desc: "O máximo da sofisticação. 24 rosas vermelhas tipo exportação, folhagens nobres de eucalipto, acabamento em papel kraft premium e laço de cetim duplo." },
+        { id: 2, title: "Cesta Amanhecer Parisiense", category: "cestas", price: 289.00, badge: "Best Seller", img: "https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=800&q=80", desc: "Uma experiência gastronômica. Inclui croissants amanteigados, geleia francesa, suco integral, frutas selecionadas, frios, drip coffee e um mini buquê." },
+        { id: 3, title: "Orquídea Phalaenopsis Cascata", category: "orquideas", price: 185.00, badge: "Durável", img: "https://images.unsplash.com/photo-1566904692482-d856b3e32b00?auto=format&fit=crop&w=800&q=80", desc: "Elegância pura em cerâmica branca. Orquídea branca de haste dupla formato cascata, ideal para decorar ambientes sofisticados." },
+        { id: 4, title: "Box de Girassóis 'Luz'", category: "aniversario", price: 155.00, img: "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=800&q=80", desc: "Energia vibrante. Hat Box rígida preta recheada com girassóis frescos e gipsófilas. O presente perfeito para desejar felicidade." },
+        { id: 5, title: "Kit Vinho & Romance Premium", category: "romantico", price: 320.00, badge: "Presentão", img: "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=800&q=80", desc: "Noite inesquecível. Vinho Tinto Reserva Chileno, caixa de bombons Lindt e um buquê com 6 rosas vermelhas aveludadas." },
+        { id: 6, title: "Coroa de Condolências 'Paz'", category: "condolencias", price: 450.00, img: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80", desc: "Homenagem digna e respeitosa. Flores brancas (Lírios, Rosas e Crisântemos) em grande porte. Faixa de homenagem inclusa. Entrega prioritária." },
+        { id: 7, title: "Mix do Campo Colorido", category: "aniversario", price: 98.90, badge: "Oferta", img: "https://images.unsplash.com/photo-1563241527-3af801d8e12f?auto=format&fit=crop&w=800&q=80", desc: "Alegria rústica. Um mix encantador de astromélias, gérberas e margaridas em vaso de vidro. Cores vibrantes para alegrar o dia." },
+        { id: 8, title: "Terrário Moderno", category: "orquideas", price: 89.90, img: "https://images.unsplash.com/photo-1463936575229-46994167ea3b?auto=format&fit=crop&w=800&q=80", desc: "Design e natureza. Mini jardim de suculentas montado em vidro geométrico. Perfeito para escritórios e casas modernas." },
+        { id: 9, title: "Buquê de Lírios Rosa", category: "maternidade", price: 165.00, badge: "Delicado", img: "https://images.unsplash.com/photo-1525626294711-30c1e8785860?auto=format&fit=crop&w=800&q=80", desc: "Perfeito para celebrar a vida. Lírios rosas perfumados combinados com gipsófilas. Embalagem em tons pastéis." },
+        { id: 10, title: "Vaso de Begônia", category: "aniversario", price: 65.00, img: "https://images.unsplash.com/photo-1623838237583-42e7d825c942?auto=format&fit=crop&w=800&q=80", desc: "Um clássico que nunca erra. Begônia florida em cachepot decorativo. Disponível em vermelho, rosa ou branco." },
+        { id: 11, title: "Cesta Chá da Tarde", category: "cestas", price: 199.90, img: "https://images.unsplash.com/photo-1550523827-9c9636253450?auto=format&fit=crop&w=800&q=80", desc: "Para um momento relaxante. Seleção de chás importados, biscoitos finos, bolo caseiro, caneca de porcelana e flores do campo." },
+        { id: 12, title: "Urso Teddy & Chocolates", category: "romantico", price: 140.00, img: "https://images.unsplash.com/photo-1582299775347-199bd6838a6a?auto=format&fit=crop&w=800&q=80", desc: "Fofura garantida. Urso de pelúcia antialérgico (30cm) abraçado a uma caixa de Ferrero Rocher 12 unidades." },
+        { id: 13, title: "Buquê Seco Boho Chic", category: "aniversario", price: 129.00, badge: "Tendência", img: "https://images.unsplash.com/photo-1515516089376-88db1e26e9c0?auto=format&fit=crop&w=800&q=80", desc: "Durabilidade e estilo. Arranjo com flores desidratadas, trigo e capim dos pampas. Ideal para decoração de interiores." },
+        { id: 14, title: "Rosas Brancas da Paz", category: "condolencias", price: 189.00, img: "https://images.unsplash.com/photo-1533616688419-b7a585564566?auto=format&fit=crop&w=800&q=80", desc: "Para expressar solidariedade ou pedir desculpas. 12 Rosas brancas importadas em embalagem sóbria e elegante." },
+        { id: 15, title: "Cesta Happy Hour", category: "cestas", price: 260.00, badge: "Masculino", img: "https://images.unsplash.com/photo-1549488344-c7079f856fdd?auto=format&fit=crop&w=800&q=80", desc: "Para eles. 2 Cervejas artesanais, mix de castanhas, salame, queijo provolone, azeitonas e pão italiano." },
+        { id: 16, title: "Tulipas Amarelas", category: "aniversario", price: 199.90, badge: "Sazonal", img: "https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=800&q=80", desc: "Raras e belas. Maço com 10 tulipas amarelas frescas (verificar disponibilidade da estação). Símbolo de prosperidade." },
+        { id: 17, title: "Vaso de Antúrio Vermelho", category: "orquideas", price: 75.00, img: "https://images.unsplash.com/photo-1612363351914-747684df6246?auto=format&fit=crop&w=800&q=80", desc: "Resistência e cor. Planta de fácil cuidado, ideal para ambientes internos com pouca luz direta. Vaso incluso." },
+        { id: 18, title: "Box Baby Blue", category: "maternidade", price: 180.00, img: "https://images.unsplash.com/photo-1516205651411-a41674526547?auto=format&fit=crop&w=800&q=80", desc: "Boas-vindas ao bebê. Box redonda com hortênsias azuis e rosas brancas. Acompanha um mini cartão de nascimento." },
+        { id: 19, title: "Cone de Rosa Única", category: "romantico", price: 45.00, img: "https://images.unsplash.com/photo-1559563362-c667ba5f5480?auto=format&fit=crop&w=800&q=80", desc: "Um gesto singelo. Uma única rosa vermelha colombiana em embalagem de cone luxo preta. Impactante." },
+        { id: 20, title: "Cesta Diet & Light", category: "cestas", price: 230.00, img: "https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?auto=format&fit=crop&w=800&q=80", desc: "Saúde com sabor. Frutas, iogurte desnatado, granola sem açúcar, pão integral, queijo branco e chá verde." }
+      ]
+    };
+
+    /* =========================================
+      3. LÓGICA JAVASCRIPT REVISADA
       =========================================
     */
 
-    // --- Configuração ---
-    const WHATSAPP_NUM = "5519998028205"; 
+    // Variáveis Globais (serão populadas pela config)
+    let WHATSAPP_NUM = DEFAULT_CONFIG.contact.whatsapp;
+    let products = DEFAULT_CONFIG.products;
     
-    // --- Banco de Dados (20 Produtos Premium) ---
-    const products = [
-      {
-        id: 1,
-        title: "Buquê Imperial 24 Rosas",
-        category: "romantico",
-        price: 389.90,
-        badge: "Luxo",
-        img: "https://images.unsplash.com/photo-1596541223131-d85188f5f4b4?auto=format&fit=crop&w=800&q=80",
-        desc: "O máximo da sofisticação. 24 rosas vermelhas tipo exportação, folhagens nobres de eucalipto, acabamento em papel kraft premium e laço de cetim duplo."
-      },
-      {
-        id: 2,
-        title: "Cesta Amanhecer Parisiense",
-        category: "cestas",
-        price: 289.00,
-        badge: "Best Seller",
-        img: "https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=800&q=80",
-        desc: "Uma experiência gastronômica. Inclui croissants amanteigados, geleia francesa, suco integral, frutas selecionadas, frios, drip coffee e um mini buquê."
-      },
-      {
-        id: 3,
-        title: "Orquídea Phalaenopsis Cascata",
-        category: "orquideas",
-        price: 185.00,
-        badge: "Durável",
-        img: "https://images.unsplash.com/photo-1566904692482-d856b3e32b00?auto=format&fit=crop&w=800&q=80",
-        desc: "Elegância pura em cerâmica branca. Orquídea branca de haste dupla formato cascata, ideal para decorar ambientes sofisticados."
-      },
-      {
-        id: 4,
-        title: "Box de Girassóis 'Luz'",
-        category: "aniversario",
-        price: 155.00,
-        img: "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=800&q=80",
-        desc: "Energia vibrante. Hat Box rígida preta recheada com girassóis frescos e gipsófilas. O presente perfeito para desejar felicidade."
-      },
-      {
-        id: 5,
-        title: "Kit Vinho & Romance Premium",
-        category: "romantico",
-        price: 320.00,
-        badge: "Presentão",
-        img: "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=800&q=80",
-        desc: "Noite inesquecível. Vinho Tinto Reserva Chileno, caixa de bombons Lindt e um buquê com 6 rosas vermelhas aveludadas."
-      },
-      {
-        id: 6,
-        title: "Coroa de Condolências 'Paz'",
-        category: "condolencias",
-        price: 450.00,
-        img: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80",
-        desc: "Homenagem digna e respeitosa. Flores brancas (Lírios, Rosas e Crisântemos) em grande porte. Faixa de homenagem inclusa. Entrega prioritária."
-      },
-      {
-        id: 7,
-        title: "Mix do Campo Colorido",
-        category: "aniversario",
-        price: 98.90,
-        badge: "Oferta",
-        img: "https://images.unsplash.com/photo-1563241527-3af801d8e12f?auto=format&fit=crop&w=800&q=80",
-        desc: "Alegria rústica. Um mix encantador de astromélias, gérberas e margaridas em vaso de vidro. Cores vibrantes para alegrar o dia."
-      },
-      {
-        id: 8,
-        title: "Terrário Moderno",
-        category: "orquideas",
-        price: 89.90,
-        img: "https://images.unsplash.com/photo-1463936575229-46994167ea3b?auto=format&fit=crop&w=800&q=80",
-        desc: "Design e natureza. Mini jardim de suculentas montado em vidro geométrico. Perfeito para escritórios e casas modernas."
-      },
-      {
-        id: 9,
-        title: "Buquê de Lírios Rosa",
-        category: "maternidade",
-        price: 165.00,
-        badge: "Delicado",
-        img: "https://images.unsplash.com/photo-1525626294711-30c1e8785860?auto=format&fit=crop&w=800&q=80",
-        desc: "Perfeito para celebrar a vida. Lírios rosas perfumados combinados com gipsófilas. Embalagem em tons pastéis."
-      },
-      {
-        id: 10,
-        title: "Vaso de Begônia",
-        category: "aniversario",
-        price: 65.00,
-        img: "https://images.unsplash.com/photo-1623838237583-42e7d825c942?auto=format&fit=crop&w=800&q=80",
-        desc: "Um clássico que nunca erra. Begônia florida em cachepot decorativo. Disponível em vermelho, rosa ou branco."
-      },
-      {
-        id: 11,
-        title: "Cesta Chá da Tarde",
-        category: "cestas",
-        price: 199.90,
-        img: "https://images.unsplash.com/photo-1550523827-9c9636253450?auto=format&fit=crop&w=800&q=80",
-        desc: "Para um momento relaxante. Seleção de chás importados, biscoitos finos, bolo caseiro, caneca de porcelana e flores do campo."
-      },
-      {
-        id: 12,
-        title: "Urso Teddy & Chocolates",
-        category: "romantico",
-        price: 140.00,
-        img: "https://images.unsplash.com/photo-1582299775347-199bd6838a6a?auto=format&fit=crop&w=800&q=80",
-        desc: "Fofura garantida. Urso de pelúcia antialérgico (30cm) abraçado a uma caixa de Ferrero Rocher 12 unidades."
-      },
-      {
-        id: 13,
-        title: "Buquê Seco Boho Chic",
-        category: "aniversario",
-        price: 129.00,
-        badge: "Tendência",
-        img: "https://images.unsplash.com/photo-1515516089376-88db1e26e9c0?auto=format&fit=crop&w=800&q=80",
-        desc: "Durabilidade e estilo. Arranjo com flores desidratadas, trigo e capim dos pampas. Ideal para decoração de interiores."
-      },
-      {
-        id: 14,
-        title: "Rosas Brancas da Paz",
-        category: "condolencias",
-        price: 189.00,
-        img: "https://images.unsplash.com/photo-1533616688419-b7a585564566?auto=format&fit=crop&w=800&q=80",
-        desc: "Para expressar solidariedade ou pedir desculpas. 12 Rosas brancas importadas em embalagem sóbria e elegante."
-      },
-      {
-        id: 15,
-        title: "Cesta Happy Hour",
-        category: "cestas",
-        price: 260.00,
-        badge: "Masculino",
-        img: "https://images.unsplash.com/photo-1549488344-c7079f856fdd?auto=format&fit=crop&w=800&q=80",
-        desc: "Para eles. 2 Cervejas artesanais, mix de castanhas, salame, queijo provolone, azeitonas e pão italiano."
-      },
-      {
-        id: 16,
-        title: "Tulipas Amarelas",
-        category: "aniversario",
-        price: 199.90,
-        badge: "Sazonal",
-        img: "https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=800&q=80",
-        desc: "Raras e belas. Maço com 10 tulipas amarelas frescas (verificar disponibilidade da estação). Símbolo de prosperidade."
-      },
-      {
-        id: 17,
-        title: "Vaso de Antúrio Vermelho",
-        category: "orquideas",
-        price: 75.00,
-        img: "https://images.unsplash.com/photo-1612363351914-747684df6246?auto=format&fit=crop&w=800&q=80",
-        desc: "Resistência e cor. Planta de fácil cuidado, ideal para ambientes internos com pouca luz direta. Vaso incluso."
-      },
-      {
-        id: 18,
-        title: "Box Baby Blue",
-        category: "maternidade",
-        price: 180.00,
-        img: "https://images.unsplash.com/photo-1516205651411-a41674526547?auto=format&fit=crop&w=800&q=80",
-        desc: "Boas-vindas ao bebê. Box redonda com hortênsias azuis e rosas brancas. Acompanha um mini cartão de nascimento."
-      },
-      {
-        id: 19,
-        title: "Cone de Rosa Única",
-        category: "romantico",
-        price: 45.00,
-        img: "https://images.unsplash.com/photo-1559563362-c667ba5f5480?auto=format&fit=crop&w=800&q=80",
-        desc: "Um gesto singelo. Uma única rosa vermelha colombiana em embalagem de cone luxo preta. Impactante."
-      },
-      {
-        id: 20,
-        title: "Cesta Diet & Light",
-        category: "cestas",
-        price: 230.00,
-        img: "https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?auto=format&fit=crop&w=800&q=80",
-        desc: "Saúde com sabor. Frutas, iogurte desnatado, granola sem açúcar, pão integral, queijo branco e chá verde."
-      }
-    ];
-
-    // --- Elementos do DOM ---
+    // Elementos do DOM
     const grid = document.getElementById('grid');
     const searchInput = document.getElementById('searchInput');
     const countEl = document.getElementById('countResult');
     const modal = document.getElementById('modalProduct');
     let activeFilter = 'all';
+
+    // Função de Carregamento de Configuração
+    function loadConfiguration() {
+      // 1. Verifica se existe config externa, senão usa padrão
+      const config = window.SITE_CONFIG || DEFAULT_CONFIG;
+      
+      // 2. Atualizar Variáveis CSS
+      if (config.colors) {
+        const root = document.documentElement;
+        root.style.setProperty('--color-primary', config.colors.primary);
+        root.style.setProperty('--color-secondary', config.colors.secondary);
+        root.style.setProperty('--color-gold', config.colors.gold);
+        root.style.setProperty('--color-accent', config.colors.accent);
+      }
+
+      // 3. Atualizar Dados Globais
+      WHATSAPP_NUM = config.contact.whatsapp;
+      products = config.products;
+
+      // 4. Injeção de Texto e Imagens (DOM)
+      safeText('top-bar-text', config.texts.topBar);
+      safeText('logo-text', config.texts.logo.title);
+      safeText('logo-subtext', config.texts.logo.subtitle);
+      safeText('footer-logo-text', config.texts.logo.title);
+      
+      safeText('hero-subtitle', config.texts.hero.subtitle);
+      safeText('hero-title', config.texts.hero.title);
+      safeHTML('hero-text', config.texts.hero.text);
+      if(config.texts.hero.bgImage) {
+        const heroBg = document.getElementById('hero-bg-el');
+        if(heroBg) heroBg.style.background = config.texts.hero.bgImage + ' center/cover no-repeat';
+      }
+
+      safeHTML('about-title', config.texts.about.title);
+      safeHTML('about-desc-1', config.texts.about.desc1);
+      safeHTML('about-desc-2', config.texts.about.desc2);
+      safeImg('about-img-el', config.texts.about.img);
+      safeText('stat-1-val', config.texts.about.stat1.val);
+      safeText('stat-1-label', config.texts.about.stat1.label);
+      safeText('stat-2-val', config.texts.about.stat2.val);
+      safeText('stat-2-label', config.texts.about.stat2.label);
+
+      // Atualizar FAQ
+      config.texts.faq.forEach((item, index) => {
+        safeText(`faq-${index+1}-q`, item.q);
+        safeText(`faq-${index+1}-a`, item.a);
+      });
+
+      // Atualizar Footer e Contatos
+      safeHTML('footer-desc', config.texts.footer.desc);
+      safeHTML('footer-copy', config.texts.footer.copy);
+      safeText('footer-phone', config.contact.phoneDisplay);
+      safeHTML('footer-address', config.contact.address);
+      safeText('footer-email', config.contact.email);
+
+      // Atualizar Links
+      updateLink('header-wa-btn', `https://wa.me/${config.contact.whatsapp}`, '_blank');
+      updateLink('float-wa-btn', `https://wa.me/${config.contact.whatsapp}?text=Ol%C3%A1!%20Vim%20pelo%20site.`, '_blank');
+      updateLink('social-ig', config.contact.social.instagram);
+      updateLink('social-fb', config.contact.social.facebook);
+      updateLink('social-pin', config.contact.social.pinterest);
+    }
+
+    // Funções auxiliares de injeção segura
+    function safeText(id, text) { const el = document.getElementById(id); if(el && text) el.innerText = text; }
+    function safeHTML(id, html) { const el = document.getElementById(id); if(el && html) el.innerHTML = html; }
+    function safeImg(id, src) { const el = document.getElementById(id); if(el && src) el.src = src; }
+    function updateLink(id, href, target) { 
+      const el = document.getElementById(id); 
+      if(el && href) { el.href = href; if(target) el.target = target; }
+    }
 
     // --- Função de Renderização ---
     function render(list) {
@@ -863,7 +844,7 @@
       document.getElementById('mPrice').innerText = p.price.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
       document.getElementById('mDesc').innerText = p.desc;
       
-      // Montagem da mensagem do WhatsApp
+      // Montagem da mensagem do WhatsApp usando a variável global atualizada
       const msg = `Olá, BellaFlor! ✨\nTenho interesse no produto: *${p.title}*.\nPoderiam me passar mais detalhes sobre a entrega?`;
       document.getElementById('mBtn').href = `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(msg)}`;
 
@@ -928,6 +909,9 @@
     document.head.appendChild(styleSheet);
 
     // Inicialização
+    // 1. Carrega configuração (padrão ou externa)
+    loadConfiguration();
+    // 2. Renderiza produtos
     render(products);
 
   </script>
