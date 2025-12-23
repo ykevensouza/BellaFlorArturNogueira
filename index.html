@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BellaFlor Artur Nogueira</title> <!-- DICA: Mude o título para o nome da sua floricultura -->
+  <style>
+    /* DICA: Edite cores e fontes conforme seu estilo */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+    }
+    header {
+      background: #E91E63; /* DICA: Altere a cor de fundo do header */
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    header a {
+      color: white;
+      text-decoration: none;
+    }
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px 0;
+    }
+    .product {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      width: 250px;
+      text-align: center;
+      padding-bottom: 15px;
+    }
+    .product img {
+      width: 100%;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 15px;
+    }
+    .product h3 {
+      margin: 10px 0;
+      font-size: 1.2em;
+    }
+    .product p {
+      color: #555;
+      margin: 0 10px 10px;
+    }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #4CAF50; /* DICA: Mudar cor do botão Comprar */
+      color: white;
+      padding: 10px 20px;
+      border-radius: 3px;
+      margin-bottom: 10px;
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BellaFlor Artur Nogueira</h1> <!-- DICA: Mude o nome da floricultura aqui -->
+    <p>As melhores flores e arranjos em Artur Nogueira</p>
+    <p>
+      Peça pelo WhatsApp: 
+      <a href="https://wa.me/5519998028205" target="_blank">+55 19 99802-8205</a> <!-- DICA: Atualize o número de WhatsApp se necessário -->
+    </p>
+  </header>
+
+  <main>
+    <section class="products">
+      <!-- DICA: Adicione ou remova produtos conforme necessário, mantendo a estrutura abaixo -->
+      <div class="product">
+        <!-- DICA: Substitua 'src' abaixo pela URL da imagem do produto -->
+        <img src="https://via.placeholder.com/300x200?text=Buque%20de%20Rosas" alt="Buquê de Rosas Vermelhas" />
+        <!-- DICA: Altere o nome do produto no <h3> abaixo -->
+        <h3>Buquê de Rosas Vermelhas</h3>
+        <p>Buquê de rosas frescas e perfumadas.</p> <!-- DICA: Mude a descrição conforme desejar -->
+        <!-- DICA: O link do botão abre o WhatsApp com mensagem pré-definida -->
+        <a class="btn" href="https://wa.me/5519998028205?text=Oi%2C%20gostaria%20de%20saber%20o%20valor%20deste%20buqu%C3%AA%20de%20rosas%20vermelhas">Comprar</a>
+      </div>
+
+      <div class="product">
+        <!-- DICA: Substitua 'src' abaixo pela URL da imagem do produto -->
+        <img src="https://via.placeholder.com/300x200?text=Flores%20Coloridas" alt="Arranjo de Flores Coloridas" />
+        <!-- DICA: Altere o nome do produto no <h3> abaixo -->
+        <h3>Arranjo de Flores Coloridas</h3>
+        <p>Belíssimo arranjo com flores variadas e vibrantes.</p> <!-- DICA: Mude a descrição conforme desejar -->
+        <!-- DICA: O link do botão abre o WhatsApp com mensagem pré-definida -->
+        <a class="btn" href="https://wa.me/5519998028205?text=Oi%2C%20gostaria%20de%20saber%20o%20valor%20deste%20arranjo%20de%20flores%20coloridas">Comprar</a>
+      </div>
+
+      <div class="product">
+        <!-- DICA: Substitua 'src' abaixo pela URL da imagem do produto -->
+        <img src="https://via.placeholder.com/300x200?text=Cesta%20de%20Flores" alt="Cesta de Flores do Campo" />
+        <!-- DICA: Altere o nome do produto no <h3> abaixo -->
+        <h3>Cesta de Flores do Campo</h3>
+        <p>Encantadora cesta de flores do campo.</p> <!-- DICA: Mude a descrição conforme desejar -->
+        <!-- DICA: O link do botão abre o WhatsApp com mensagem pré-definida -->
+        <a class="btn" href="https://wa.me/5519998028205?text=Oi%2C%20gostaria%20de%20saber%20o%20valor%20desta%20cesta%20de%20flores%20do%20campo">Comprar</a>
+      </div>
+
+      <div class="product">
+        <!-- DICA: Substitua 'src' abaixo pela URL da imagem do produto -->
+        <img src="https://via.placeholder.com/300x200?text=Coroa%20de%20Flores" alt="Coroa de Flores Funerária" />
+        <!-- DICA: Altere o nome do produto no <h3> abaixo -->
+        <h3>Coroa de Flores Funerária</h3>
+        <p>Elegante coroa de flores para homenagens.</p> <!-- DICA: Mude a descrição conforme desejar -->
+        <!-- DICA: O link do botão abre o WhatsApp com mensagem pré-definida -->
+        <a class="btn" href="https://wa.me/5519998028205?text=Oi%2C%20gostaria%20de%20saber%20o%20valor%20desta%20coroa%20de%20flores%20funer%C3%A1ria">Comprar</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 BellaFlor Artur Nogueira. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
