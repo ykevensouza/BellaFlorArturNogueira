@@ -30,7 +30,7 @@ window.SITE_CONFIG = {
 
   // 3. TEXTOS DO SITE
   texts: {
-    topBar: "FRETE GRÁTIS PARA ARTUR NOGUEIRA ACIMA DE R$ 199,00 🚚",
+    topBar: "FRETE GRÁTIS PARA ARTUR NOGUEIRA 🚚",
     
     logo: { 
       title: "BellaFlor", 
