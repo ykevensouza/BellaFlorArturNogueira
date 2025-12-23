@@ -30,7 +30,7 @@ window.SITE_CONFIG = {
 
   // 3. TEXTOS DO SITE
   texts: {
-    topBar: "FRETE GRÁTIS PARA ARTUR NOGUEIRA 🚚",
+    topBar: "FRETE GRÁTIS PARA ARTUR NOGUEIRA E REGIÃO 🚚",
     
     logo: { 
       title: "BellaFlor", 
