@@ -3,532 +3,595 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-  <meta name="theme-color" content="#FFF0F5">
+  <meta name="theme-color" content="#FDF2F8">
   
-  <title>BellaFlor Artur Nogueira | Floricultura Premium</title>
-  <meta name="description" content="A melhor floricultura de Artur Nogueira. Buquês exclusivos, cestas de café e presentes com entrega rápida. Encomende via WhatsApp." />
-  <meta property="og:title" content="BellaFlor - Flores e Presentes em Artur Nogueira">
-  <meta property="og:description" content="Transforme sentimentos em flores. Peça agora pelo WhatsApp.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1599739291060-4578e77dac5d?ixlib=rb-4.0.3&w=1200&q=80">
-  <meta property="og:type" content="website">
+  <title>BellaFlor Artur Nogueira | Floricultura Boutique</title>
+  <meta name="description" content="Arranjos florais exclusivos e presentes em Artur Nogueira. A arte de presentear com elegância." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* --- DESIGN SYSTEM --- */
+    /* --- DESIGN SYSTEM PREMIUM --- */
     :root {
-      /* Palette: Elegant Floral */
-      --primary: #D81B60;       /* Rosa profundo */
-      --primary-light: #FFF0F5; /* Rosa bebê fundo */
-      --secondary: #064E3B;     /* Verde Esmeralda (texto e detalhes) */
-      --accent: #25D366;        /* WhatsApp */
-      --gold: #D4AF37;          /* Detalhes premium */
+      /* Cores */
+      --primary: #BE185D;       /* Rosa Nobre */
+      --primary-dark: #831843;  /* Vinho */
+      --secondary: #064E3B;     /* Verde Botânico */
+      --gold: #D97706;          /* Ouro suave */
+      --bg-body: #FDF4F7;       /* Fundo quase branco rosado */
+      --surface: #FFFFFF;
       
-      --bg-body: #FAFAFA;
-      --card-bg: #FFFFFF;
+      /* Texto */
       --text-main: #1F2937;
       --text-muted: #6B7280;
       
+      /* UI Elements */
       --radius-sm: 8px;
-      --radius-md: 16px;
       --radius-lg: 24px;
+      --shadow-soft: 0 4px 20px rgba(0,0,0,0.03);
+      --shadow-hover: 0 15px 35px rgba(190, 24, 93, 0.15);
       
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
-      --shadow-hover: 0 12px 24px rgba(216, 27, 96, 0.15);
-      --shadow-float: 0 20px 40px rgba(0,0,0,0.1);
-
-      --font-display: 'Cinzel', serif; /* Luxuoso */
-      --font-body: 'Lato', sans-serif; /* Legível */
-      
-      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      /* Fontes */
+      --font-title: 'Playfair Display', serif;
+      --font-body: 'DM Sans', sans-serif;
     }
 
     /* Reset & Base */
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    
     body {
       font-family: var(--font-body);
       background-color: var(--bg-body);
       color: var(--text-main);
-      margin: 0;
       line-height: 1.6;
-      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
-    
-    a { text-decoration: none; color: inherit; transition: var(--transition); }
-    button { cursor: pointer; font-family: inherit; }
+
+    h1, h2, h3, h4 { font-family: var(--font-title); color: var(--secondary); font-weight: 700; }
     img { max-width: 100%; display: block; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; transition: all 0.3s ease; }
+    a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
 
     /* Utilities */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .flex-center { display: flex; align-items: center; justify-content: center; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
     .hidden { display: none !important; }
-    .fade-in { animation: fadeIn 0.6s ease forwards; opacity: 0; transform: translateY(20px); }
     
-    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-up { animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; }
 
-    /* --- HEADER --- */
+    /* --- HEADER (Glassmorphism) --- */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      padding: 12px 0;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding: 16px 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
     }
-    .nav { display: flex; justify-content: space-between; align-items: center; }
     
-    .brand { display: flex; align-items: center; gap: 10px; color: var(--primary); }
-    .brand i { font-size: 24px; }
-    .brand-text { display: flex; flex-direction: column; line-height: 1; }
-    .brand-name { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; letter-spacing: -0.5px; color: var(--text-main); }
-    .brand-loc { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+    .nav-content { display: flex; justify-content: space-between; align-items: center; }
+    
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand i { font-size: 28px; color: var(--primary); }
+    .brand-info { line-height: 1.1; }
+    .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; color: var(--secondary); }
+    .location { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary); font-weight: 600; }
 
-    .nav-actions { display: flex; gap: 12px; align-items: center; }
-    .btn-wa-header {
-      display: none; /* Mobile hidden */
-      background: var(--accent); color: white;
-      padding: 8px 16px; border-radius: 50px;
+    .btn-header-wa {
+      background: #25D366; color: white;
+      padding: 10px 24px; border-radius: 50px;
       font-weight: 700; font-size: 0.9rem;
-      box-shadow: 0 4px 12px rgba(37,211,102,0.3);
+      display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
     }
-    .btn-wa-header:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(37,211,102,0.4); }
-    @media(min-width: 768px) { .btn-wa-header { display: flex; align-items: center; gap: 8px; } }
+    .btn-header-wa:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); }
+    @media(max-width: 600px) { .btn-header-wa span { display: none; } .btn-header-wa { padding: 10px; border-radius: 50%; width: 40px; height: 40px; justify-content: center; } }
 
-    /* --- HERO --- */
+    /* --- HERO SECTION --- */
     .hero {
-      padding: 40px 0;
-      text-align: center;
-      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(216,27,96,0.03) 100%);
-    }
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      color: var(--secondary);
-      margin-bottom: 10px;
-      line-height: 1.2;
-    }
-    .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 24px; }
-    
-    /* Search Bar Styled */
-    .search-wrapper {
       position: relative;
-      max-width: 500px;
-      margin: 0 auto;
-      box-shadow: var(--shadow-hover);
-      border-radius: 50px;
+      height: 500px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; color: white;
+      margin-bottom: 40px;
+      /* Imagem de Fundo Premium */
+      background: url('https://images.unsplash.com/photo-1479836184084-361950d9c15d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
     }
-    .search-input {
-      width: 100%;
-      padding: 16px 24px 16px 50px;
-      border: 2px solid transparent;
-      border-radius: 50px;
-      font-size: 1rem;
-      background: white;
-      transition: var(--transition);
-      outline: none;
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(6,78,59,0.3) 0%, rgba(6,78,59,0.7) 100%);
     }
-    .search-input:focus { border-color: var(--primary); }
-    .search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+    .hero-content { position: relative; z-index: 2; max-width: 700px; padding: 0 20px; }
+    
+    .hero h1 { 
+      font-size: 3.5rem; margin-bottom: 16px; color: white; 
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .hero p { font-size: 1.2rem; opacity: 0.95; margin-bottom: 32px; font-weight: 300; }
 
-    /* --- FILTERS (Chips) --- */
-    .filters-container {
-      margin: 20px 0;
-      position: sticky;
-      top: 70px; /* Below header */
-      z-index: 900;
-      background: linear-gradient(180deg, rgba(250,250,250,0.95) 0%, rgba(250,250,250,0) 100%);
-      padding: 10px 0;
+    /* Search Bar Flutuante */
+    .search-box {
+      background: white; padding: 8px; border-radius: 50px;
+      display: flex; box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      max-width: 500px; margin: 0 auto;
+      transition: transform 0.3s;
     }
-    .chips-wrapper {
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      padding-bottom: 5px;
-      /* Hide scrollbar but keep functionality */
-      scrollbar-width: none; -ms-overflow-style: none;
+    .search-box:focus-within { transform: scale(1.02); }
+    .search-input { 
+      flex: 1; border: none; padding: 12px 20px; font-size: 1rem; 
+      border-radius: 50px; color: var(--text-main);
     }
-    .chips-wrapper::-webkit-scrollbar { display: none; }
+    .search-btn {
+      background: var(--primary); color: white;
+      width: 48px; height: 48px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    @media(max-width: 768px) { .hero { height: 400px; } .hero h1 { font-size: 2.2rem; } }
+
+    /* --- FILTERS --- */
+    .filters-nav {
+      position: sticky; top: 74px; z-index: 900;
+      padding: 10px 0 20px 0;
+      background: linear-gradient(180deg, var(--bg-body) 80%, rgba(253,242,247,0) 100%);
+    }
+    .chip-container {
+      display: flex; gap: 12px; overflow-x: auto; 
+      padding-bottom: 5px; scrollbar-width: none;
+    }
+    .chip-container::-webkit-scrollbar { display: none; }
     
     .chip {
-      background: white;
-      border: 1px solid #E5E7EB;
-      padding: 8px 20px;
-      border-radius: 50px;
-      white-space: nowrap;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      transition: var(--transition);
-      user-select: none;
+      background: white; border: 1px solid #E5E7EB;
+      padding: 10px 24px; border-radius: 50px;
+      font-size: 0.95rem; font-weight: 500; color: var(--text-muted);
+      white-space: nowrap; transition: all 0.3s;
     }
     .chip:hover { border-color: var(--primary); color: var(--primary); }
     .chip.active {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-      box-shadow: 0 4px 10px rgba(216, 27, 96, 0.25);
+      background: var(--primary); color: white; border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(190, 24, 93, 0.3);
     }
 
     /* --- PRODUCT GRID --- */
-    .meta-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 0.9rem; color: var(--text-muted); }
-    .sort-select { border: none; background: transparent; font-weight: 700; color: var(--secondary); cursor: pointer; outline: none; }
+    .catalog-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 24px; padding-top: 20px;
+    }
+    .sort-dropdown {
+      background: transparent; border: none; font-weight: 700;
+      color: var(--secondary); font-size: 0.95rem; cursor: pointer;
+    }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 24px;
-      padding-bottom: 60px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px; padding-bottom: 80px;
     }
 
     /* Card Design */
     .card {
-      background: var(--card-bg);
-      border-radius: var(--radius-md);
+      background: var(--surface);
+      border-radius: var(--radius-lg);
       overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.03);
-      transition: var(--transition);
+      box-shadow: var(--shadow-soft);
+      transition: all 0.4s ease;
       position: relative;
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
     }
-    .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
-    
-    .card-img-wrap {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4/3; /* Evita Layout Shift */
-      overflow: hidden;
-      background: #f0f0f0;
-    }
-    .card-img-wrap img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-    .card:hover .card-img-wrap img { transform: scale(1.08); }
-    
-    /* Tags inside image */
-    .card-badge {
-      position: absolute; top: 10px; left: 10px;
-      background: rgba(255,255,255,0.95);
-      padding: 4px 10px; border-radius: 4px;
-      font-size: 0.7rem; font-weight: 800;
-      text-transform: uppercase; letter-spacing: 0.5px;
-      color: var(--secondary);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .card-fav {
-      position: absolute; top: 10px; right: 10px;
-      width: 36px; height: 36px;
-      background: rgba(255,255,255,0.8);
-      backdrop-filter: blur(4px);
-      border-radius: 50%;
-      border: none;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--primary); font-size: 1.1rem;
-      transition: transform 0.2s;
-    }
-    .card-fav:active { transform: scale(0.8); }
+    .card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
 
-    .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; }
-    .card-cat { color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
-    .card-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin: 0 0 6px 0; color: var(--text-main); }
-    .card-price { font-size: 1.2rem; font-weight: 900; color: var(--secondary); margin-top: auto; }
+    .card-img-container {
+      position: relative; width: 100%; aspect-ratio: 1; overflow: hidden;
+      background: #f3f3f3;
+    }
+    .card-img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .card:hover .card-img { transform: scale(1.1); }
+
+    .card-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.2);
+      opacity: 0; transition: opacity 0.3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .card:hover .card-overlay { opacity: 1; }
+
+    .badge {
+      position: absolute; top: 16px; left: 16px;
+      background: rgba(255,255,255,0.95);
+      padding: 6px 14px; border-radius: 4px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.5px;
+      text-transform: uppercase; color: var(--secondary);
+      z-index: 2;
+    }
     
-    .card-actions {
-      margin-top: 12px;
-      display: grid;
-      grid-template-columns: 1fr 3fr;
-      gap: 8px;
+    .btn-fav {
+      position: absolute; top: 16px; right: 16px;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: white; color: #ccc;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; z-index: 2;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: 0.2s;
     }
-    .btn-view {
-      background: transparent; border: 1px solid #E5E7EB;
-      color: var(--text-main); border-radius: var(--radius-sm);
-      font-weight: 600; transition: var(--transition);
+    .btn-fav.active { color: #ef4444; }
+    .btn-fav:active { transform: scale(0.9); }
+
+    .card-content { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+    .card-cat { color: var(--primary); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; }
+    .card-title { font-size: 1.25rem; margin-bottom: 8px; line-height: 1.3; color: var(--text-main); }
+    
+    .card-footer { margin-top: auto; display: flex; align-items: center; justify-content: space-between; }
+    .card-price { font-size: 1.35rem; font-weight: 700; color: var(--secondary); font-family: var(--font-body); }
+    
+    .btn-card-action {
+      background: var(--text-main); color: white;
+      width: 40px; height: 40px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      transition: 0.2s; opacity: 0.5;
     }
-    .btn-buy {
-      background: linear-gradient(135deg, var(--primary) 0%, #C2185B 100%);
-      color: white; border: none; border-radius: var(--radius-sm);
-      font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px;
-      transition: var(--transition);
-      text-decoration: none;
-    }
-    .btn-buy:hover { filter: brightness(1.1); }
+    .card:hover .btn-card-action { opacity: 1; background: var(--primary); }
 
     /* --- MODAL --- */
-    .modal-overlay {
+    .modal-backdrop {
       position: fixed; inset: 0; z-index: 2000;
-      background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+      background: rgba(0,0,0,0.4); backdrop-filter: blur(8px);
       display: flex; align-items: center; justify-content: center;
-      opacity: 0; visibility: hidden;
-      transition: var(--transition);
+      opacity: 0; pointer-events: none; transition: 0.4s;
       padding: 20px;
     }
-    .modal-overlay.open { opacity: 1; visibility: visible; }
-    
-    .modal-content {
-      background: white; width: 100%; max-width: 900px;
+    .modal-backdrop.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: white; width: 100%; max-width: 1000px;
       border-radius: var(--radius-lg); overflow: hidden;
-      display: grid; grid-template-columns: 1fr 1fr;
-      box-shadow: var(--shadow-float);
-      transform: scale(0.95); transition: var(--transition);
-      max-height: 90vh; overflow-y: auto;
+      display: grid; grid-template-columns: 1.2fr 1fr;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+      transform: translateY(40px); transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
-    .modal-overlay.open .modal-content { transform: scale(1); }
+    .modal-backdrop.open .modal { transform: translateY(0); }
+
+    .modal-gallery { position: relative; height: 100%; min-height: 400px; background: #f9f9f9; }
+    .modal-gallery img { width: 100%; height: 100%; object-fit: cover; }
     
-    @media(max-width: 768px) {
-      .modal-content { grid-template-columns: 1fr; }
-      .modal-img { height: 250px; }
+    .modal-info { padding: 48px; position: relative; display: flex; flex-direction: column; justify-content: center; }
+    .modal-close {
+      position: absolute; top: 20px; right: 20px;
+      font-size: 24px; color: var(--text-muted); opacity: 0.7;
     }
-    
-    .modal-img { background: #eee; height: 100%; min-height: 300px; }
-    .modal-img img { width: 100%; height: 100%; object-fit: cover; }
-    
-    .modal-details { padding: 32px; position: relative; display: flex; flex-direction: column; }
-    .btn-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 1.5rem; color: var(--text-muted); }
-    
-    .modal-tag { display: inline-block; background: var(--primary-light); color: var(--primary); padding: 4px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; margin-bottom: 12px; align-self: flex-start; }
-    .modal-title { font-family: var(--font-display); font-size: 2rem; line-height: 1.1; margin: 0 0 16px 0; }
-    .modal-desc { color: var(--text-muted); margin-bottom: 24px; font-size: 1.05rem; }
-    .modal-price { font-size: 2rem; color: var(--secondary); font-weight: 700; margin-bottom: 24px; }
+    .modal-close:hover { opacity: 1; transform: rotate(90deg); }
+
+    .modal-tag { display: inline-block; background: #FCE7F3; color: var(--primary); padding: 6px 16px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; margin-bottom: 16px; align-self: start; }
+    .modal h2 { font-size: 2.5rem; line-height: 1.1; margin-bottom: 16px; }
+    .modal-price-lg { font-size: 2rem; color: var(--secondary); font-weight: 700; margin-bottom: 24px; }
+    .modal-desc { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 32px; border-left: 3px solid var(--primary); padding-left: 20px; }
+
+    .btn-buy-lg {
+      display: inline-flex; justify-content: center; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--secondary) 0%, #065F46 100%);
+      color: white; width: 100%; padding: 18px; border-radius: 12px;
+      font-size: 1.1rem; font-weight: 700; box-shadow: 0 10px 20px rgba(6, 78, 59, 0.2);
+    }
+    .btn-buy-lg:hover { filter: brightness(1.1); transform: translateY(-2px); }
+
+    @media(max-width: 900px) {
+      .modal { grid-template-columns: 1fr; overflow-y: auto; max-height: 90vh; }
+      .modal-gallery { height: 300px; }
+      .modal-info { padding: 24px; }
+      .modal h2 { font-size: 1.8rem; }
+    }
 
     /* --- FOOTER & FLOATING --- */
-    footer { background: #111; color: white; padding: 40px 0; margin-top: 60px; text-align: center; }
-    .fab-wa {
-      position: fixed; bottom: 20px; right: 20px;
-      background: var(--accent); color: white;
-      width: 60px; height: 60px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 30px; box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-      z-index: 1500; transition: var(--transition);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+    footer { background: #18181b; color: white; padding: 60px 0 30px; margin-top: 80px; text-align: center; }
+    .social-links { display: flex; justify-content: center; gap: 20px; margin: 24px 0; }
+    .social-links a { width: 45px; height: 45px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .social-links a:hover { background: var(--primary); }
 
-    /* Toast Notification */
     .toast {
-      position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(20px);
-      background: rgba(30,30,30,0.9); color: white; padding: 10px 20px;
-      border-radius: 50px; font-size: 0.9rem; opacity: 0; pointer-events: none;
-      transition: var(--transition); z-index: 2000;
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: #1F2937; color: white; padding: 12px 30px; border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2); opacity: 0; transition: all 0.4s; z-index: 3000;
+      display: flex; align-items: center; gap: 10px; font-weight: 500;
     }
-    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
   </style>
 </head>
 <body>
 
   <header>
-    <div class="container nav">
+    <div class="container nav-content">
       <div class="brand">
-        <i class="fa-solid fa-spa"></i>
-        <div class="brand-text">
-          <span class="brand-name">BellaFlor</span>
-          <span class="brand-loc">Artur Nogueira</span>
+        <i class="fa-brands fa-pagelines"></i>
+        <div class="brand-info">
+          <div class="logo">BellaFlor</div>
+          <div class="location">Artur Nogueira</div>
         </div>
       </div>
-      <div class="nav-actions">
-        <a href="#" class="btn-wa-header" onclick="window.open(getWaLink('Atendimento Geral'), '_blank')">
-          <i class="fab fa-whatsapp"></i> (19) 99802-8205
-        </a>
-      </div>
+      <a href="#" class="btn-header-wa" onclick="contactGeneral()">
+        <i class="fab fa-whatsapp"></i>
+        <span>Atendimento</span>
+      </a>
     </div>
   </header>
 
   <section class="hero">
-    <div class="container">
-      <div class="fade-in">
-        <h1>Flores que contam histórias</h1>
-        <p>Arranjos exclusivos, buquês frescos e cestas personalizadas. <br>Entregamos amor em Artur Nogueira e região.</p>
-        
-        <div class="search-wrapper">
-          <i class="fas fa-search search-icon"></i>
-          <input type="text" id="searchInput" class="search-input" placeholder="O que você procura hoje? (ex: Rosas, Aniversário...)">
-        </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content animate-up">
+      <h1>Emoções em forma de flores</h1>
+      <p>Buquês artísticos, cestas de café e presentes que criam memórias inesquecíveis.</p>
+      
+      <div class="search-box">
+        <input type="text" id="searchInput" class="search-input" placeholder="O que você procura? (ex: Rosas, Amor...)">
+        <button class="search-btn"><i class="fas fa-search"></i></button>
       </div>
     </div>
   </section>
 
   <main class="container">
     
-    <div class="filters-container">
-      <div class="chips-wrapper" id="categoryFilters">
+    <div class="filters-nav animate-up" style="animation-delay: 0.1s;">
+      <div class="chip-container" id="filters">
         <button class="chip active" data-cat="all">Todos</button>
-        <button class="chip" data-cat="Romântico">💘 Romântico</button>
-        <button class="chip" data-cat="Aniversário">🎂 Aniversário</button>
-        <button class="chip" data-cat="Cestas">🧺 Cestas</button>
-        <button class="chip" data-cat="Decoração">🏡 Decoração</button>
-        <button class="chip" data-cat="Condolências">🙏 Condolências</button>
+        <button class="chip" data-cat="romantico">💘 Romântico</button>
+        <button class="chip" data-cat="aniversario">🎂 Aniversário</button>
+        <button class="chip" data-cat="cestas">🧺 Cestas Matinais</button>
+        <button class="chip" data-cat="decoracao">🏡 Decoração</button>
+        <button class="chip" data-cat="condolencias">🕊️ Condolências</button>
       </div>
     </div>
 
-    <div class="meta-bar">
-      <span id="resultsCount">Carregando produtos...</span>
-      <select id="sortSelect" class="sort-select">
-        <option value="relevance">✨ Destaques</option>
-        <option value="priceAsc">💲 Menor Preço</option>
-        <option value="priceDesc">💎 Maior Preço</option>
+    <div class="catalog-header animate-up" style="animation-delay: 0.2s;">
+      <span style="color:var(--text-muted); font-size: 0.9rem;" id="resultCount">Carregando coleção...</span>
+      <select id="sortSelect" class="sort-dropdown">
+        <option value="featured">✨ Em Destaque</option>
+        <option value="asc">💲 Menor Preço</option>
+        <option value="desc">💎 Maior Preço</option>
       </select>
     </div>
 
-    <div id="productGrid" class="grid">
+    <div id="grid" class="grid">
       </div>
 
   </main>
 
-  <div id="productModal" class="modal-overlay">
-    <div class="modal-content">
-      <div class="modal-img" id="modalImg"></div>
-      <div class="modal-details">
-        <button class="btn-close" onclick="closeModal()">&times;</button>
-        <span class="modal-tag" id="modalCat">Categoria</span>
-        <h2 class="modal-title" id="modalTitle">Nome do Produto</h2>
-        <div class="modal-price" id="modalPrice">R$ 00,00</div>
-        <p class="modal-desc" id="modalDesc">Descrição detalhada do produto.</p>
+  <div id="productModal" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-gallery">
+        <img id="mImg" src="" alt="Detalhe do produto">
+      </div>
+      <div class="modal-info">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <span class="modal-tag" id="mCat">Categoria</span>
+        <h2 id="mTitle">Nome do Produto</h2>
+        <div class="modal-price-lg" id="mPrice">R$ 00,00</div>
+        <p class="modal-desc" id="mDesc">Descrição detalhada...</p>
         
-        <div style="margin-top:auto">
-          <a href="#" id="modalBtnBuy" target="_blank" class="btn-buy" style="padding: 16px; font-size: 1.1rem;">
-            <i class="fab fa-whatsapp"></i> Encomendar Agora
-          </a>
-          <p style="font-size:0.8rem; color:#999; text-align:center; margin-top:10px">
-            <i class="fas fa-shield-alt"></i> Pagamento seguro na entrega ou Pix
-          </p>
-        </div>
+        <a href="#" id="mBtn" target="_blank" class="btn-buy-lg">
+          <i class="fab fa-whatsapp"></i> Comprar Agora
+        </a>
+        <p style="text-align:center; font-size:0.8rem; margin-top:15px; color:#999">
+          <i class="fas fa-lock"></i> Pagamento seguro via Pix ou Cartão na entrega
+        </p>
       </div>
     </div>
   </div>
 
-  <a href="#" id="floatWa" class="fab-wa" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-  <div id="toast" class="toast">Adicionado aos favoritos ❤️</div>
+  <div id="toast" class="toast"><i class="fas fa-check-circle" style="color:#4ade80"></i> Adicionado aos Favoritos</div>
 
   <footer>
     <div class="container">
-      <h3 style="font-family: var(--font-display)">BellaFlor</h3>
-      <p style="color:#888; font-size:0.9rem">Rua 13 de Maio, Centro - Artur Nogueira, SP<br>CNPJ: 00.000.000/0001-00</p>
-      <div style="margin-top:20px; font-size:1.5rem; display:flex; justify-content:center; gap:20px">
-        <i class="fab fa-instagram"></i>
-        <i class="fab fa-facebook"></i>
+      <h2 style="color:white; font-size: 2rem;">BellaFlor</h2>
+      <p style="color:#888; margin-top:10px;">Rua 13 de Maio, Centro - Artur Nogueira, SP</p>
+      
+      <div class="social-links">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-pinterest-p"></i></a>
       </div>
+      
+      <p style="font-size: 0.8rem; color:#555;">&copy; 2024 BellaFlor. Feito com amor.</p>
     </div>
   </footer>
 
   <script>
-    // --- DADOS (Simulando Banco de Dados) ---
-    const PHONE_NUMBER = '5519998028205'; // Seu número aqui
+    /* --- CONFIGURAÇÃO --- */
+    const WHATSAPP_NUM = "5519998028205"; // Seu número
     
+    /* --- DADOS DOS PRODUTOS (Imagens Premium Unsplash) --- */
     const products = [
-      { id: 1, title: "Buquê Amor Eterno", price: 189.90, category: "Romântico", img: "https://images.unsplash.com/photo-1582794543139-8ac92a944f22?auto=format&fit=crop&w=800&q=80", badge: "Mais Vendido", desc: "12 Rosas colombianas vermelhas selecionadas em embalagem premium preta com laço de cetim." },
-      { id: 2, title: "Cesta Café Premium", price: 249.90, category: "Cestas", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80", badge: "Completa", desc: "Cesta de vime com frutas da época, suco integral, pães artesanais, frios e um mini arranjo floral." },
-      { id: 3, title: "Orquídea Phalaenopsis", price: 129.90, category: "Decoração", img: "https://images.unsplash.com/photo-1524594154906-1a0f95bb8d05?auto=format&fit=crop&w=800&q=80", badge: "Durável", desc: "Orquídea branca clássica em vaso de cerâmica. Ideal para presentear com elegância." },
-      { id: 4, title: "Box de Girassóis", price: 145.00, category: "Aniversário", img: "https://images.unsplash.com/photo-1501004318641-1a71e4b9b7bc?auto=format&fit=crop&w=800&q=80", desc: "A energia do sol em uma caixa box moderna. Girassóis frescos e folhagens nobres." },
-      { id: 5, title: "Arranjo Mix Primavera", price: 99.90, category: "Decoração", img: "https://images.unsplash.com/photo-1563241527-3004b7be025f?auto=format&fit=crop&w=800&q=80", badge: "Oferta", desc: "Mix colorido de flores do campo e astromélias. Perfeito para alegrar o ambiente." },
-      { id: 6, title: "Coroa de Homenagem", price: 280.00, category: "Condolências", img: "https://images.unsplash.com/photo-1596236569766-41e98d1a6032?auto=format&fit=crop&w=800&q=80", desc: "Coroa de flores nobre com faixa de homenagem personalizada inclusa. Entrega imediata nos velórios." },
-      { id: 7, title: "Kit Romântico Vinho", price: 210.00, category: "Romântico", img: "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=800&q=80", desc: "Vinho tinto importado, caixa de chocolates finos e um buquê com 6 rosas vermelhas." },
-      { id: 8, title: "Terrário Suculentas", price: 89.90, category: "Decoração", img: "https://images.unsplash.com/photo-1463936575229-46994167ea3b?auto=format&fit=crop&w=800&q=80", desc: "Mini jardim de suculentas em vidro geométrico. Baixa manutenção e muito estilo." }
+      {
+        id: 1,
+        title: "Buquê 12 Rosas Colombianas",
+        category: "romantico",
+        price: 189.90,
+        badge: "Mais Vendido",
+        img: "https://images.unsplash.com/photo-1562690868-60bbe7293e94?auto=format&fit=crop&w=800&q=80",
+        desc: "A máxima expressão do amor. 12 rosas vermelhas importadas, selecionadas manualmente, envoltas em folhagens nobres e embalagem preta de luxo com laço de cetim."
+      },
+      {
+        id: 2,
+        title: "Cesta Amanhecer Premium",
+        category: "cestas",
+        price: 249.90,
+        badge: "Completa",
+        img: "https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=800&q=80",
+        desc: "Comece o dia de alguém especial com sofisticação. Inclui: Suco integral, frutas da estação, pães artesanais, geleia importada, frios, drip coffee e um mini arranjo floral."
+      },
+      {
+        id: 3,
+        title: "Orquídea Phalaenopsis Branca",
+        category: "decoracao",
+        price: 139.90,
+        badge: "Durável",
+        img: "https://images.unsplash.com/photo-1566904692482-d856b3e32b00?auto=format&fit=crop&w=800&q=80",
+        desc: "A elegância clássica. Orquídea de haste dupla plantada em vaso de cerâmica vitrificada. Símbolo de pureza e sofisticação, ideal para decorar interiores."
+      },
+      {
+        id: 4,
+        title: "Box Luxo Girassóis",
+        category: "aniversario",
+        price: 155.00,
+        img: "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=800&q=80",
+        desc: "Irradie felicidade! Caixa box cartonada rígida contendo girassóis frescos e vibrantes, complementados com tango e gipsófila. Perfeito para celebrar a vida."
+      },
+      {
+        id: 5,
+        title: "Arranjo Mix do Campo",
+        category: "decoracao",
+        price: 89.90,
+        badge: "Oferta",
+        img: "https://images.unsplash.com/photo-1559563362-c667ba5f5480?auto=format&fit=crop&w=800&q=80",
+        desc: "Um toque rústico e colorido. Combinação alegre de astromélias, gérberas e margaridas em vaso de vidro. Traz leveza e cor para qualquer ambiente."
+      },
+      {
+        id: 6,
+        title: "Coroa de Condolências Nobre",
+        category: "condolencias",
+        price: 320.00,
+        img: "https://images.unsplash.com/photo-1595968846059-8386c9629141?auto=format&fit=crop&w=800&q=80",
+        desc: "Homenagem solene com flores brancas (lírios, rosas e crisântemos). Inclui faixa de homenagem personalizada. Entrega prioritária nos cemitérios da região."
+      },
+      {
+        id: 7,
+        title: "Kit Vinho & Romance",
+        category: "romantico",
+        price: 280.00,
+        badge: "Presentão",
+        img: "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=800&q=80",
+        desc: "Para uma noite inesquecível. Contém: 1 Vinho Tinto Chileno Reserva, caixa de bombons finos (Ferrero ou Lindt) e um buquê com 6 rosas vermelhas."
+      },
+      {
+        id: 8,
+        title: "Terrário Geométrico Suculentas",
+        category: "decoracao",
+        price: 95.00,
+        img: "https://images.unsplash.com/photo-1463936575229-46994167ea3b?auto=format&fit=crop&w=800&q=80",
+        desc: "Modernidade e natureza. Mini jardim de suculentas e cactos montado em estrutura geométrica de vidro e metal. Baixa manutenção."
+      }
     ];
 
-    // --- LÓGICA ---
-    const grid = document.getElementById('productGrid');
-    const searchInput = document.getElementById('searchInput');
-    const countLabel = document.getElementById('resultsCount');
-    let activeCategory = 'all';
-    let favorites = JSON.parse(localStorage.getItem('bellaFavorites')) || [];
+    /* --- LÓGICA DO SISTEMA --- */
+    let activeFilter = 'all';
+    let favorites = JSON.parse(localStorage.getItem('bellaFavs')) || [];
 
-    // Helper: Formata moeda
-    const fmtMoney = (val) => val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    const formatMoney = (val) => val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    const getWaLink = (msg) => `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(msg)}`;
 
-    // Helper: Link WhatsApp
-    const getWaLink = (msg) => `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(msg)}`;
+    function renderGrid(list) {
+      const grid = document.getElementById('grid');
+      const count = document.getElementById('resultCount');
+      
+      if(list.length === 0) {
+        grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:60px; color:#aaa;">
+          <i class="fas fa-flower" style="font-size:40px; margin-bottom:10px;"></i><br>
+          Nenhum produto encontrado com esses critérios.
+        </div>`;
+        count.innerText = "0 produtos";
+        return;
+      }
 
-    // Renderiza Card
-    function createCardHTML(p, index) {
-      const isFav = favorites.includes(p.id);
-      const delay = index * 50; // Stagger animation
-      return `
-        <article class="card fade-in" style="animation-delay: ${delay}ms">
-          <div class="card-img-wrap">
-            ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ''}
-            <button class="card-fav" onclick="toggleFav(${p.id}, this)" aria-label="Favoritar">
+      count.innerText = `${list.length} produtos encontrados`;
+      
+      grid.innerHTML = list.map((p, index) => {
+        const isFav = favorites.includes(p.id);
+        const delay = index * 100;
+        
+        return `
+        <article class="card animate-up" style="animation-delay: ${delay}ms" onclick="openModal(${p.id})">
+          <div class="card-img-container">
+            ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
+            <button class="btn-fav ${isFav ? 'active' : ''}" onclick="toggleFav(event, ${p.id})">
               <i class="${isFav ? 'fas' : 'far'} fa-heart"></i>
             </button>
-            <img src="${p.img}" loading="lazy" alt="${p.title}">
+            <img src="${p.img}" class="card-img" alt="${p.title}" loading="lazy">
+            <div class="card-overlay">
+              <span style="background:white; color:var(--text-main); padding:8px 20px; border-radius:50px; font-weight:700; font-size:0.9rem;">Ver Detalhes</span>
+            </div>
           </div>
-          <div class="card-body">
-            <div class="card-cat">${p.category}</div>
+          <div class="card-content">
+            <div class="card-cat">${getCategoryName(p.category)}</div>
             <h3 class="card-title">${p.title}</h3>
-            <div class="card-price">${fmtMoney(p.price)}</div>
-            
-            <div class="card-actions">
-              <button class="btn-view" onclick="openModal(${p.id})">Ver</button>
-              <a href="${getWaLink(`Olá! Quero encomendar o *${p.title}* (${fmtMoney(p.price)}).`)}" 
-                 target="_blank" class="btn-buy">
-                <i class="fab fa-whatsapp"></i> Comprar
-              </a>
+            <div class="card-footer">
+              <span class="card-price">${formatMoney(p.price)}</span>
+              <div class="btn-card-action">
+                <i class="fas fa-arrow-right"></i>
+              </div>
             </div>
           </div>
         </article>
-      `;
+        `;
+      }).join('');
     }
 
-    // Renderiza Grid
-    function render(list) {
-      grid.innerHTML = list.length ? list.map((p, i) => createCardHTML(p, i)).join('') : 
-        `<div style="grid-column: 1/-1; text-align:center; padding: 40px; color: #999;">
-           <i class="fas fa-search" style="font-size:30px; margin-bottom:10px"></i><br>Nenhum produto encontrado.
-         </div>`;
-      countLabel.textContent = `${list.length} produtos encontrados`;
+    function getCategoryName(slug) {
+      const map = {
+        'romantico': 'Romântico', 'aniversario': 'Aniversário', 
+        'cestas': 'Cestas', 'decoracao': 'Decoração', 'condolencias': 'Condolências'
+      };
+      return map[slug] || slug;
     }
 
-    // Filtros
-    function applyFilters() {
-      const term = searchInput.value.toLowerCase();
-      const sortType = document.getElementById('sortSelect').value;
+    /* --- FILTRAGEM --- */
+    function filterProducts() {
+      const term = document.getElementById('searchInput').value.toLowerCase();
+      const sort = document.getElementById('sortSelect').value;
       
       let filtered = products.filter(p => {
-        const matchCat = activeCategory === 'all' || p.category === activeCategory;
-        const matchSearch = p.title.toLowerCase().includes(term) || p.category.toLowerCase().includes(term);
+        const matchCat = activeFilter === 'all' || p.category === activeFilter;
+        const matchSearch = p.title.toLowerCase().includes(term);
         return matchCat && matchSearch;
       });
 
-      // Sort
-      if(sortType === 'priceAsc') filtered.sort((a,b) => a.price - b.price);
-      if(sortType === 'priceDesc') filtered.sort((a,b) => b.price - a.price);
-      // relevance (default array order)
+      if(sort === 'asc') filtered.sort((a,b) => a.price - b.price);
+      if(sort === 'desc') filtered.sort((a,b) => b.price - a.price);
+      // featured mantem a ordem do array original
 
-      render(filtered);
+      renderGrid(filtered);
     }
 
-    // Event Listeners Filtros
+    // Event Listeners
     document.querySelectorAll('.chip').forEach(btn => {
       btn.addEventListener('click', (e) => {
         document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
         e.target.classList.add('active');
-        activeCategory = e.target.dataset.cat;
-        applyFilters();
+        activeFilter = e.target.dataset.cat;
+        filterProducts();
       });
     });
 
-    searchInput.addEventListener('input', applyFilters);
-    document.getElementById('sortSelect').addEventListener('change', applyFilters);
+    document.getElementById('searchInput').addEventListener('input', filterProducts);
+    document.getElementById('sortSelect').addEventListener('change', filterProducts);
 
-    // Modal Functions
+    /* --- MODAL --- */
     window.openModal = (id) => {
       const p = products.find(x => x.id === id);
       if(!p) return;
+
+      document.getElementById('mImg').src = p.img;
+      document.getElementById('mCat').innerText = getCategoryName(p.category);
+      document.getElementById('mTitle').innerText = p.title;
+      document.getElementById('mPrice').innerText = formatMoney(p.price);
+      document.getElementById('mDesc').innerText = p.desc;
       
-      document.getElementById('modalImg').innerHTML = `<img src="${p.img}" alt="${p.title}">`;
-      document.getElementById('modalCat').textContent = p.category;
-      document.getElementById('modalTitle').textContent = p.title;
-      document.getElementById('modalDesc').textContent = p.desc;
-      document.getElementById('modalPrice').textContent = fmtMoney(p.price);
-      document.getElementById('modalBtnBuy').href = getWaLink(`Olá, vi no site: *${p.title}*. Gostaria de saber mais detalhes.`);
-      
+      // WhatsApp Message Generator
+      const msg = `Olá! Gostei do *${p.title}* (${formatMoney(p.price)}) que vi no site. Gostaria de encomendar!`;
+      document.getElementById('mBtn').href = getWaLink(msg);
+
       document.getElementById('productModal').classList.add('open');
       document.body.style.overflow = 'hidden';
     };
@@ -538,35 +601,38 @@
       document.body.style.overflow = 'auto';
     };
 
-    // Close modal on outside click
+    // Fechar ao clicar fora
     document.getElementById('productModal').addEventListener('click', (e) => {
       if(e.target === document.getElementById('productModal')) closeModal();
     });
 
-    // Favorites Logic
-    window.toggleFav = (id, btn) => {
-      if(favorites.includes(id)) {
-        favorites = favorites.filter(x => x !== id);
-        btn.innerHTML = '<i class="far fa-heart"></i>';
+    /* --- FAVORITOS & EXTRAS --- */
+    window.toggleFav = (e, id) => {
+      e.stopPropagation(); // Evita abrir o modal
+      const idx = favorites.indexOf(id);
+      
+      if(idx > -1) {
+        favorites.splice(idx, 1);
       } else {
         favorites.push(id);
-        btn.innerHTML = '<i class="fas fa-heart"></i>';
         showToast();
       }
-      localStorage.setItem('bellaFavorites', JSON.stringify(favorites));
+      localStorage.setItem('bellaFavs', JSON.stringify(favorites));
+      filterProducts(); // Re-render para atualizar icones
     };
 
     function showToast() {
       const t = document.getElementById('toast');
       t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 2000);
+      setTimeout(() => t.classList.remove('show'), 2500);
     }
 
-    // Init WhatsApp Float Button
-    document.getElementById('floatWa').href = getWaLink("Olá! Gostaria de atendimento.");
+    window.contactGeneral = () => {
+      window.open(getWaLink("Olá! Gostaria de falar com um atendente da BellaFlor."), '_blank');
+    };
 
-    // Initial Render
-    render(products);
+    // Init
+    renderGrid(products);
 
   </script>
 </body>
