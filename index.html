@@ -1,538 +1,402 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BellaFlor Artur Nogueira | Floricultura Online</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BellaFlor Artur Nogueira | Floricultura Online</title>
+  <meta name="description" content="BellaFlor Artur Nogueira - Arranjos, buquês e cestas. Encomende pelo WhatsApp." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        /* --- VARIÁVEIS E RESET --- */
-        :root {
-            --primary-color: #E91E63;
-            --primary-dark: #C2185B;
-            --primary-light: #F8BBD0;
-            --accent-color: #25D366; /* WhatsApp Green */
-            --text-dark: #333333;
-            --text-light: #666666;
-            --bg-light: #F9F9F9;
-            --white: #FFFFFF;
-            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
-            --shadow-md: 0 10px 15px rgba(0,0,0,0.1);
-            --shadow-lg: 0 20px 25px rgba(0,0,0,0.15);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+  <style>
+    :root{
+      --primary:#E91E63;
+      --primary-dark:#C2185B;
+      --accent:#25D366; /* whatsapp */
+      --bg:#F6F7F9;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --radius:14px;
+      --glass: rgba(255,255,255,0.7);
+      --shadow-sm: 0 6px 18px rgba(16,24,40,0.06);
+      --shadow-md: 0 20px 40px rgba(16,24,40,0.08);
+      --transition: 240ms cubic-bezier(.2,.9,.3,1);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{font-family:'Poppins',sans-serif;background:linear-gradient(180deg,var(--bg),#fff);color:#111;margin:0;line-height:1.45}
+    a{color:inherit}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* Header */
+    header{position:sticky;top:0;z-index:1200;background:rgba(255,255,255,0.9);backdrop-filter:saturate(120%) blur(6px);box-shadow:var(--shadow-sm)}
+    .nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700}
+    .brand i{font-size:26px;color:var(--primary-dark)}
+    .brand span{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--primary-dark)}
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    .nav-actions{display:flex;gap:12px;align-items:center}
+    .btn-whatsapp{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;padding:10px 16px;border-radius:999px;font-weight:600;box-shadow:0 6px 18px rgba(37,211,102,0.16);border:none}
+    .btn-whatsapp i{font-size:16px}
 
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            color: var(--text-dark);
-        }
+    /* Hero */
+    .hero{max-width:1200px;margin:18px auto;padding:28px 20px;display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:center}
+    @media (max-width:980px){.hero{grid-template-columns:1fr;}}
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.7),rgba(255,255,255,0.5));padding:28px;border-radius:var(--radius);box-shadow:var(--shadow-md);}
+    .hero-title{font-family:'Playfair Display',serif;font-size:2rem;color:var(--primary-dark);margin-bottom:8px}
+    .hero-sub{color:var(--muted);margin-bottom:18px}
 
-        a { text-decoration: none; }
-        ul { list-style: none; }
+    /* Search + filters */
+    .controls{display:flex;gap:12px;align-items:center}
+    .search{flex:1;display:flex;gap:8px;align-items:center;background:var(--card);padding:8px;border-radius:12px;border:1px solid rgba(0,0,0,0.04)}
+    .search input{border:0;outline:0;padding:8px;font-size:14px;width:100%;background:transparent}
+    .chip{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:8px 12px;border-radius:999px;font-weight:600;cursor:pointer}
 
-        /* --- HEADER & NAV --- */
-        header {
-            background-color: var(--white);
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+    /* Features */
+    .features{display:flex;gap:12px;margin:18px 0}
+    .feature{background:var(--card);padding:14px;border-radius:12px;flex:1;display:flex;gap:12px;align-items:center;box-shadow:var(--shadow-sm)}
+    .feature i{font-size:20px;color:var(--primary)}
 
-        .top-bar {
-            background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
-            color: var(--white);
-            padding: 8px 0;
-            font-size: 0.85rem;
-            text-align: center;
-        }
+    /* Products grid */
+    .products-wrap{max-width:1200px;margin:10px auto;padding:0 20px}
+    .controls-row{display:flex;justify-content:space-between;align-items:center;margin:6px 0}
+    .grid{display:grid;grid-template-columns:repeat(1,1fr);gap:18px}
+    @media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:980px){.grid{grid-template-columns:repeat(3,1fr)}}
+    @media(min-width:1220px){.grid{grid-template-columns:repeat(4,1fr)}}
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+    .card{background:var(--card);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow-sm);transition:transform var(--transition),box-shadow var(--transition)}
+    .card:hover{transform:translateY(-8px);box-shadow:var(--shadow-md)}
+    .media{height:220px;background:#eee;position:relative}
+    .media img{width:100%;height:100%;object-fit:cover;display:block}
+    .card-body{padding:14px;display:flex;flex-direction:column;gap:8px}
+    .category{font-size:12px;color:var(--primary);font-weight:700;text-transform:uppercase}
+    .title{font-size:1rem;font-weight:700}
+    .desc{font-size:13px;color:var(--muted);flex:1}
+    .meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
+    .price{font-weight:800;color:var(--primary-dark)}
+    .actions{display:flex;gap:8px}
+    .btn-small{padding:8px 10px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+    .btn-outline{background:transparent;border:1px solid rgba(0,0,0,0.06)}
+    .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff}
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .logo i { color: var(--primary-dark); }
+    .badge{position:absolute;left:12px;top:12px;background:rgba(255,255,255,0.85);padding:6px 10px;border-radius:999px;font-weight:700;border:1px solid rgba(0,0,0,0.06)}
 
-        .nav-contact {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+    /* Floating whatsapp */
+    .fab-whatsapp{position:fixed;right:18px;bottom:18px;background:var(--accent);color:#fff;border-radius:999px;padding:14px 16px;box-shadow:0 10px 30px rgba(37,211,102,0.12);z-index:1300}
 
-        .whatsapp-btn-header {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: var(--transition);
-        }
+    /* Modal */
+    .modal{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:flex;align-items:center;justify-content:center;padding:20px;visibility:hidden;opacity:0;transition:opacity var(--transition),visibility var(--transition)}
+    .modal.open{visibility:visible;opacity:1}
+    .modal-card{background:var(--card);width:100%;max-width:900px;border-radius:12px;overflow:hidden;display:grid;grid-template-columns:1fr 380px}
+    @media(max-width:880px){.modal-card{grid-template-columns:1fr}}
+    .modal-media{height:100%;min-height:320px}
+    .modal-body{padding:18px}
 
-        .whatsapp-btn-header:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-        }
+    footer{background:#111;color:#ddd;padding:28px 20px;margin-top:30px}
+    .footer-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between}
+    .footer-inner p{margin:0}
 
-        /* --- HERO SECTION --- */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1490750967868-58cb75065ed2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 450px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            padding: 0 20px;
-            margin-bottom: 40px;
-        }
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            color: var(--white);
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            font-weight: 300;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* --- FEATURES SECTION --- */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto 60px;
-            padding: 0 5%;
-        }
-
-        .feature-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
-        .feature-card p { font-size: 0.9rem; color: var(--text-light); }
-
-        /* --- PRODUCTS GRID (CORE TASK) --- */
-        .products-section {
-            max-width: 1400px;
-            margin: 0 auto 80px;
-            padding: 0 5%;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            color: var(--primary-dark);
-            margin-bottom: 10px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-header h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: var(--primary-color);
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        .product-grid {
-            display: grid;
-            gap: 30px;
-            /* Mobile First: 1 coluna por padrão */
-            grid-template-columns: 1fr; 
-        }
-
-        /* Tablet: 2 colunas */
-        @media (min-width: 768px) {
-            .product-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        /* Desktop: 4 colunas */
-        @media (min-width: 1024px) {
-            .product-grid { grid-template-columns: repeat(4, 1fr); }
-        }
-
-        .product-card {
-            background: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .product-image {
-            height: 250px;
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover .product-image img {
-            transform: scale(1.1);
-        }
-
-        .badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .product-info {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-category {
-            color: var(--primary-color);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-
-        .product-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            line-height: 1.3;
-        }
-
-        .product-desc {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 20px;
-            flex-grow: 1; /* Empurra o botão para baixo */
-        }
-
-        .btn-buy {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            border-radius: 8px;
-            font-weight: 600;
-            gap: 10px;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-buy:hover {
-            background: linear-gradient(135deg, var(--primary-dark), #AD1457);
-            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: #1A1A1A;
-            color: #ccc;
-            padding: 60px 0 20px;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            padding: 0 5%;
-            margin-bottom: 40px;
-        }
-
-        .footer-col h4 {
-            color: var(--white);
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        .footer-col p { margin-bottom: 10px; font-size: 0.95rem; }
-        
-        .footer-col i {
-            color: var(--primary-color);
-            margin-right: 10px;
-            width: 20px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
-        }
-
-        /* --- RESPONSIVE ADJUSTMENTS --- */
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.5rem; }
-            .navbar { flex-direction: column; gap: 15px; }
-            .top-bar { display: none; } /* Ocultar barra topo em mobile para economizar espaço */
-        }
-    </style>
+  </style>
 </head>
 <body>
 
-    <header>
-        <div class="top-bar">
-            <span><i class="fas fa-truck"></i> Entregas em toda Artur Nogueira e Região</span>
-        </div>
-        <nav class="navbar">
-            <a href="#" class="logo">
-                <i class="fas fa-spa"></i> BellaFlor
-            </a>
-            <div class="nav-contact">
-                <a href="https://wa.me/5519998028205" class="whatsapp-btn-header" target="_blank">
-                    <i class="fab fa-whatsapp"></i> (19) 99802-8205
-                </a>
-            </div>
-        </nav>
-    </header>
+  <!--
+    DICAS DE CUSTOMIZAÇÃO RÁPIDA (edite aqui):
+    - Trocar número WhatsApp: altere a variável phoneNumber no final do arquivo (script).
+    - Trocar imagens/produtos: edite a array `products` no script; cada item tem: id, title, category, price, img, badge, desc.
+    - Se preferir HTML estático ao invés de geração por JS, copie o template de card dentro da função renderProductCard.
+  -->
 
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <i class="fas fa-seedling"></i>
+        <span>BellaFlor <small style="display:block;font-size:11px;font-weight:600;color:var(--muted)">Artur Nogueira</small></span>
+      </div>
+
+      <div class="nav-actions">
+        <button class="chip" id="allFilter">Todos</button>
+        <button class="chip" data-category="Romântico">Romântico</button>
+        <button class="chip" data-category="Decoração">Decoração</button>
+        <button class="chip" data-category="Cestas">Cestas</button>
+        <button class="chip" data-category="Homenagem">Homenagem</button>
+
+        <a class="btn-whatsapp" id="headerWa" href="#" target="_blank" aria-label="Contactar pelo WhatsApp"><i class="fab fa-whatsapp"></i> (19) 99802-8205</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
     <section class="hero">
-        <div class="hero-content">
-            <h1>Flores que Encantam</h1>
-            <p>Arranjos exclusivos e flores frescas selecionadas diariamente para tornar seus momentos inesquecíveis.</p>
+      <div class="hero-card">
+        <div class="hero-title">Flores que Encantam — Entrega Rápida</div>
+        <p class="hero-sub">Arranjos frescos, buquês personalizados e cestas para todas as ocasiões. Encomende via WhatsApp com atendimento humano.</p>
+
+        <div style="margin-top:14px" class="controls">
+          <div class="search" role="search" aria-label="Pesquisar produtos">
+            <i class="fas fa-search" style="color:var(--muted)"></i>
+            <input id="searchInput" placeholder="Buscar por buquê, flor ou ocasião..." />
+          </div>
+          <select id="sortSelect" class="chip" style="padding:8px 12px;">
+            <option value="default">Ordenar: Destaques</option>
+            <option value="price_asc">Menor preço</option>
+            <option value="price_desc">Maior preço</option>
+            <option value="name_az">A → Z</option>
+          </select>
         </div>
+
+        <div class="features" style="margin-top:18px">
+          <div class="feature"><i class="fas fa-truck"></i><div><strong>Entrega em Artur Nogueira</strong><div class="muted">Mesmo dia (em horários selecionados)</div></div></div>
+          <div class="feature"><i class="fas fa-hand-holding-heart"></i><div><strong>Feito à mão</strong><div class="muted">Floristas experientes</div></div></div>
+          <div class="feature"><i class="fas fa-award"></i><div><strong>Qualidade Premium</strong><div class="muted">Flores selecionadas diariamente</div></div></div>
+        </div>
+
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:18px;border-radius:12px;box-shadow:var(--shadow-md)">
+          <div style="font-weight:800;font-size:1.05rem">Promoção de Natal</div>
+          <div style="margin-top:6px;font-size:13px;">Descontos especiais em buquês selecionados. Peça pelo WhatsApp e feche em minutos.</div>
+        </div>
+
+        <div style="background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow-sm);display:flex;gap:12px;align-items:center">
+          <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=60" alt="loja" style="width:68px;height:68px;border-radius:10px;object-fit:cover">
+          <div>
+            <div style="font-weight:800">Atendimento via WhatsApp</div>
+            <div class="muted" style="font-size:13px">Envie suas dúvidas e finalize a compra rapidamente.</div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="features">
-        <div class="feature-card">
-            <i class="fas fa-clock feature-icon"></i>
-            <h3>Entrega Rápida</h3>
-            <p>Receba suas flores frescas no mesmo dia em Artur Nogueira.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fas fa-heart feature-icon"></i>
-            <h3>Feito com Amor</h3>
-            <p>Arranjos montados manualmente por floristas experientes.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fas fa-award feature-icon"></i>
-            <h3>Qualidade Premium</h3>
-            <p>Trabalhamos apenas com flores selecionadas e frescas.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fas fa-credit-card feature-icon"></i>
-            <h3>Compra Segura</h3>
-            <p>Pagamento facilitado e atendimento direto pelo WhatsApp.</p>
-        </div>
+    <section class="products-wrap">
+      <div class="controls-row">
+        <div><strong id="resultsCount">20</strong> produtos encontrados</div>
+        <div class="muted">Filtre por categoria ou busque pelo nome</div>
+      </div>
+
+      <div id="grid" class="grid" aria-live="polite"></div>
+
     </section>
 
-    <section class="products-section">
-        <div class="section-header">
-            <h2>Nossa Coleção</h2>
-            <p>Escolha o presente perfeito para quem você ama</p>
+    <!-- Modal quick view -->
+    <div id="modal" class="modal" role="dialog" aria-hidden="true">
+      <div class="modal-card" role="document">
+        <div class="modal-media" id="modalMedia"></div>
+        <div class="modal-body">
+          <h3 id="modalTitle"></h3>
+          <p id="modalCategory" class="muted"></p>
+          <p id="modalDesc"></p>
+          <div style="display:flex;gap:10px;margin-top:18px;align-items:center">
+            <div style="font-size:20px;font-weight:800;color:var(--primary-dark)" id="modalPrice"></div>
+            <div style="margin-left:auto;display:flex;gap:8px">
+              <button id="modalBuy" class="btn-primary btn-small">Comprar no WhatsApp</button>
+              <button id="modalClose" class="btn-outline btn-small">Fechar</button>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <div class="product-grid">
-            
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1599739291060-4578e77dac5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Buquê de Rosas Vermelhas">
-                    <span class="badge">Mais Vendido</span>
-                </div>
-                <div class="product-info">
-                    <span class="product-category">Romântico</span>
-                    <h3 class="product-title">Buquê de Rosas Vermelhas</h3>
-                    <p class="product-desc">Clássico buquê com 12 rosas vermelhas selecionadas, folhagens verdes e embalagem especial.</p>
-                    <a href="https://wa.me/5519998028205?text=Olá,%20gostaria%20de%20encomendar%20o%20Buquê%20de%20Rosas%20Vermelhas." target="_blank" class="btn-buy">
-                        <i class="fab fa-whatsapp"></i> Comprar Agora
-                    </a>
-                </div>
-            </div>
+  </main>
 
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1563241527-3004b7be025f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Arranjo de Flores Coloridas">
-                </div>
-                <div class="product-info">
-                    <span class="product-category">Decoração</span>
-                    <h3 class="product-title">Arranjo Primavera</h3>
-                    <p class="product-desc">Mix vibrante de flores da estação em vaso de vidro. Ideal para alegrar ambientes.</p>
-                    <a href="https://wa.me/5519998028205?text=Olá,%20gostaria%20de%20encomendar%20o%20Arranjo%20Primavera." target="_blank" class="btn-buy">
-                        <i class="fab fa-whatsapp"></i> Comprar Agora
-                    </a>
-                </div>
-            </div>
+  <a id="floatingWa" class="fab-whatsapp" href="#" target="_blank" aria-label="Abrir WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1525253641770-96dc4d732808?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cesta de Flores do Campo">
-                    <span class="badge">Presente Ideal</span>
-                </div>
-                <div class="product-info">
-                    <span class="product-category">Cestas</span>
-                    <h3 class="product-title">Cesta Flores do Campo</h3>
-                    <p class="product-desc">Linda cesta rústica composta por girassóis, gérberas e margaridas frescas.</p>
-                    <a href="https://wa.me/5519998028205?text=Olá,%20gostaria%20de%20encomendar%20a%20Cesta%20Flores%20do%20Campo." target="_blank" class="btn-buy">
-                        <i class="fab fa-whatsapp"></i> Comprar Agora
-                    </a>
-                </div>
-            </div>
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div style="font-weight:700;font-size:18px">BellaFlor Artur Nogueira</div>
+        <p class="muted" style="max-width:360px">Transformando sentimentos em belos arranjos florais. Atendimento humano e entrega na região.</p>
+      </div>
+      <div style="min-width:220px">
+        <div style="font-weight:700">Contato</div>
+        <p class="muted">(19) 99802-8205</p>
+        <p class="muted">Artur Nogueira, SP</p>
+      </div>
+      <div style="min-width:220px;display:flex;flex-direction:column;gap:8px">
+        <div style="font-weight:700">Redes</div>
+        <div style="display:flex;gap:8px"><a href="#" class="muted"><i class="fab fa-instagram"></i> Instagram</a> <a href="#" class="muted"><i class="fab fa-facebook-f"></i> Facebook</a></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:18px;color:#888">&copy; 2025 BellaFlor Artur Nogueira. Todos os direitos reservados.</div>
+  </footer>
 
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1596236569766-41e98d1a6032?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Coroa de Flores Funerária">
-                </div>
-                <div class="product-info">
-                    <span class="product-category">Homenagem</span>
-                    <h3 class="product-title">Coroa de Flores Saudade</h3>
-                    <p class="product-desc">Coroa solene para homenagens póstumas, com faixa de dizeres personalizada incluída.</p>
-                    <a href="https://wa.me/5519998028205?text=Olá,%20gostaria%20de%20cotar%20uma%20Coroa%20de%20Flores." target="_blank" class="btn-buy">
-                        <i class="fab fa-whatsapp"></i> Comprar Agora
-                    </a>
-                </div>
-            </div>
+  <script>
+    /* ====== CONFIGURATION ====== */
+    // Altere apenas este número para mudar para o seu WhatsApp (formato: 55 + DDD + número sem sinais)
+    const phoneNumber = '5519998028205';
 
+    // Produtos: altere, adicione ou remova objetos conforme necessário.
+    // Campos: id, title, category, price (string), img, badge (opcional), desc
+    const products = [
+      {id:1,title:'Buquê de Rosas Vermelhas - 12 unidades',category:'Romântico',price:'R$ 139,90',img:'https://images.unsplash.com/photo-1599739291060-4578e77dac5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',badge:'Mais Vendido',desc:'Rosas frescas selecionadas, embalagem premium.'},
+      {id:2,title:'Arranjo Primavera',category:'Decoração',price:'R$ 129,90',img:'https://images.unsplash.com/photo-1563241527-3004b7be025f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',desc:'Mix vibrante de flores da estação em vaso de vidro.'},
+      {id:3,title:'Cesta Flores do Campo',category:'Cestas',price:'R$ 169,90',img:'https://images.unsplash.com/photo-1525253641770-96dc4d732808?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',badge:'Presente Ideal',desc:'Girassóis, gérberas e margaridas em cesta rústica.'},
+      {id:4,title:'Coroa Saudade',category:'Homenagem',price:'R$ 239,00',img:'https://images.unsplash.com/photo-1596236569766-41e98d1a6032?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',desc:'Coroa solene com opção de faixa personalizada.'},
+      {id:5,title:'Buquê Mix Rosas e Lisianthus',category:'Romântico',price:'R$ 149,90',img:'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',desc:'Combinação romântica com lisianthus delicados.'},
+      {id:6,title:'Arranjo Tropical',category:'Decoração',price:'R$ 119,90',img:'https://images.unsplash.com/photo-1504198453319-5ce911bafcde?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',desc:'Folhagens exóticas e flores tropicais.'},
+      {id:7,title:'Mini Suculentas (3un)',category:'Decoração',price:'R$ 69,90',img:'https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',desc:'Suculentas em vasinhos — presente simples e elegante.'},
+      {id:8,title:'Buquê Girassóis',category:'Romântico',price:'R$ 119,90',img:'https://images.unsplash.com/photo-1501004318641-1a71e4b9b7bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',desc:'Girassóis alegres e ensolarados.'},
+      {id:9,title:'Cesta Gourmet + Flores',category:'Cestas',price:'R$ 249,90',img:'https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',badge:'Oferta',desc:'Cesta com petiscos finos e arranjo compacto.'},
+      {id:10,title:'Arranjo de Mesa Elegance',category:'Decoração',price:'R$ 139,90',img:'https://images.unsplash.com/photo-1477332552946-cfb384aeaf1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',desc:'Perfeito para centro de mesa em eventos.'},
+      {id:11,title:'Buquê Rosas Brancas',category:'Romântico',price:'R$ 129,90',img:'https://images.unsplash.com/photo-1514498145516-0a1bb2b3f0b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',desc:'Rosas brancas para momentos puros e elegantes.'},
+      {id:12,title:'Arranjo Natalino',category:'Decoração',price:'R$ 159,90',img:'https://images.unsplash.com/photo-1604335399101-5e0ef6f9b24a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',badge:'Sazonal',desc:'Composição com toques natalinos.'},
+      {id:13,title:'Cesta Romântica',category:'Cestas',price:'R$ 199,90',img:'https://images.unsplash.com/photo-1506084868230-bb9d95c24759?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',desc:'Cesta com vinho e buquê compacto.'},
+      {id:14,title:'Arranjo Funerário Simples',category:'Homenagem',price:'R$ 179,00',img:'https://images.unsplash.com/photo-1508385082359-fb3a3c15a9aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',desc:'Discreto e elegante para homenagens.'},
+      {id:15,title:'Buquê Premium (24 Rosas)',category:'Romântico',price:'R$ 299,90',img:'https://images.unsplash.com/photo-1505765051481-3d2a3f5d1d25?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',badge:'Premium',desc:'Buquê luxuoso com 24 rosas selecionadas.'},
+      {id:16,title:'Arranjo Corporativo',category:'Decoração',price:'R$ 219,90',img:'https://images.unsplash.com/photo-1604437052400-9a6a6a1f0aaf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',desc:'Composições para empresas e eventos institucionais.'},
+      {id:17,title:'Kit Maternidade',category:'Cestas',price:'R$ 179,90',img:'https://images.unsplash.com/photo-1545235617-7c3b840b1d7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',desc:'Cesta com flores delicadas e presentinhos para a mãe.'},
+      {id:18,title:'Orquídea em Vaso',category:'Decoração',price:'R$ 129,90',img:'https://images.unsplash.com/photo-1524594154906-1a0f95bb8d05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',desc:'Orquídea phalaenopsis em vaso cerâmico.'},
+      {id:19,title:'Mini Buquê Diário',category:'Romântico',price:'R$ 59,90',img:'https://images.unsplash.com/photo-1464965911861-746a04b4bca3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',desc:'Pequeno buquê pronto para surpreender.'},
+      {id:20,title:'Assinatura Mensal (Flores)',category:'Decoração',price:'R$ 99,90/mês',img:'https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',badge:'Assinatura',desc:'Receba flores frescas todo mês.'}
+    ];
+
+    /* ====== DOM REFERENCES ====== */
+    const grid = document.getElementById('grid');
+    const searchInput = document.getElementById('searchInput');
+    const sortSelect = document.getElementById('sortSelect');
+    const resultsCount = document.getElementById('resultsCount');
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalMedia = document.getElementById('modalMedia');
+    const modalBuy = document.getElementById('modalBuy');
+    const modalClose = document.getElementById('modalClose');
+    const headerWa = document.getElementById('headerWa');
+    const floatingWa = document.getElementById('floatingWa');
+
+    /* ====== UTILIDADES ====== */
+    function waLinkFor(product){
+      const text = encodeURIComponent(`Olá, gostaria de encomendar: *${product.title}* — ${product.price}. \nID: ${product.id}`);
+      return `https://wa.me/${phoneNumber}?text=${text}`;
+    }
+
+    /* Render card HTML from product object (used when generating DOM). */
+    function renderProductCard(p){
+      const el = document.createElement('article');
+      el.className = 'card';
+      el.innerHTML = `
+        <div class="media">
+          ${p.badge?`<div class="badge">${p.badge}</div>`:''}
+          <img loading="lazy" alt="${p.title}" src="${p.img}" />
         </div>
-    </section>
+        <div class="card-body">
+          <div class="category">${p.category}</div>
+          <div class="title">${p.title}</div>
+          <div class="desc">${p.desc}</div>
+          <div class="meta">
+            <div class="price">${p.price}</div>
+            <div class="actions">
+              <button class="btn-small btn-outline" data-action="quick" data-id="${p.id}">Ver</button>
+              <a class="btn-small btn-primary" href="${waLinkFor(p)}" target="_blank">Comprar</a>
+            </div>
+          </div>
+        </div>`;
+      return el;
+    }
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-col">
-                <div class="logo" style="margin-bottom: 20px;">
-                    <i class="fas fa-spa"></i> BellaFlor
-                </div>
-                <p>Transformando sentimentos em belos arranjos florais. Sua floricultura de confiança em Artur Nogueira.</p>
-            </div>
-            
-            <div class="footer-col">
-                <h4>Contato</h4>
-                <p><i class="fas fa-phone"></i> (19) 99802-8205</p>
-                <p><i class="fab fa-whatsapp"></i> (19) 99802-8205</p>
-                <p><i class="fas fa-map-marker-alt"></i> Artur Nogueira, SP</p>
-            </div>
+    function openModal(product){
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      modalTitle.textContent = product.title;
+      modalDesc.textContent = product.desc;
+      modalCategory.textContent = product.category;
+      modalPrice.textContent = product.price;
+      modalMedia.innerHTML = `<img src="${product.img}" alt="${product.title}" style="width:100%;height:100%;object-fit:cover">`;
+      modalBuy.onclick = ()=> window.open(waLinkFor(product), '_blank');
+    }
 
-            <div class="footer-col">
-                <h4>Redes Sociais</h4>
-                <p>Siga-nos para ver nossas novidades:</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://wa.me/5519998028205"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2025 BellaFlor Artur Nogueira. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal();});
+
+    /* Filter / search / sort */
+    function applyFilters(){
+      const q = searchInput.value.trim().toLowerCase();
+      const categoryActive = document.querySelector('.chip.active');
+      let filtered = [...products];
+      if(categoryActive && categoryActive.dataset.category){
+        filtered = filtered.filter(p => p.category === categoryActive.dataset.category);
+      }
+      if(q) filtered = filtered.filter(p => (p.title + ' ' + p.desc + ' ' + p.category).toLowerCase().includes(q));
+
+      // Sorting
+      const sort = sortSelect.value;
+      if(sort === 'price_asc') filtered.sort((a,b)=>parseFloat(a.price.replace(/[R$ ,\/mês]/g,'')) - parseFloat(b.price.replace(/[R$ ,\/mês]/g,'')));
+      if(sort === 'price_desc') filtered.sort((a,b)=>parseFloat(b.price.replace(/[R$ ,\/mês]/g,'')) - parseFloat(a.price.replace(/[R$ ,\/mês]/g,'')));
+      if(sort === 'name_az') filtered.sort((a,b)=>a.title.localeCompare(b.title,'pt-BR'));
+
+      renderGrid(filtered);
+    }
+
+    function renderGrid(list){
+      grid.innerHTML = '';
+      if(!list.length){ grid.innerHTML = '<div class="muted">Nenhum produto encontrado.</div>'; resultsCount.textContent = 0; return; }
+      resultsCount.textContent = list.length;
+      list.forEach(p => {
+        const card = renderProductCard(p);
+        grid.appendChild(card);
+      });
+    }
+
+    // Chips behaviour
+    document.querySelectorAll('.chip').forEach(ch => {
+      ch.addEventListener('click', ()=>{
+        document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+        ch.classList.add('active');
+        // special "Todos"
+        if(ch.id === 'allFilter'){
+          document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+          document.getElementById('allFilter').classList.add('active');
+        }
+        applyFilters();
+      });
+    });
+
+    // Delegate quick view
+    grid.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-action]');
+      if(!btn) return;
+      const id = Number(btn.dataset.id);
+      const product = products.find(p=>p.id===id);
+      if(btn.dataset.action === 'quick') openModal(product);
+    });
+
+    // Wire search + sort
+    searchInput.addEventListener('input', debounce(applyFilters,250));
+    sortSelect.addEventListener('change', applyFilters);
+
+    // set wa links
+    headerWa.href = `https://wa.me/${phoneNumber}`;
+    floatingWa.href = `https://wa.me/${phoneNumber}`;
+
+    // initial render
+    renderGrid(products);
+
+    // small debounce util
+    function debounce(fn,ms=200){let t;return(...args)=>{clearTimeout(t);t=setTimeout(()=>fn(...args),ms)}}
+
+    // Accessibility: close modal with esc
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+
+    // Progressive enhancement: make chips "Todos" active by default
+    document.getElementById('allFilter').classList.add('active');
+
+    // If you want to export this as static HTML, run `document.documentElement.outerHTML` in the console and copy.
+
+  </script>
 
 </body>
 </html>
